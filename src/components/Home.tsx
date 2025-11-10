@@ -1,4 +1,5 @@
 import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
+import BannerInfo from './banner/banner_home_info';
 
 interface HomeProps {
   onNavigate: (section: string) => void;
@@ -71,6 +72,8 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
         </div>
       </section>
+
+      <BannerInfo/>
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
