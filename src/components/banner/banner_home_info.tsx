@@ -56,11 +56,11 @@ const BannerInfo = () => {
 
         {/* Columna derecha: imagen */}
         <div className="md:w-1/2 flex justify-center mt-12 md:mt-0">
-          <img
-            src="/images/descuentos-comparendos.png"
-            alt="Descuentos por comparendos"
-            className="w-80 h-auto rounded-2xl shadow-lg border border-white/20"
-          />
+         <img
+  src="/images/image-banner.jpg"
+  alt="Educación vial y descuentos por comparendos"
+  className="w-80 h-auto rounded-2xl shadow-lg border border-white/20"
+/>
         </div>
       </div>
     </section>
