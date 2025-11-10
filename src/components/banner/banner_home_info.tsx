@@ -1,14 +1,14 @@
 
 const BannerInfo = () => {
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-32 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-30 overflow-hidden">
       {/* Imagen decorativa al lado derecho */}
+     
       <img
         src="/images/image-banner.jpg"
         alt="Banner decorativo"
-        className="absolute right-0 top-0 h-full w-1/2 object-cover opacity-30 md:opacity-40"
+        className="absolute right-0 top-0 h-full w-5.1/12 object-contain opacity-30 md:opacity-40"
       />
-
       {/* Capa para mejorar legibilidad (opcional, si la imagen tiene mucho color) */}
       <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-blue-900/40 to-transparent"></div>
 
