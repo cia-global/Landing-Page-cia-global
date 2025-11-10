@@ -1,10 +1,22 @@
+
 const BannerInfo = () => {
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-32">
-      <div className="flex flex-col md:flex-row items-center justify-between px-8 md:px-16">
+    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-32 overflow-hidden">
+      {/* Imagen decorativa al lado derecho */}
+      <img
+        src="/images/image-banner.jpg"
+        alt="Banner decorativo"
+        className="absolute right-0 top-0 h-full w-1/2 object-cover opacity-30 md:opacity-40"
+      />
+
+      {/* Capa para mejorar legibilidad (opcional, si la imagen tiene mucho color) */}
+      <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-blue-900/40 to-transparent"></div>
+
+      {/* Contenido */}
+      <div className="relative flex flex-col md:flex-row items-center justify-between px-8 py-12">
         {/* Columna izquierda: texto y tarjetas */}
-        <div className="md:w-1/2 space-y-6">
-          <h2 className="text-3xl font-bold text-white">
+        <div className="md:w-1/2 space-y-6 z-10">
+         <h2 className="text-3xl font-bold text-white">
             Recuerda que
           </h2>
           <p className="text-lg text-gray-100 leading-relaxed">
@@ -52,15 +64,7 @@ const BannerInfo = () => {
               </p>
             </div>
           </div>
-        </div>
-
-        {/* Columna derecha: imagen */}
-        <div className="md:w-1/2 flex justify-center mt-12 md:mt-0">
-         <img
-  src="/images/image-banner.jpg"
-  alt="Educación vial y descuentos por comparendos"
-  className="w-80 h-auto rounded-2xl shadow-lg border border-white/20"
-/>
+          
         </div>
       </div>
     </section>
@@ -68,3 +72,18 @@ const BannerInfo = () => {
 };
 
 export default BannerInfo;
+
+         
+       
+
+    
+
+
+
+
+
+
+
+
+
+
