@@ -9,6 +9,7 @@ const BannerInfo = () => {
         alt="Banner decorativo"
         className="absolute right-0 top-0 h-full w-5.1/12 object-contain opacity-30 md:opacity-40"
       />
+
       {/* Capa para mejorar legibilidad (opcional, si la imagen tiene mucho color) */}
       <div className="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-blue-900/40 to-transparent"></div>
 
@@ -67,6 +68,8 @@ const BannerInfo = () => {
           
         </div>
       </div>
+       
+       <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-gray-50 to-transparent"></div>
     </section>
   );
 };

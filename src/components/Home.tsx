@@ -1,5 +1,6 @@
 import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import BannerInfo from './banner/banner_home_info';
+import SectionCities from './section/Section_cities';
 
 interface HomeProps {
   onNavigate: (section: string) => void;
@@ -15,7 +16,7 @@ export default function Home({ onNavigate }: HomeProps) {
               Cumple tu curso de sensibilización y educación vial
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Desde cualquier ciudad del país. Profesional, rápido y confiable.
+              Desde nuestras sedes cerca de tí. Facil, rápido y confiable.
             </p>
             <button
               onClick={() => onNavigate('appointment')}
@@ -31,15 +32,15 @@ export default function Home({ onNavigate }: HomeProps) {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Proceso simple en 4 pasos
+            Proceso simple en 3 pasos
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                icon: Users,
-                title: 'Regístrate',
-                description: 'Completa tus datos personales y número de comparendo',
-              },
+              // {
+              //   icon: Users,
+              //   title: 'Regístrate',
+              //   description: 'Completa tus datos personales y número de comparendo',
+              // },
               {
                 icon: MapPin,
                 title: 'Elige tu ciudad',
@@ -72,7 +73,7 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
         </div>
       </section>
-
+      <SectionCities onNavigate={onNavigate} />
       <BannerInfo/>
 
       <section className="py-16 bg-white">
