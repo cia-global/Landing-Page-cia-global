@@ -6,16 +6,23 @@ import About from './components/About';
 import Cities from './components/Cities';
 import Appointment from './components/Appointment';
 import Contact from './components/Contact';
+import CityDetail from './components/CityDetail';
 
 function App() {
   const [currentSection, setCurrentSection] = useState('home');
+  const [selectedCityId, setSelectedCityId] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentSection]);
 
-  const handleNavigate = (section: string) => {
-    setCurrentSection(section);
+  const handleNavigate = (section: string, cityId?: string) => {
+    if (section === 'city-detail' && cityId) {
+      setSelectedCityId(cityId);
+      setCurrentSection('city-detail');
+    } else {
+      setCurrentSection(section);
+    }
   };
 
   const renderSection = () => {
@@ -30,6 +37,8 @@ function App() {
         return <Appointment />;
       case 'contact':
         return <Contact />;
+       case 'city-detail':
+        return selectedCityId ? <CityDetail cityId={selectedCityId} onNavigate={handleNavigate} /> : <Home onNavigate={handleNavigate} />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }

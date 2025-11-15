@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { MapPin, Phone, Search } from 'lucide-react';
+import { MapPin, Phone, Search, ChevronRight } from 'lucide-react';
 import { supabase, City } from '../lib/supabase';
 
 interface CitiesProps {
-  onNavigate: (section: string) => void;
+  onNavigate: (section: string, cityId?: string) => void;
 }
 
 export default function Cities({ onNavigate }: CitiesProps) {
@@ -117,12 +117,21 @@ export default function Cities({ onNavigate }: CitiesProps) {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => onNavigate('appointment')}
-                    className="w-full mt-6 bg-gradient-to-r from-blue-600 to-green-600 text-white py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
-                  >
-                    Agendar en esta sede
-                  </button>
+                  <div className="flex gap-3 mt-6">
+                    <button
+                      onClick={() => onNavigate('city-detail', city.id)}
+                      className="flex-1 bg-white border-2 border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center"
+                    >
+                      Ver detalles
+                      <ChevronRight size={18} className="ml-1" />
+                    </button>
+                    <button
+                      onClick={() => onNavigate('appointment')}
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 text-white py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
+                    >
+                      Agendar
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
