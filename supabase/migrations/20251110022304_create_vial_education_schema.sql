@@ -61,6 +61,8 @@ CREATE TABLE IF NOT EXISTS cities (
   name text NOT NULL,
   address text NOT NULL,
   phone text NOT NULL,
+  coordinates jsonb,       
+  page integer,   
   is_active boolean DEFAULT true,
   created_at timestamptz DEFAULT now()
 );
@@ -119,7 +121,7 @@ CREATE POLICY "Users can view their own appointments"
 
 -- Insert seed data for cities
 INSERT INTO cities (name, address, phone) VALUES
-  ('Bogotá', 'Calle 72 #10-34, Bogotá D.C.', '+57 601 3001234'),
+  ('Bogottttá', 'Calle 72 #10-34, Bogotá D.C.', '+57 601 3001234'),
   ('Medellín', 'Carrera 43A #1-50, Medellín', '+57 604 4001234'),
   ('Cali', 'Avenida 6N #23-45, Cali', '+57 602 5001234'),
   ('Barranquilla', 'Calle 85 #50-12, Barranquilla', '+57 605 3601234'),

@@ -12,7 +12,7 @@ export default function Header({ onNavigate }: HeaderProps) {
     { id: 'home', label: 'Inicio' },
     { id: 'about', label: 'Quiénes Somos' },
     { id: 'cities', label: 'Ciudades' },
-    { id: 'appointment', label: 'Agendar Clase' },
+    // { id: 'appointment', label: 'Agendar Clase' },
     { id: 'contact', label: 'Contacto' },
   ];
 

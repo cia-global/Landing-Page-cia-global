@@ -19,7 +19,7 @@ export default function Home({ onNavigate }: HomeProps) {
               Desde nuestras sedes cerca de tí. Facil, rápido y confiable.
             </p>
             <button
-              onClick={() => onNavigate('appointment')}
+              onClick={() => onNavigate('cities')}
               className="bg-white text-blue-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Agendar mi clase

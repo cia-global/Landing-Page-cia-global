@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MapPin, Phone, Mail, Clock, ArrowLeft, Calendar } from 'lucide-react';
 import { supabase, City } from '../lib/supabase';
+import MapBox from './map/MapBox';
 
 interface CityDetailProps {
   cityId: string;
@@ -61,6 +62,7 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
       </div>
     );
   }
+   const coordinates= "4.710989,-74.072090"
 
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
@@ -92,70 +94,83 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
 
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
             <div className="lg:col-span-2">
+
               <div className="bg-white rounded-xl shadow-md p-8 mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Información de la Sede
-                </h2>
+  <h2 className="text-2xl font-bold text-gray-900 mb-6">
+    Información de la Sede
+  </h2>
 
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="text-blue-600" size={24} />
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                        Ubicación
-                      </h3>
-                      <p className="text-gray-700 text-lg">{city.address}</p>
-                    </div>
-                  </div>
+  {/* Contenedor general (izquierda info / derecha mapa) */}
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="text-green-600" size={24} />
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                        Teléfono
-                      </h3>
-                      <p className="text-gray-700 text-lg">{city.phone}</p>
-                      <p className="text-sm text-gray-500 mt-2">
-                        Llama para más información o reservas
-                      </p>
-                    </div>
-                  </div>
+    {/* Columna Izquierda: Información */}
+    <div className="space-y-6">
+      <div className="flex items-start">
+        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <MapPin className="text-blue-600" size={24} />
+        </div>
+        <div className="ml-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            Ubicación
+          </h3>
+          <p className="text-gray-700 text-lg">{city.address}</p>
+        </div>
+      </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Clock className="text-blue-600" size={24} />
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                        Horarios de Atención
-                      </h3>
-                      <ul className="text-gray-700 space-y-1">
-                        <li>Lunes a Viernes: 8:00 AM - 6:00 PM</li>
-                        <li>Sábados: 8:00 AM - 12:00 PM</li>
-                        <li>Domingos y Festivos: Cerrado</li>
-                      </ul>
-                    </div>
-                  </div>
+      <div className="flex items-start">
+        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <Phone className="text-green-600" size={24} />
+        </div>
+        <div className="ml-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            Teléfono
+          </h3>
+          <p className="text-gray-700 text-lg">{city.phone}</p>
+          <p className="text-sm text-gray-500 mt-2">
+            Llama para más información o reservas
+          </p>
+        </div>
+      </div>
 
-                  <div className="flex items-start">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="text-green-600" size={24} />
-                    </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                        Correo Electrónico
-                      </h3>
-                      <p className="text-gray-700">info@educacionvial.co</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className="flex items-start">
+        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <Clock className="text-blue-600" size={24} />
+        </div>
+        <div className="ml-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            Horarios de Atención
+          </h3>
+          <ul className="text-gray-700 space-y-1">
+            <li>Lunes a Viernes: 8:00 AM - 6:00 PM</li>
+            <li>Sábados: 8:00 AM - 12:00 PM</li>
+            <li>Domingos y Festivos: Cerrado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="flex items-start">
+        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <Mail className="text-green-600" size={24} />
+        </div>
+        <div className="ml-4">
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            Correo Electrónico
+          </h3>
+          <p className="text-gray-700">info@educacionvial.co</p>
+        </div>
+      </div>
+    </div>
+
+    {/* Columna Derecha: Mapa */}
+    <div className="w-full">
+      <MapBox coordinates={coordinates} />
+    </div>
+
+  </div>
+</div>
+
 
               <div className="bg-white rounded-xl shadow-md p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">

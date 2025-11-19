@@ -10,6 +10,8 @@ export type City = {
   name: string;
   address: string;
   phone: string;
+  coordinates: { lat: number; lng: number };
+  page: number;
   is_active: boolean;
   created_at: string;
 };
