@@ -27,7 +27,13 @@ export default function Header({ onNavigate }: HeaderProps) {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center cursor-pointer" onClick={() => handleNavigation('home')}>
             <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-green-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">CC</span>
+             
+      <img
+        src="/images/icon.png"
+        alt="Banner decorativo"
+        // className="absolute right-0 top-0 h-full w-5.1/12 object-contain opacity-30 md:opacity-40"
+      />
+              {/* <span className="text-white font-bold text-xl">CC</span> */}
             </div>
             <div className="ml-3">
               <h1 className="text-xl font-bold text-blue-900">Cursos Comparendos</h1>
