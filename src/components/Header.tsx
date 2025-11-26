@@ -1,11 +1,13 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
+
 interface HeaderProps {
   onNavigate: (section: string) => void;
+  currentSection: string;
 }
 
-export default function Header({ onNavigate }: HeaderProps) {
+export default function Header({ onNavigate, currentSection }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const menuItems = [
@@ -19,6 +21,14 @@ export default function Header({ onNavigate }: HeaderProps) {
   const handleNavigation = (section: string) => {
     onNavigate(section);
     setIsMenuOpen(false);
+  };
+
+  const isActive = (itemId: string) => {
+    // Si estamos en city-detail, también resalta "Ciudades"
+    if (currentSection === 'city-detail' && itemId === 'cities') {
+      return true;
+    }
+    return currentSection === itemId;
   };
 
   return (
@@ -40,7 +50,11 @@ export default function Header({ onNavigate }: HeaderProps) {
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200"
+                className={`font-medium transition-colors duration-200 ${
+                  isActive(item.id)
+                    ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
+                    : 'text-gray-700 hover:text-blue-600'
+                }`}
               >
                 {item.label}
               </button>
@@ -62,7 +76,11 @@ export default function Header({ onNavigate }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => handleNavigation(item.id)}
-                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 text-left py-2"
+                  className={`font-medium transition-colors duration-200 text-left py-2 ${
+                    isActive(item.id)
+                      ? 'text-blue-600 font-semibold border-l-4 border-blue-600 pl-3'
+                      : 'text-gray-700 hover:text-blue-600 pl-3'
+                  }`}
                 >
                   {item.label}
                 </button>

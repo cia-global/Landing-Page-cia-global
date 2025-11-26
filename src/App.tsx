@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header onNavigate={handleNavigate} />
+      <Header onNavigate={handleNavigate} currentSection={currentSection} />
       <main>{renderSection()}</main>
       <Footer />
     </div>

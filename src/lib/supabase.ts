@@ -14,6 +14,7 @@ export type City = {
   page: number;
   is_active: boolean;
   created_at: string;
+  nameSede: string;
 };
 
 export type CourseType = {

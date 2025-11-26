@@ -62,7 +62,6 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
       </div>
     );
   }
-   const coordinates= "4.710989,-74.072090"
 
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
@@ -80,7 +79,7 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-5xl font-bold mb-4">{city.name}</h1>
+              <h1 className="text-4xl font-bold mb-4">{city.nameSede}</h1>
               <p className="text-xl text-blue-100">
                 Sede de educación y sensibilización vial
               </p>
@@ -151,21 +150,21 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
       </div>
 
       <div className="flex items-start">
-        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+        {/* <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
           <Mail className="text-green-600" size={24} />
-        </div>
-        <div className="ml-4">
+        </div> */}
+        {/* <div className="ml-4">
           <h3 className="text-lg font-semibold text-gray-900 mb-1">
             Correo Electrónico
           </h3>
           <p className="text-gray-700">info@educacionvial.co</p>
-        </div>
+        </div> */}
       </div>
     </div>
 
     {/* Columna Derecha: Mapa */}
     <div className="w-full">
-      <MapBox coordinates={coordinates} />
+      <MapBox coordinates={`${city.coordinates.lat},${city.coordinates.lng}`} />
     </div>
 
   </div>
