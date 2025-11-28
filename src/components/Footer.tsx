@@ -17,9 +17,9 @@ export default function Footer() {
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+              {/* <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter size={20} />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -28,11 +28,11 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone size={18} className="mr-3 text-green-500" />
-                <span className="text-gray-400">+57 601 300 1234</span>
+                <span className="text-gray-400">+57 3175155967</span>
               </div>
               <div className="flex items-center">
                 <Mail size={18} className="mr-3 text-green-500" />
-                <span className="text-gray-400">info@educacionvial.co</span>
+                <span className="text-gray-400">sistemasciaglobal@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin size={18} className="mr-3 text-green-500" />

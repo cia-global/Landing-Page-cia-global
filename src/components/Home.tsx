@@ -1,6 +1,7 @@
 import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import BannerInfo from './banner/banner_home_info';
 import SectionCities from './section/Section_cities';
+import BackgroundElements from './banner/BackgroundElemtents';
 
 interface HomeProps {
   onNavigate: (section: string) => void;
@@ -9,7 +10,9 @@ interface HomeProps {
 export default function Home({ onNavigate }: HomeProps) {
   return (
     <div className="pt-16">
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-40">
+      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-48">
+        
+        <BackgroundElements/>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -26,6 +29,7 @@ export default function Home({ onNavigate }: HomeProps) {
             </button>
           </div>
         </div>
+
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
       </section>
 
