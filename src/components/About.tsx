@@ -170,7 +170,7 @@ export default function About() {
          <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-            Nuestros Aliados
+            Nuestras Marcas
           </h2>
           <p className="text-center text-gray-600 text-lg mb-12 max-w-2xl mx-auto">
             Trabajamos con las mejores instituciones y organizaciones del sector vial
@@ -218,7 +218,6 @@ export default function About() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             Nuestras Sedes
           </h2>
-
           {loadingCities ? (
             <div className="flex justify-center py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -242,7 +241,7 @@ export default function About() {
                       )}
                     </div>
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">{city.name}</h3>   
+                      <h3 className="text-xl font-bold text-center text-gray-900 mb-2">{city.name}</h3>   
                     </div>
                   </div>
                 ))}
