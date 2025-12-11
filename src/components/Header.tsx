@@ -1,41 +1,43 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import{Link, useLocation} from 'react-router-dom';
 
 
 interface HeaderProps {
-  onNavigate: (section: string) => void;
   currentSection: string;
 }
 
-export default function Header({ onNavigate, currentSection }: HeaderProps) {
+export default function Header({currentSection }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const menuItems = [
-    { id: 'home', label: 'Inicio' },
-    { id: 'about', label: 'Quiénes Somos' },
-    { id: 'cities', label: 'Ciudades' },
-    // { id: 'appointment', label: 'Agendar Clase' },
+    { id: 'home', label: 'Inicio', path: '/' },
+    { id: 'about', label: 'Quiénes Somos', path: '/about' },
+    { id: 'cities', label: 'Ciudades', path: '/cities' },
+    { id: 'appointment', label: 'Agendar Clase', path: '/appointment' },
     { id: 'contact', label: 'Contacto' },
   ];
 
-  const handleNavigation = (section: string) => {
-    onNavigate(section);
-    setIsMenuOpen(false);
-  };
-
-  const isActive = (itemId: string) => {
-    // Si estamos en city-detail, también resalta "Ciudades"
-    if (currentSection === 'city-detail' && itemId === 'cities') {
-      return true;
+  const isActive = (path: string, itemId: string) => {
+    // Para el home, solo activar si estamos exactamente en "/"
+    if (path === '/') {
+      return location.pathname === '/';
     }
-    return currentSection === itemId;
+    
+    // Para "Ciudades", activar si estamos en /cities o /cities/:cityId
+    if (itemId === 'cities') {
+      return location.pathname.startsWith('/cities');
+    }
+    
+    // Para las demás rutas, verificar si la ruta actual comienza con el path
+    return location.pathname.startsWith(path);
   };
-
   return (
     <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center cursor-pointer" onClick={() => handleNavigation('home')}>
+          <Link to="/" className="flex items-center cursor-pointer">
             <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-green-500 rounded-full flex items-center justify-center">
              
       <img
@@ -49,21 +51,21 @@ export default function Header({ onNavigate, currentSection }: HeaderProps) {
               <h1 className="text-xl font-bold text-blue-900">Cursos Comparendos</h1>
               <p className="text-xs text-gray-600">Seguridad y Responsabilidad</p>
             </div>
-          </div>
+          </Link>
 
           <nav className="hidden md:flex space-x-8">
             {menuItems.map((item) => (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => handleNavigation(item.id)}
+                to={item.path || '#'}
                 className={`font-medium transition-colors duration-200 ${
-                  isActive(item.id)
+                  isActive(item.path!, item.id)
                     ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
                     : 'text-gray-700 hover:text-blue-600'
                 }`}
               >
                 {item.label}
-              </button>
+              </Link>
             ))}
           </nav>
 
@@ -79,17 +81,18 @@ export default function Header({ onNavigate, currentSection }: HeaderProps) {
           <div className="md:hidden pb-4">
             <nav className="flex flex-col space-y-3">
               {menuItems.map((item) => (
-                <button
+                <Link
                   key={item.id}
-                  onClick={() => handleNavigation(item.id)}
+                  to={item.path!}
+                  onClick={() => setIsMenuOpen(false)}
                   className={`font-medium transition-colors duration-200 text-left py-2 ${
-                    isActive(item.id)
+                    isActive(item.path!, item.id)
                       ? 'text-blue-600 font-semibold border-l-4 border-blue-600 pl-3'
                       : 'text-gray-700 hover:text-blue-600 pl-3'
                   }`}
                 >
                   {item.label}
-                </button>
+                </Link>
               ))}
             </nav>
           </div>

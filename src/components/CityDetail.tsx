@@ -2,15 +2,16 @@ import { useEffect, useState } from 'react';
 import { MapPin, Phone, Mail, Clock, ArrowLeft, Calendar } from 'lucide-react';
 import { supabase, City } from '../lib/supabase';
 import MapBox from './map/MapBox';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
-interface CityDetailProps {
-  cityId: string;
-  onNavigate: (section: string, cityId?: string) => void;
-}
 
-export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
+
+
+export default function CityDetail() {
   const [city, setCity] = useState<City | null>(null);
   const [loading, setLoading] = useState(true);
+  const { cityId } = useParams<{ cityId: string }>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCity();
@@ -50,13 +51,13 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="bg-white rounded-xl shadow-lg p-8 text-center">
             <p className="text-gray-600 text-lg mb-6">Ciudad no encontrada</p>
-            <button
-              onClick={() => onNavigate('cities')}
+            <Link
+              to="/cities"
               className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold"
             >
               <ArrowLeft size={20} className="mr-2" />
               Volver a Ciudades
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -66,13 +67,13 @@ export default function CityDetail({ cityId, onNavigate }: CityDetailProps) {
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <button
-          onClick={() => onNavigate('cities')}
+        <Link
+          to="/cities"
           className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold mb-8 transition-colors"
         >
           <ArrowLeft size={20} className="mr-2" />
           Volver a Ciudades
-        </button>
+        </Link>
       </div>
 
       <section className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">

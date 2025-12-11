@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { MapPin, Phone, Search, ChevronRight } from 'lucide-react';
 import { supabase, City } from '../lib/supabase';
+import { Link } from 'react-router-dom';
 
-interface CitiesProps {
-  onNavigate: (section: string, cityId?: string) => void;
-}
 
-export default function Cities({ onNavigate }: CitiesProps) {
+
+export default function Cities() {
   const [cities, setCities] = useState<City[]>([]);
   const [filteredCities, setFilteredCities] = useState<City[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -118,13 +117,14 @@ export default function Cities({ onNavigate }: CitiesProps) {
                   </div>
 
                   <div className="flex gap-3 mt-6">
-                    <button
-                      onClick={() => onNavigate('city-detail', city.id)}
+                    <Link
+                      to={`/cities/${city.id}`}
+                      key={city.id}
                       className="flex-1 bg-white border-2 border-blue-600 text-blue-600 py-2 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center"
                     >
                       Ver detalles
                       <ChevronRight size={18} className="ml-1" />
-                    </button>
+                    </Link>
                     {/* <button
                       onClick={() => onNavigate('appointment')}
                       className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 text-white py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
@@ -147,12 +147,12 @@ export default function Cities({ onNavigate }: CitiesProps) {
           <p className="text-gray-700 text-lg mb-8 max-w-2xl mx-auto">
             Estamos en constante expansión. Contáctanos para conocer próximas aperturas o solicitar información sobre tu localidad.
           </p>
-          <button
-            onClick={() => onNavigate('contact')}
+          <Link
+            to="/contact"
             className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
           >
             Contáctanos
-          </button>
+          </Link>
         </div>
       </section>
     </div>

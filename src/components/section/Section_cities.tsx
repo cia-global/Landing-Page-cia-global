@@ -1,13 +1,10 @@
 import {  MapPin, Clock, ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { supabase, City } from '../../lib/supabase';
-
-interface SectionCitiesProps {
-  onNavigate: (section: string) => void;
-}
+import { Link } from 'react-router-dom';
 
 
-export default function SectionCities ({ onNavigate }: SectionCitiesProps) {
+export default function SectionCities () {
 
      const [cities, setCities] = useState<City[]>([]);
   const [loadingCities, setLoadingCities] = useState(true);
@@ -73,13 +70,13 @@ export default function SectionCities ({ onNavigate }: SectionCitiesProps) {
           )}
 
           <div className="text-center">
-            <button
-              onClick={() => onNavigate('cities')}
+            <Link
+              to="/cities"
               className="inline-flex items-center bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
             >
               Ver todas las ciudades
               <ArrowRight size={20} className="ml-2" />
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -2,12 +2,11 @@ import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import BannerInfo from './banner/banner_home_info';
 import SectionCities from './section/Section_cities';
 import BackgroundElements from './banner/BackgroundElemtents';
+import { Link } from 'react-router-dom';
 
-interface HomeProps {
-  onNavigate: (section: string) => void;
-}
 
-export default function Home({ onNavigate }: HomeProps) {
+
+export default function Home() {
   return (
     <div className="pt-16">
       <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-48">
@@ -21,12 +20,12 @@ export default function Home({ onNavigate }: HomeProps) {
             <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
               Desde nuestras sedes cerca de tí. Facil, rápido y confiable.
             </p>
-            <button
-              onClick={() => onNavigate('cities')}
+            <Link
+              to="/cities"
               className="bg-white text-blue-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Agendar mi clase
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -77,7 +76,7 @@ export default function Home({ onNavigate }: HomeProps) {
           </div>
         </div>
       </section>
-      <SectionCities onNavigate={onNavigate} />
+      <SectionCities/>
       <BannerInfo/>
 
       <section className="py-28 bg-white">
