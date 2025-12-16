@@ -19,6 +19,7 @@ export default function SectionCities () {
         .from('cities')
         .select('*')
         .eq('is_active', true)
+        .eq('page', 1)
         .order('name')
         .limit(6);
 

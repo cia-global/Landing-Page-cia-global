@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { MapPin, Phone, Mail, Clock, ArrowLeft, Calendar } from 'lucide-react';
-import { supabase, City } from '../lib/supabase';
+import { supabase, City, Schedule } from '../lib/supabase';
 import MapBox from './map/MapBox';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 
@@ -9,9 +9,24 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 
 export default function CityDetail() {
   const [city, setCity] = useState<City | null>(null);
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loading, setLoading] = useState(true);
   const { cityId } = useParams<{ cityId: string }>();
+  const [loadingSchedules, setLoadingSchedules] = useState(false);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const dayLabels: Record<string, string> = {
+    Monday: 'Lun',
+    Tuesday: 'Mar',
+    Wednesday: 'Mié',
+    Thursday: 'Jue',
+    Friday: 'Vie',
+    Saturday: 'Sáb',
+    Sunday: 'Dom'
+  };
+
 
   useEffect(() => {
     fetchCity();
@@ -27,10 +42,35 @@ export default function CityDetail() {
 
       if (error) throw error;
       setCity(data);
+       if (data) {
+        fetchSchedules(data.id);
+      }
     } catch (error) {
       console.error('Error fetching city:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+   const fetchSchedules = async (cId: string) => {
+    try {
+      setLoadingSchedules(true);
+      const { data, error } = await supabase
+        .from('schedules')
+        .select('*')
+        .eq('city_id', cId)
+        .eq('is_active', true)
+        .order('day_of_week');
+
+      if (error) throw error;
+      setSchedules(data || []);
+      if (data && data.length > 0) {
+        setSelectedDay(data[0].day_of_week);
+      }
+    } catch (error) {
+      console.error('Error fetching schedules:', error);
+    } finally {
+      setLoadingSchedules(false);
     }
   };
 
@@ -174,41 +214,68 @@ export default function CityDetail() {
 
               <div className="bg-white rounded-xl shadow-md p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                  Cursos Disponibles
+                  Horarios Disponibles
                 </h2>
-                <div className="space-y-4">
-                  <div className="border-l-4 border-blue-600 pl-4 py-2">
-                    <h3 className="font-semibold text-gray-900">Curso Teórico</h3>
-                    <p className="text-gray-600">
-                      Formación teórica en normas de tránsito y seguridad vial
-                    </p>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Duración: 4 horas | Precio: $150.000
-                    </p>
+                 
+                {loadingSchedules ? (
+                  <div className="flex justify-center py-8">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
                   </div>
+                ) : schedules.length > 0 ? (
+                  <div className="space-y-6">
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                        Selecciona un día de la semana
+                      </h3>
+                      <div className="grid grid-cols-7 gap-2">
+                        {daysOfWeek.map((day) => (
+                          <button
+                            key={day}
+                            onClick={() => setSelectedDay(day)}
+                            className={`py-3 px-2 rounded-lg font-semibold transition-all duration-200 text-center text-sm ${
+                              selectedDay === day
+                                ? 'bg-blue-600 text-white shadow-lg scale-105'
+                                : schedules.some((s) => s.day_of_week === day)
+                                ? 'bg-gray-100 text-gray-900 hover:bg-gray-200'
+                                : 'bg-gray-50 text-gray-400 cursor-not-allowed'
+                            }`}
+                            disabled={!schedules.some((s) => s.day_of_week === day)}
+                          >
+                            {dayLabels[day]}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
 
-                  <div className="border-l-4 border-green-600 pl-4 py-2">
-                    <h3 className="font-semibold text-gray-900">Curso Práctico</h3>
-                    <p className="text-gray-600">
-                      Conducción defensiva y manejo práctico
-                    </p>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Duración: 4 horas | Precio: $200.000
-                    </p>
+                    {selectedDay && (
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                          Horarios disponibles para {selectedDay === 'Monday' ? 'Lunes' : selectedDay === 'Tuesday' ? 'Martes' : selectedDay === 'Wednesday' ? 'Miércoles' : selectedDay === 'Thursday' ? 'Jueves' : selectedDay === 'Friday' ? 'Viernes' : selectedDay === 'Saturday' ? 'Sábado' : 'Domingo'}
+                        </h3>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                          {schedules
+                            .filter((s) => s.day_of_week === selectedDay)
+                            .map((schedule) => (
+                              <button
+                                key={schedule.id}
+                                className="py-3 px-4 bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-200 rounded-lg hover:border-blue-600 hover:shadow-md transition-all duration-200 text-center group"
+                              >
+                                <p className="font-semibold text-blue-600 group-hover:text-blue-700">
+                                  {schedule.start_time.slice(0, 5)} - {schedule.end_time.slice(0, 5)}
+                                </p>
+                                <p className="text-xs text-gray-600 mt-1">Disponible</p>
+                              </button>
+                            ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
-
-                  <div className="border-l-4 border-blue-600 pl-4 py-2">
-                    <h3 className="font-semibold text-gray-900">Curso Completo</h3>
-                    <p className="text-gray-600">
-                      Formación integral teórico-práctica en educación vial
-                    </p>
-                    <p className="text-sm text-gray-500 mt-2">
-                      Duración: 8 horas | Precio: $320.000
-                    </p>
-                  </div>
-                </div>
+                ) : (
+                  <p className="text-gray-600">No hay horarios disponibles</p>
+                )}
               </div>
             </div>
+
 
             <div>
               <div className="bg-gradient-to-br from-blue-600 to-green-600 text-white rounded-xl shadow-lg p-8 sticky top-24">

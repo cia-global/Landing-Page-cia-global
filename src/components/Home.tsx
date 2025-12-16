@@ -10,8 +10,7 @@ export default function Home() {
   return (
     <div className="pt-16">
       <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-48">
-        
-        <BackgroundElements/>
+       <BackgroundElements />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
@@ -21,29 +20,29 @@ export default function Home() {
               Desde nuestras sedes cerca de tí. Facil, rápido y confiable.
             </p>
             <Link
-              to="/cities"
+              to="/appointment"
               className="bg-white text-blue-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Agendar mi clase
             </Link>
           </div>
         </div>
-
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
+        
       </section>
 
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Proceso simple en 3 pasos
+            Proceso simple en 4 pasos
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              // {
-              //   icon: Users,
-              //   title: 'Regístrate',
-              //   description: 'Completa tus datos personales y número de comparendo',
-              // },
+               {
+                 icon: Users,
+                 title: 'Regístrate',
+                 description: 'Completa tus datos personales y número de comparendo',
+               },
               {
                 icon: MapPin,
                 title: 'Elige tu ciudad',

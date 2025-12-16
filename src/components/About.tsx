@@ -80,11 +80,9 @@ export default function About() {
                 Nuestra Historia
               </h2>
               <p className="text-gray-700 text-lg mb-4 leading-relaxed">
-                Somos una empresa especializada en la formación y sensibilización vial para infractores vehiculares en Colombia. Con años de experiencia en el sector, nos hemos consolidado como referentes en la educación para la seguridad vial.
-              </p>
+                Somos una plataforma nacional dedicada a la educación, formación y sensibilización vial para infractores vehiculares en Colombia. Trabajamos en articulación con diferentes centros de capacitación autorizados en el país, lo que nos permite ofrecer una red de sedes confiables, certificadas y alineadas con los estándares exigidos por las autoridades de tránsito.              </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-                Nuestro compromiso va más allá del cumplimiento normativo: buscamos generar conciencia real sobre la importancia de conducir con responsabilidad, respeto y conocimiento de las normas de tránsito.
-              </p>
+Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos transparentes, eficientes y de alta calidad, asegurando que cada curso contribuya a mejorar la seguridad vial y a promover comportamientos responsables en las vías.              </p>
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-2xl">
               <div className="space-y-6">
