@@ -34,7 +34,7 @@ function Layout() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header currentSection={getCurrentSection()} />
+      <Header />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

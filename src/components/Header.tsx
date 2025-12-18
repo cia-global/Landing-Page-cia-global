@@ -3,11 +3,7 @@ import { useState } from 'react';
 import{Link, useLocation} from 'react-router-dom';
 
 
-interface HeaderProps {
-  currentSection: string;
-}
-
-export default function Header({currentSection }: HeaderProps) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 

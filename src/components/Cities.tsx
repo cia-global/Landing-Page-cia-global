@@ -125,12 +125,12 @@ export default function Cities() {
                       Ver detalles
                       <ChevronRight size={18} className="ml-1" />
                     </Link>
-                    {/* <button
-                      onClick={() => onNavigate('appointment')}
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 text-white py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
+                   <Link
+                      to="/appointment" 
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
                     >
                       Agendar
-                    </button> */}
+                    </Link> 
                   </div>
                 </div>
               ))}

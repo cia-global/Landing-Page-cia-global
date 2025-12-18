@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MapPin, Phone, Mail, Clock, ArrowLeft, Calendar } from 'lucide-react';
+import { MapPin, Phone, Clock, ArrowLeft, Calendar } from 'lucide-react';
 import { supabase, City, Schedule } from '../lib/supabase';
 import MapBox from './map/MapBox';
 import { useParams, useNavigate, Link } from 'react-router-dom';
