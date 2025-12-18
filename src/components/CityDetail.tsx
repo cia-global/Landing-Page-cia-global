@@ -3,6 +3,7 @@ import { MapPin, Phone, Mail, Clock, ArrowLeft, Calendar } from 'lucide-react';
 import { supabase, City, Schedule } from '../lib/supabase';
 import MapBox from './map/MapBox';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { formatTime12h } from '../utils/time';
 
 
 
@@ -211,7 +212,6 @@ export default function CityDetail() {
   </div>
 </div>
 
-
               <div className="bg-white rounded-xl shadow-md p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">
                   Horarios Disponibles
@@ -255,13 +255,15 @@ export default function CityDetail() {
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                           {schedules
                             .filter((s) => s.day_of_week === selectedDay)
+                            .sort((a, b) => a.start_time.localeCompare(b.start_time))
                             .map((schedule) => (
+   
                               <button
                                 key={schedule.id}
                                 className="py-3 px-4 bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-200 rounded-lg hover:border-blue-600 hover:shadow-md transition-all duration-200 text-center group"
                               >
                                 <p className="font-semibold text-blue-600 group-hover:text-blue-700">
-                                  {schedule.start_time.slice(0, 5)} - {schedule.end_time.slice(0, 5)}
+                                  {formatTime12h(schedule.start_time)} - {formatTime12h(schedule.end_time)}
                                 </p>
                                 <p className="text-xs text-gray-600 mt-1">Disponible</p>
                               </button>

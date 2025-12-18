@@ -16,7 +16,7 @@ export default function Header({currentSection }: HeaderProps) {
     { id: 'about', label: 'Quiénes Somos', path: '/about' },
     { id: 'cities', label: 'Ciudades', path: '/cities' },
     { id: 'appointment', label: 'Agendar Clase', path: '/appointment' },
-    { id: 'contact', label: 'Contacto' },
+    { id: 'contact', label: 'Contacto', path: '/contact' },
   ];
 
   const isActive = (path: string, itemId: string) => {
