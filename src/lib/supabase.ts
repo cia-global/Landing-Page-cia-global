@@ -10,8 +10,11 @@ export type City = {
   name: string;
   address: string;
   phone: string;
+  coordinates: { lat: number; lng: number };
+  page: number;
   is_active: boolean;
   created_at: string;
+  nameSede: string;
 };
 
 export type CourseType = {
@@ -38,4 +41,23 @@ export type Appointment = {
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
   created_at: string;
   updated_at: string;
+};
+
+export type DayOfWeek =
+  | 'Monday'
+  | 'Tuesday'
+  | 'Wednesday'
+  | 'Thursday'
+  | 'Friday'
+  | 'Saturday'
+  | 'Sunday';
+
+export type Schedule = {
+  id: string;
+  city_id: string;
+  day_of_week: DayOfWeek;
+  start_time: string; // formato: "08:00:00"
+  end_time: string;   // formato: "18:00:00"
+  is_active: boolean;
+  created_at: string;
 };
