@@ -1,37 +1,18 @@
 import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import BannerInfo from './banner/banner_home_info';
 import SectionCities from './section/Section_cities';
-import BackgroundElements from './banner/BackgroundElemtents';
+import BannerHomeIni from './banner/banner_home_ini';
 import { Link } from 'react-router-dom';
 
 
 
 export default function Home() {
   return (
-    <div className="pt-16">
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-48">
-       <BackgroundElements />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Cumple tu curso de sensibilización y educación vial
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Desde nuestras sedes cerca de tí. Facil, rápido y confiable.
-            </p>
-            <Link
-              to="/appointment"
-              className="bg-white text-blue-700 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              Agendar mi clase
-            </Link>
-          </div>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-gray-50 to-transparent"></div>
-        
-      </section>
+    <div className="pt-6">
+      <BannerHomeIni/>
+      <SectionCities/>
 
-      <section className="py-16 bg-gray-50">
+      <section className="pt-20 pb-36 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             Proceso simple en 4 pasos
@@ -42,25 +23,31 @@ export default function Home() {
                  icon: Users,
                  title: 'Regístrate',
                  description: 'Completa tus datos personales y número de comparendo',
+                 link: '/appointment',
                },
               {
                 icon: MapPin,
                 title: 'Elige tu ciudad',
                 description: 'Selecciona la sede más cercana a tu ubicación',
+                link: '/cities',
               },
               {
                 icon: Calendar,
                 title: 'Agenda tu clase',
                 description: 'Escoge la fecha y hora que mejor te convenga',
+                link: '/appointment',
               },
               {
                 icon: CheckCircle,
                 title: 'Asiste al curso',
                 description: 'Completa tu formación vial con instructores certificados',
+                link: '',
               },
             ].map((step, index) => (
-              <div
+              <Link
+                to={step.link}
                 key={index}
+                
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200"
               >
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mb-4 mx-auto">
@@ -70,12 +57,12 @@ export default function Home() {
                   {step.title}
                 </h3>
                 <p className="text-gray-600 text-center">{step.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
-      <SectionCities/>
+      
       <BannerInfo/>
 
       <section className="py-28 bg-white">
