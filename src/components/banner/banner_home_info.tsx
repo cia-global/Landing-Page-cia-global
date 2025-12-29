@@ -13,14 +13,14 @@ const BannerInfo = () => {
   const discountCards: DiscountCard[] = [
     {
       id: '1',
-      title: '50% de descuento',
+      title: '50% Comparendo manual',
       description: 'Realiza el curso dentro de los primeros 5 días hábiles después de la infracción.',
       icon: <Calendar size={24} />,
       highlight: '5 días hábiles',
     },
     {
       id: '2',
-      title: '25% de descuento',
+      title: '25% Comparendo manual',
       description: 'Realiza el curso entre el sexto y el vigésimo día hábil después de la infracción.',
       icon: <Clock size={24} />,
       highlight: '6-20 días hábiles',
@@ -42,7 +42,7 @@ const BannerInfo = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white overflow-hidden">
+    <section id='more-info' className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white overflow-hidden">
       {/* Imagen decorativa optimizada */}
       <div className="absolute inset-0 pointer-events-none">
         <img
