@@ -134,7 +134,7 @@ Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos t
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Misión</h3>
               <p className="text-gray-700 leading-relaxed">
-                Formar conductores responsables mediante programas educativos de calidad, contribuyendo a la reducción de accidentes de tránsito y promoviendo una cultura de seguridad vial en Colombia.
+                Cursos comparendos de colombia, es una organización dedicada a la prestación del servicio de capacitación y reeducación a los infractores de las normas de tránsito mediante la sensibilización sobre la importancia de la seguridad vial como factor de prevención de la accidentalidad.
               </p>
             </div>
 
@@ -144,7 +144,7 @@ Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos t
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Visión</h3>
               <p className="text-gray-700 leading-relaxed">
-                Ser la empresa líder en educación vial en Colombia, reconocida por la excelencia de nuestros programas y por nuestro impacto positivo en la seguridad vial del país.
+                  Al año 2030, Cursos comparendos de colombia, se consolidará como una organización líder en educación vial en Colombia, mediante la prestación de un servicio con altos estándares de calidad en cumplimiento de los requisitos legales y reglametarios que aplican a la organización.
               </p>
             </div>
 
