@@ -15,6 +15,7 @@ export default function CityDetail() {
   const { cityId } = useParams<{ cityId: string }>();
   const [loadingSchedules, setLoadingSchedules] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null);
   const navigate = useNavigate();
 
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -260,12 +261,20 @@ export default function CityDetail() {
    
                               <button
                                 key={schedule.id}
-                                className="py-3 px-4 bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-200 rounded-lg hover:border-blue-600 hover:shadow-md transition-all duration-200 text-center group"
+                                onClick={() => setSelectedSchedule(schedule)}
+                                className={`py-3 px-4 border-2 rounded-lg transition-all duration-200 text-center group
+                                  ${
+                                    selectedSchedule?.id === schedule.id
+                                    ? 'bg-gradient-to-r from-blue-50 to-green-50 text-white border-blue-600 shadow-lg'
+                                    : 'bg-gradient-to-r from-blue-50 to-green-50 border-blue-200 hover:border-blue-600'
+                                    }
+                                `}
                               >
                                 <p className="font-semibold text-blue-600 group-hover:text-blue-700">
                                   {formatTime12h(schedule.start_time)} - {formatTime12h(schedule.end_time)}
                                 </p>
-                                <p className="text-xs text-gray-600 mt-1">Disponible</p>
+                                <p className="text-xs text-gray-600 mt-1">
+                                   {selectedSchedule?.id === schedule.id ? 'Seleccionado' : 'Disponible'}</p>
                               </button>
                             ))}
                         </div>
@@ -288,7 +297,7 @@ export default function CityDetail() {
                 </p>
 
                 <Link
-                  to ="/appointment"
+                  to ={`/appointment?city=${city.id}&day=${selectedDay}&schedule=${selectedSchedule?.id}`} 
                   className="w-full bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
                 >
                   <Calendar size={20} className="mr-2" />
