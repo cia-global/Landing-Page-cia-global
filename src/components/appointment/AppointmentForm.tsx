@@ -1,5 +1,5 @@
 import { Calendar, Clock } from 'lucide-react';
-import { City, CourseType } from '../../lib/supabase';
+import { City, CourseType, Schedule } from '../../lib/supabase';
 import { AppointmentFormData } from '../Appointment';
 import {CourseInfo} from './CourseInfo';
 import FormInput from './FormInput';
@@ -10,6 +10,7 @@ interface AppointmentFormProps {
   cities: City[];
   courseTypes: CourseType[];
   cityId: string | null;
+  schedules: Schedule[];
   submitting: boolean;
   onSubmit: (e: React.FormEvent) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
@@ -18,7 +19,7 @@ interface AppointmentFormProps {
 export default function AppointmentForm({
   formData,
   cities,
-  cityId,
+  schedules,
   courseTypes,
   submitting,
   onSubmit,
@@ -103,11 +104,12 @@ export default function AppointmentForm({
           onChange={onChange}
           required
         >
-          <option value="">Selecciona una hora</option>
-          <option value="08:00">08:00 AM</option>
-          <option value="10:00">10:00 AM</option>
-          <option value="14:00">02:00 PM</option>
-          <option value="16:00">04:00 PM</option>
+          <option value="">Selecciona un horario</option>
+          {schedules.map((schedule) => (
+            <option key={schedule.id} value={schedule.start_time}>
+              {schedule.start_time}
+            </option>
+          ))}
         </FormSelect>
       </div>
 

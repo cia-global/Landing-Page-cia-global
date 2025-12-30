@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { supabase, City, CourseType } from '../lib/supabase';
+import { supabase, City, CourseType, Schedule } from '../lib/supabase';
 import { useSearchParams } from 'react-router-dom';
 import AppointmentForm from './appointment/AppointmentForm';
 import {SuccessMessage} from './appointment/SuccessMessage';
@@ -17,6 +17,7 @@ export interface AppointmentFormData {
   appointmentDate: string;
   appointmentTime: string;
 }
+
 
 const initialFormData: AppointmentFormData = {
   cityId: '',
@@ -38,6 +39,8 @@ export default function Appointment() {
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [formData, setFormData] = useState<AppointmentFormData>(initialFormData);
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
+  const [loadingSchedules, setLoadingSchedules] = useState(false);
   const cityId = params.get('city');
   const day = params.get('day');
   const scheduleId = params.get('schedule');
@@ -66,6 +69,31 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+  if (!formData.cityId) return;
+
+  const fetchSchedules = async () => {
+    setLoadingSchedules(true);
+    try {
+      const { data, error } = await supabase
+        .from('schedules')
+        .select('*')
+        .eq('city_id', formData.cityId)
+        .eq('is_active', true)
+        .order('day_of_week');
+
+      if (error) throw error;
+      setSchedules(data || []);
+    } catch (error) {
+      console.error('Error fetching schedules:', error);
+    } finally {
+      setLoadingSchedules(false);
+    }
+  };
+
+  fetchSchedules();
+}, [formData.cityId]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,6 +135,9 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
   };
 
   const handleNewAppointment = () => setSuccess(false);
+
+  const canSelectSchedule = Boolean(formData.cityId && selectedDay);
+
   useEffect(() => {
   if (cityId) {
     setFormData(prev => ({
@@ -115,6 +146,21 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
     }));
   }
 }, [cityId]);
+
+useEffect(() => {
+  if (!selectedDay || !selectedScheduleId || schedules.length === 0) return;
+
+  const schedule = schedules.find(s => s.id === selectedScheduleId);
+  if (!schedule) return;
+
+  setFormData(prev => ({
+    ...prev,
+    appointmentDate: selectedDay,
+    appointmentTime: schedule.start_time,
+  }));
+}, [selectedDay, selectedScheduleId, schedules]);
+
+
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -133,6 +179,7 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
               formData={formData}
               cities={cities}
               cityId={cityId}
+              schedules={schedules}
               courseTypes={courseTypes}
               submitting={submitting}
               onSubmit={handleSubmit}
