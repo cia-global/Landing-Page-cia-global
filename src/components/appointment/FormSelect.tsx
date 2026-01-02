@@ -8,6 +8,7 @@ interface FormSelectProps {
   onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   required?: boolean;
   children: ReactNode;
+  disabled?: boolean; 
 }
 
 export function FormSelect({
@@ -18,19 +19,33 @@ export function FormSelect({
   onChange,
   required,
   children,
+  disabled = false,
 }: FormSelectProps) {
   return (
-    <div>
-      <label htmlFor={id} className="block text-sm font-semibold text-gray-900 mb-2">
+     <div>
+      <label
+        htmlFor={id}
+        className={`block text-sm font-semibold mb-2 ${
+          disabled ? 'text-gray-400' : 'text-gray-900'
+        }`}
+      >
         {label}
       </label>
+
       <select
         id={id}
         name={name}
         value={value}
         onChange={onChange}
         required={required}
-        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+        disabled={disabled}
+        className={`w-full px-4 py-2 border rounded-lg transition-all
+          ${
+            disabled
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed border-gray-200'
+              : 'border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent'
+          }
+        `}
       >
         {children}
       </select>

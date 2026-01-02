@@ -12,6 +12,7 @@ interface AppointmentFormProps {
   cityId: string | null;
   schedules: Schedule[];
   submitting: boolean;
+  canSelectSchedule: boolean;
   onSubmit: (e: React.FormEvent) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 }
@@ -23,6 +24,7 @@ export default function AppointmentForm({
   courseTypes,
   submitting,
   onSubmit,
+  canSelectSchedule,
   onChange,
 }: AppointmentFormProps) {
   const getMinDate = () => {
@@ -94,6 +96,7 @@ export default function AppointmentForm({
         <FormSelect
           id="appointmentTime"
           name="appointmentTime"
+          disabled={!canSelectSchedule}
           label={
             <>
               <Clock className="inline mr-2" size={16} />
@@ -111,7 +114,9 @@ export default function AppointmentForm({
             </option>
           ))}
         </FormSelect>
-      </div>
+     </div>
+          
+
 
       {/* Nombre Completo */}
       <FormInput
@@ -121,7 +126,7 @@ export default function AppointmentForm({
         label="Nombre Completo *"
         value={formData.fullName}
         onChange={onChange}
-        placeholder="Juan Pérez García"
+        placeholder="Nombre Apellido"
         required
       />
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { supabase, City, CourseType, Schedule } from '../lib/supabase';
 import { useSearchParams } from 'react-router-dom';
 import AppointmentForm from './appointment/AppointmentForm';
@@ -95,6 +95,19 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
   fetchSchedules();
 }, [formData.cityId]);
 
+const effectiveWeekDay = useMemo(() => {
+  return selectedDay || day || null;
+}, [selectedDay, day]);
+
+const filteredSchedules = useMemo(() => {
+  if (!effectiveWeekDay) return [];
+
+  return schedules
+    .filter(s => s.day_of_week === effectiveWeekDay)
+    .sort((a, b) => a.start_time.localeCompare(b.start_time));
+}, [schedules, effectiveWeekDay]);
+
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
@@ -136,7 +149,8 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
 
   const handleNewAppointment = () => setSuccess(false);
 
-  const canSelectSchedule = Boolean(formData.cityId && selectedDay);
+  const canSelectSchedule = Boolean(formData.cityId && (selectedDay || formData.appointmentDate));
+
 
   useEffect(() => {
   if (cityId) {
@@ -146,6 +160,7 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
     }));
   }
 }, [cityId]);
+
 
 useEffect(() => {
   if (!selectedDay || !selectedScheduleId || schedules.length === 0) return;
@@ -159,6 +174,54 @@ useEffect(() => {
     appointmentTime: schedule.start_time,
   }));
 }, [selectedDay, selectedScheduleId, schedules]);
+
+
+ const getValidDateForSelectedDay = (selectedDay: string): string => {
+  const daysMap: Record<string, number> = {
+    Sunday: 0,
+    Monday: 1,
+    Tuesday: 2,
+    Wednesday: 3,
+    Thursday: 4,
+    Friday: 5,
+    Saturday: 6,
+  };
+
+  const today = new Date();
+  const todayIndex = today.getDay();
+  const selectedDayIndex = daysMap[selectedDay];
+
+  // Si el día no es válido, devolver hoy
+  if (selectedDayIndex === undefined) {
+    return today.toISOString().split('T')[0];
+  }
+
+  // Si el día seleccionado es hoy o ya pasó → hoy
+  if (selectedDayIndex <= todayIndex) {
+    return today.toISOString().split('T')[0];
+  }
+
+  // Si el día es posterior en la semana → avanzar días
+  const diffDays = selectedDayIndex - todayIndex;
+  const resultDate = new Date(today);
+  resultDate.setDate(today.getDate() + diffDays);
+
+  return resultDate.toISOString().split('T')[0];
+};
+
+
+useEffect(() => {
+  if (!selectedDay) return;
+
+  const nextDate = getValidDateForSelectedDay(selectedDay);
+
+  setFormData(prev => ({
+    ...prev,
+    appointmentDate: nextDate,
+    appointmentTime: '',
+  }));
+}, [selectedDay]);
+
 
 
   if (loading) {
@@ -179,9 +242,10 @@ useEffect(() => {
               formData={formData}
               cities={cities}
               cityId={cityId}
-              schedules={schedules}
+              schedules={filteredSchedules}
               courseTypes={courseTypes}
               submitting={submitting}
+              canSelectSchedule={canSelectSchedule}
               onSubmit={handleSubmit}
               onChange={handleChange}
             />
