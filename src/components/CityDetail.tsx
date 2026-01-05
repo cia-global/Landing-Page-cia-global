@@ -29,6 +29,11 @@ export default function CityDetail() {
     Sunday: 'Dom'
   };
 
+  const whatsappNumber = '573207713935';
+
+const whatsappMessage = encodeURIComponent(
+  `Hola, quiero información sobre los cursos de concientización vial en la sede de ${city?.name}.`
+);
 
   useEffect(() => {
     fetchCity();
@@ -311,16 +316,16 @@ export default function CityDetail() {
                     Contáctanos directamente
                   </p> 
                   <a
-                    href="tel:+576013001234"
+                     href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                     className="block w-full bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-opacity-30 transition-colors mb-2"
                   >
-                    Llamar ahora
+                   Escribenos por WhatsApp
                   </a>
                   <a
-                    href="mailto:info@educacionvial.co"
+                    href="tel:3207713935"
                     className="block w-full bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-opacity-30 transition-colors"
                   >
-                    Enviar Email
+                     Llamar ahora
                   </a>
                 </div>
               </div>
@@ -347,7 +352,8 @@ export default function CityDetail() {
                 </ul>
               </div>
             </div>
-          </div>
+
+          </div> 
         </div>
       </section>
     </div>

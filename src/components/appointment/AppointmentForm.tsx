@@ -92,7 +92,7 @@ export default function AppointmentForm({
           <option value="">Selecciona un curso</option>
           {courseTypes.map((course) => (
             <option key={course.id} value={course.id}>
-              {course.name} - ${course.price.toLocaleString()}
+              {course.name}
             </option>
           ))}
         </FormSelect>
