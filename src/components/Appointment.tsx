@@ -18,7 +18,6 @@ export interface AppointmentFormData {
   appointmentTime: string;
 }
 
-
 const initialFormData: AppointmentFormData = {
   cityId: '',
   courseTypeId: '',
@@ -31,6 +30,50 @@ const initialFormData: AppointmentFormData = {
   appointmentTime: '',
 };
 
+// Mapeo de días en español e inglés
+const DAYS_MAP: Record<string, number> = {
+  'Sunday': 0, 'Domingo': 0,
+  'Monday': 1, 'Lunes': 1,
+  'Tuesday': 2, 'Martes': 2,
+  'Wednesday': 3, 'Miércoles': 3, 'Miercoles': 3,
+  'Thursday': 4, 'Jueves': 4,
+  'Friday': 5, 'Viernes': 5,
+  'Saturday': 6, 'Sábado': 6, 'Sabado': 6,
+};
+
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+// Función para obtener el nombre del día de una fecha
+const getDayNameFromDate = (dateString: string): string => {
+  if (!dateString) return '';
+  const date = new Date(dateString + 'T00:00:00');
+  return DAY_NAMES[date.getDay()];
+};
+
+// Función para calcular la próxima fecha de un día de la semana
+const getNextDateForWeekDay = (dayName: string): string => {
+  const dayIndex = DAYS_MAP[dayName];
+  
+  if (dayIndex === undefined) {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  const today = new Date();
+  const todayIndex = today.getDay();
+  
+  let daysToAdd = dayIndex - todayIndex;
+  
+  // Si el día ya pasó esta semana, ir a la próxima semana
+  if (daysToAdd <= 0) {
+    daysToAdd += 7;
+  }
+  
+  const targetDate = new Date(today);
+  targetDate.setDate(today.getDate() + daysToAdd);
+  
+  return targetDate.toISOString().split('T')[0];
+};
+
 export default function Appointment() {
   const [params] = useSearchParams();
   const [cities, setCities] = useState<City[]>([]);
@@ -41,12 +84,13 @@ export default function Appointment() {
   const [formData, setFormData] = useState<AppointmentFormData>(initialFormData);
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loadingSchedules, setLoadingSchedules] = useState(false);
-  const cityId = params.get('city');
-  const day = params.get('day');
-  const scheduleId = params.get('schedule');
-  const [selectedCityId, setSelectedCityId] = useState<string | null>(cityId);
-const [selectedDay, setSelectedDay] = useState<string | null>(day);
-const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(scheduleId);
+  
+  // Parámetros URL
+  const cityIdParam = params.get('city');
+  const dayParam = params.get('day'); // Día de la semana (ej: "Monday")
+  const scheduleIdParam = params.get('schedule');
+
+  // Cargar datos iniciales
   useEffect(() => {
     fetchData();
   }, []);
@@ -70,43 +114,95 @@ const [selectedScheduleId, setSelectedScheduleId] = useState<string | null>(sche
     }
   };
 
+  // Cargar horarios cuando cambia la ciudad
   useEffect(() => {
-  if (!formData.cityId) return;
-
-  const fetchSchedules = async () => {
-    setLoadingSchedules(true);
-    try {
-      const { data, error } = await supabase
-        .from('schedules')
-        .select('*')
-        .eq('city_id', formData.cityId)
-        .eq('is_active', true)
-        .order('day_of_week');
-
-      if (error) throw error;
-      setSchedules(data || []);
-    } catch (error) {
-      console.error('Error fetching schedules:', error);
-    } finally {
-      setLoadingSchedules(false);
+    if (!formData.cityId) {
+      setSchedules([]);
+      return;
     }
-  };
 
-  fetchSchedules();
-}, [formData.cityId]);
+    const fetchSchedules = async () => {
+      setLoadingSchedules(true);
+      try {
+        const { data, error } = await supabase
+          .from('schedules')
+          .select('*')
+          .eq('city_id', formData.cityId)
+          .eq('is_active', true)
+          .order('day_of_week');
 
-const effectiveWeekDay = useMemo(() => {
-  return selectedDay || day || null;
-}, [selectedDay, day]);
+        if (error) throw error;
+        setSchedules(data || []);
+      } catch (error) {
+        console.error('Error fetching schedules:', error);
+        setSchedules([]);
+      } finally {
+        setLoadingSchedules(false);
+      }
+    };
 
-const filteredSchedules = useMemo(() => {
-  if (!effectiveWeekDay) return [];
+    fetchSchedules();
+  }, [formData.cityId]);
 
-  return schedules
-    .filter(s => s.day_of_week === effectiveWeekDay)
-    .sort((a, b) => a.start_time.localeCompare(b.start_time));
-}, [schedules, effectiveWeekDay]);
+  // Inicializar con parámetros URL solo al montar
+  useEffect(() => {
+    const updates: Partial<AppointmentFormData> = {};
+    
+    if (cityIdParam) {
+      updates.cityId = cityIdParam;
+    }
+    
+    if (dayParam) {
+      // Convertir día de la semana a fecha
+      const nextDate = getNextDateForWeekDay(dayParam);
+      updates.appointmentDate = nextDate;
+    }
+    
+    if (Object.keys(updates).length > 0) {
+      setFormData(prev => ({ ...prev, ...updates }));
+    }
+  }, []); // Solo al montar
 
+  // Cuando se cargan los schedules y hay un scheduleId en la URL, seleccionarlo
+  useEffect(() => {
+    if (!scheduleIdParam || schedules.length === 0 || !formData.appointmentDate) return;
+
+    const schedule = schedules.find(s => s.id === scheduleIdParam);
+    if (!schedule) return;
+
+    // Verificar que el schedule corresponda al día seleccionado
+    const selectedDayName = getDayNameFromDate(formData.appointmentDate);
+    if (schedule.day_of_week === selectedDayName) {
+      setFormData(prev => ({
+        ...prev,
+        appointmentTime: schedule.start_time,
+      }));
+    }
+  }, [scheduleIdParam, schedules, formData.appointmentDate]);
+
+  // Calcular los horarios filtrados según la fecha seleccionada
+  const filteredSchedules = useMemo(() => {
+    if (!formData.appointmentDate || schedules.length === 0) return [];
+
+    const selectedDayName = getDayNameFromDate(formData.appointmentDate);
+    
+    return schedules
+      .filter(s => s.day_of_week === selectedDayName)
+      .sort((a, b) => a.start_time.localeCompare(b.start_time));
+  }, [schedules, formData.appointmentDate]);
+
+  // Limpiar la hora seleccionada si ya no está en los horarios filtrados
+  useEffect(() => {
+    if (!formData.appointmentTime) return;
+    
+    const isTimeStillValid = filteredSchedules.some(
+      s => s.start_time === formData.appointmentTime
+    );
+    
+    if (!isTimeStillValid) {
+      setFormData(prev => ({ ...prev, appointmentTime: '' }));
+    }
+  }, [filteredSchedules, formData.appointmentTime]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -141,88 +237,28 @@ const filteredSchedules = useMemo(() => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    
+    setFormData(prev => {
+      const updates: Partial<AppointmentFormData> = { [name]: value };
+      
+      // Si cambia la ciudad, resetear horarios
+      if (name === 'cityId') {
+        updates.appointmentTime = '';
+      }
+      
+      // Si cambia la fecha, resetear la hora
+      if (name === 'appointmentDate') {
+        updates.appointmentTime = '';
+      }
+      
+      return { ...prev, ...updates };
     });
   };
 
   const handleNewAppointment = () => setSuccess(false);
 
-  const canSelectSchedule = Boolean(formData.cityId && (selectedDay || formData.appointmentDate));
-
-
-  useEffect(() => {
-  if (cityId) {
-    setFormData(prev => ({
-      ...prev,
-      cityId,
-    }));
-  }
-}, [cityId]);
-
-
-useEffect(() => {
-  if (!selectedDay || !selectedScheduleId || schedules.length === 0) return;
-
-  const schedule = schedules.find(s => s.id === selectedScheduleId);
-  if (!schedule) return;
-
-  setFormData(prev => ({
-    ...prev,
-    appointmentDate: selectedDay,
-    appointmentTime: schedule.start_time,
-  }));
-}, [selectedDay, selectedScheduleId, schedules]);
-
-
- const getValidDateForSelectedDay = (selectedDay: string): string => {
-  const daysMap: Record<string, number> = {
-    Sunday: 0,
-    Monday: 1,
-    Tuesday: 2,
-    Wednesday: 3,
-    Thursday: 4,
-    Friday: 5,
-    Saturday: 6,
-  };
-
-  const today = new Date();
-  const todayIndex = today.getDay();
-  const selectedDayIndex = daysMap[selectedDay];
-
-  // Si el día no es válido, devolver hoy
-  if (selectedDayIndex === undefined) {
-    return today.toISOString().split('T')[0];
-  }
-
-  // Si el día seleccionado es hoy o ya pasó → hoy
-  if (selectedDayIndex <= todayIndex) {
-    return today.toISOString().split('T')[0];
-  }
-
-  // Si el día es posterior en la semana → avanzar días
-  const diffDays = selectedDayIndex - todayIndex;
-  const resultDate = new Date(today);
-  resultDate.setDate(today.getDate() + diffDays);
-
-  return resultDate.toISOString().split('T')[0];
-};
-
-
-useEffect(() => {
-  if (!selectedDay) return;
-
-  const nextDate = getValidDateForSelectedDay(selectedDay);
-
-  setFormData(prev => ({
-    ...prev,
-    appointmentDate: nextDate,
-    appointmentTime: '',
-  }));
-}, [selectedDay]);
-
-
+  const canSelectSchedule = Boolean(formData.cityId && formData.appointmentDate);
 
   if (loading) {
     return <LoadingSpinner />;
@@ -241,7 +277,7 @@ useEffect(() => {
             <AppointmentForm
               formData={formData}
               cities={cities}
-              cityId={cityId}
+              cityId={cityIdParam}
               schedules={filteredSchedules}
               courseTypes={courseTypes}
               submitting={submitting}
