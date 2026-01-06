@@ -2,57 +2,57 @@ import { Phone, Mail, Clock } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  });
 
-const [formData, setFormData] = useState({
-  name: '',
-  email: '',
-  phone: '',
-  subject: '',
-  message: '',
-});
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
-const [loading, setLoading] = useState(false);
-const [success, setSuccess] = useState(false);
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
 
-const handleChange = (
-  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-) => {
-  const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id.replace('contact-', '')]: value,
+    }));
+  };
 
-  setFormData(prev => ({
-    ...prev,
-    [id.replace('contact-', '')]: value,
-  }));
-};
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
 
-const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setLoading(true);
-  setSuccess(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-  try {
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+      if (!res.ok) throw new Error('Error enviando el mensaje');
 
-    if (!res.ok) throw new Error('Error enviando el mensaje');
-
-    setSuccess(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
-  } catch (error) {
-    alert('No se pudo enviar el mensaje. Intenta más tarde.');
-  } finally {
-    setLoading(false);
-  }
-};
+      setSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+      });
+    } catch (error) {
+      console.error('Error:', error);
+      alert('No se pudo enviar el mensaje. Intenta más tarde.');
+    } finally {
+      setLoading(false);
+    }
+  };
   
   return (
     <div className="pt-16">
@@ -104,21 +104,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                   </div>
                 </div>
 
-                {/* <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-blue-600" size={24} />
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                      Oficina Principal
-                    </h3>
-                    <p className="text-gray-700">Calle 72 #10-34, Bogotá D.C.</p>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Colombia
-                    </p>
-                  </div>
-                </div> */}
-
                 <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <Clock className="text-green-600" size={24} />
@@ -143,8 +128,9 @@ const handleSubmit = async (e: React.FormEvent) => {
               </h2>
 
               <form 
-              onSubmit={handleSubmit}
-              className="bg-white p-8 rounded-xl shadow-md">
+                onSubmit={handleSubmit}
+                className="bg-white p-8 rounded-xl shadow-md"
+              >
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="contact-name" className="block text-sm font-semibold text-gray-900 mb-2">
@@ -227,15 +213,16 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                     {loading ? 'Enviando...' : 'Enviar Mensaje'}
+                    {loading ? 'Enviando...' : 'Enviar Mensaje'}
                   </button>
+
                   {success && (
-        <p className="text-green-600 text-sm">
-          Mensaje enviado correctamente ✔
-        </p>
-      )}
+                    <p className="text-green-600 text-sm font-semibold text-center">
+                      ✓ Mensaje enviado correctamente
+                    </p>
+                  )}
                 </div>
               </form>
             </div>
@@ -250,13 +237,15 @@ const handleSubmit = async (e: React.FormEvent) => {
           </h2>
 
           <div className="max-w-3xl mx-auto space-y-6">
-               <div className="bg-gray-50 p-6 rounded-lg">
+            <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 ¿El curso sirve para reducir el valor del comparendo?
               </h3>
               <p className="text-gray-700">
-                Sí. El curso de concientización vial permite acceder a los descuentos establecidos por la ley, siempre que se realice dentro de los plazos definidos por la autoridad de tránsito.              </p>
+                Sí. El curso de concientización vial permite acceder a los descuentos establecidos por la ley, siempre que se realice dentro de los plazos definidos por la autoridad de tránsito.
+              </p>
             </div>
+
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 ¿Cuánto tiempo dura el curso?
@@ -280,7 +269,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 ¿Puedo reagendar mi cita?
               </h3>
               <p className="text-gray-700">
-               Sí. Puedes reagendar tu cita con anticipación comunicándote con nuestra línea de atención o por WhatsApp, sujeto a disponibilidad de horarios.
+                Sí. Puedes reagendar tu cita con anticipación comunicándote con nuestra línea de atención o por WhatsApp, sujeto a disponibilidad de horarios.
               </p>
             </div>
 
@@ -292,7 +281,6 @@ const handleSubmit = async (e: React.FormEvent) => {
                 Sí. Al finalizar el curso recibirás un certificado de asistencia, el cual es válido para el proceso de reducción del comparendo, según la normativa aplicable.
               </p>
             </div>
-           
           </div>
         </div>
       </section>
