@@ -1,6 +1,59 @@
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, Clock } from 'lucide-react';
+import { useState } from 'react';
 
 export default function Contact() {
+
+const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  phone: '',
+  subject: '',
+  message: '',
+});
+
+const [loading, setLoading] = useState(false);
+const [success, setSuccess] = useState(false);
+
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { id, value } = e.target;
+
+  setFormData(prev => ({
+    ...prev,
+    [id.replace('contact-', '')]: value,
+  }));
+};
+
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  setSuccess(false);
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    if (!res.ok) throw new Error('Error enviando el mensaje');
+
+    setSuccess(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    });
+  } catch (error) {
+    alert('No se pudo enviar el mensaje. Intenta más tarde.');
+  } finally {
+    setLoading(false);
+  }
+};
+  
   return (
     <div className="pt-16">
       <section className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
@@ -29,7 +82,7 @@ export default function Contact() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
                       Teléfono
                     </h3>
-                    <p className="text-gray-700">+57 601 300 1234</p>
+                    <p className="text-gray-700">+57 3207713935</p>
                     <p className="text-sm text-gray-500 mt-1">
                       Lunes a Viernes: 8:00 AM - 6:00 PM
                     </p>
@@ -44,14 +97,14 @@ export default function Contact() {
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
                       Correo Electrónico
                     </h3>
-                    <p className="text-gray-700">info@educacionvial.co</p>
+                    <p className="text-gray-700">sistemasciaglobal@gmail.com</p>
                     <p className="text-sm text-gray-500 mt-1">
                       Respuesta en menos de 24 horas
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
+                {/* <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <MapPin className="text-blue-600" size={24} />
                   </div>
@@ -64,7 +117,7 @@ export default function Contact() {
                       Colombia
                     </p>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -89,7 +142,9 @@ export default function Contact() {
                 Envíanos un Mensaje
               </h2>
 
-              <form className="bg-white p-8 rounded-xl shadow-md">
+              <form 
+              onSubmit={handleSubmit}
+              className="bg-white p-8 rounded-xl shadow-md">
                 <div className="space-y-6">
                   <div>
                     <label htmlFor="contact-name" className="block text-sm font-semibold text-gray-900 mb-2">
@@ -99,6 +154,8 @@ export default function Contact() {
                       type="text"
                       id="contact-name"
                       required
+                      value={formData.name}
+                      onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="Tu nombre"
                     />
@@ -112,6 +169,8 @@ export default function Contact() {
                       type="email"
                       id="contact-email"
                       required
+                      value={formData.email}
+                      onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="correo@ejemplo.com"
                     />
@@ -124,6 +183,8 @@ export default function Contact() {
                     <input
                       type="tel"
                       id="contact-phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       placeholder="3001234567"
                     />
@@ -136,6 +197,8 @@ export default function Contact() {
                     <select
                       id="contact-subject"
                       required
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
                       <option value="">Selecciona un asunto</option>
@@ -154,6 +217,8 @@ export default function Contact() {
                       id="contact-message"
                       rows={5}
                       required
+                      value={formData.message}
+                      onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                       placeholder="Escribe tu mensaje aquí..."
                     ></textarea>
@@ -161,10 +226,16 @@ export default function Contact() {
 
                   <button
                     type="submit"
+                    disabled={loading}
                     className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
                   >
-                    Enviar Mensaje
+                     {loading ? 'Enviando...' : 'Enviar Mensaje'}
                   </button>
+                  {success && (
+        <p className="text-green-600 text-sm">
+          Mensaje enviado correctamente ✔
+        </p>
+      )}
                 </div>
               </form>
             </div>
@@ -179,12 +250,19 @@ export default function Contact() {
           </h2>
 
           <div className="max-w-3xl mx-auto space-y-6">
+               <div className="bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                ¿El curso sirve para reducir el valor del comparendo?
+              </h3>
+              <p className="text-gray-700">
+                Sí. El curso de concientización vial permite acceder a los descuentos establecidos por la ley, siempre que se realice dentro de los plazos definidos por la autoridad de tránsito.              </p>
+            </div>
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">
                 ¿Cuánto tiempo dura el curso?
               </h3>
               <p className="text-gray-700">
-                La duración varía según el tipo de curso: teórico (4 horas), práctico (4 horas) o completo (8 horas).
+                La duración del curso de concientización vial es de aproximadamente 2 horas, de acuerdo con lo establecido por la normativa vigente.
               </p>
             </div>
 
@@ -193,7 +271,7 @@ export default function Contact() {
                 ¿Qué debo llevar el día del curso?
               </h3>
               <p className="text-gray-700">
-                Debes llevar tu cédula original, una copia del comparendo y llegar con 15 minutos de anticipación.
+                Debes presentar tu documento de identidad original, el número de comparendo y llegar con al menos 15 minutos de anticipación.
               </p>
             </div>
 
@@ -202,7 +280,7 @@ export default function Contact() {
                 ¿Puedo reagendar mi cita?
               </h3>
               <p className="text-gray-700">
-                Sí, puedes reagendar con al menos 24 horas de anticipación contactándonos por teléfono o correo.
+               Sí. Puedes reagendar tu cita con anticipación comunicándote con nuestra línea de atención o por WhatsApp, sujeto a disponibilidad de horarios.
               </p>
             </div>
 
@@ -211,9 +289,10 @@ export default function Contact() {
                 ¿Entregan certificado?
               </h3>
               <p className="text-gray-700">
-                Sí, al finalizar el curso recibirás un certificado oficial válido ante las autoridades de tránsito.
+                Sí. Al finalizar el curso recibirás un certificado de asistencia, el cual es válido para el proceso de reducción del comparendo, según la normativa aplicable.
               </p>
             </div>
+           
           </div>
         </div>
       </section>
