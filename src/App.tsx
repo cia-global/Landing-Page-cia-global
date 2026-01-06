@@ -10,6 +10,7 @@ import Appointment from './components/Appointment';
 import Contact from './components/Contact';
 import CityDetail from './components/CityDetail';
 import NotFound from './components/NotFound';
+import WhatsAppBubble from './components/bubble/WhatsAppBubble';
 
 // Componente para scroll al cambiar de ruta
 function ScrollToTop() {
@@ -50,6 +51,7 @@ function Layout() {
           {/* Redirigir cualquier ruta no válida */}
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
+
       </main>
       <Footer />
     </div>
@@ -61,7 +63,9 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Layout />
+      <WhatsAppBubble />
     </BrowserRouter>
+    
   );
 }
 

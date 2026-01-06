@@ -1,26 +1,96 @@
-import { useEffect, useState } from 'react';
-import { Calendar, Clock, CheckCircle } from 'lucide-react';
-import { supabase, City, CourseType } from '../lib/supabase';
+import { useEffect, useMemo, useState } from 'react';
+import { supabase, City, CourseType, Schedule } from '../lib/supabase';
+import { useSearchParams } from 'react-router-dom';
+import AppointmentForm from './appointment/AppointmentForm';
+import {SuccessMessage} from './appointment/SuccessMessage';
+import {LoadingSpinner} from './appointment/LoadingSpinner';
+import {PageHeader} from './appointment/PageHeader';
+
+export interface AppointmentFormData {
+  cityId: string;
+  courseTypeId: string;
+  fullName: string;
+  idNumber: string;
+  citationNumber: string;
+  phone: string;
+  email: string;
+  appointmentDate: string;
+  appointmentTime: string;
+}
+
+const initialFormData: AppointmentFormData = {
+  cityId: '',
+  courseTypeId: '',
+  fullName: '',
+  idNumber: '',
+  citationNumber: '',
+  phone: '',
+  email: '',
+  appointmentDate: '',
+  appointmentTime: '',
+};
+
+// Mapeo de días en español e inglés
+const DAYS_MAP: Record<string, number> = {
+  'Sunday': 0, 'Domingo': 0,
+  'Monday': 1, 'Lunes': 1,
+  'Tuesday': 2, 'Martes': 2,
+  'Wednesday': 3, 'Miércoles': 3, 'Miercoles': 3,
+  'Thursday': 4, 'Jueves': 4,
+  'Friday': 5, 'Viernes': 5,
+  'Saturday': 6, 'Sábado': 6, 'Sabado': 6,
+};
+
+const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+// Función para obtener el nombre del día de una fecha
+const getDayNameFromDate = (dateString: string): string => {
+  if (!dateString) return '';
+  const date = new Date(dateString + 'T00:00:00');
+  return DAY_NAMES[date.getDay()];
+};
+
+// Función para calcular la próxima fecha de un día de la semana
+const getNextDateForWeekDay = (dayName: string): string => {
+  const dayIndex = DAYS_MAP[dayName];
+  
+  if (dayIndex === undefined) {
+    return new Date().toISOString().split('T')[0];
+  }
+
+  const today = new Date();
+  const todayIndex = today.getDay();
+  
+  let daysToAdd = dayIndex - todayIndex;
+  
+  // Si el día ya pasó esta semana, ir a la próxima semana
+  if (daysToAdd <= 0) {
+    daysToAdd += 7;
+  }
+  
+  const targetDate = new Date(today);
+  targetDate.setDate(today.getDate() + daysToAdd);
+  
+  return targetDate.toISOString().split('T')[0];
+};
 
 export default function Appointment() {
+  const [params] = useSearchParams();
   const [cities, setCities] = useState<City[]>([]);
   const [courseTypes, setCourseTypes] = useState<CourseType[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [formData, setFormData] = useState<AppointmentFormData>(initialFormData);
+  const [schedules, setSchedules] = useState<Schedule[]>([]);
+  const [loadingSchedules, setLoadingSchedules] = useState(false);
+  
+  // Parámetros URL
+  const cityIdParam = params.get('city');
+  const dayParam = params.get('day'); // Día de la semana (ej: "Monday")
+  const scheduleIdParam = params.get('schedule');
 
-  const [formData, setFormData] = useState({
-    cityId: '',
-    courseTypeId: '',
-    fullName: '',
-    idNumber: '',
-    citationNumber: '',
-    phone: '',
-    email: '',
-    appointmentDate: '',
-    appointmentTime: '',
-  });
-
+  // Cargar datos iniciales
   useEffect(() => {
     fetchData();
   }, []);
@@ -43,6 +113,96 @@ export default function Appointment() {
       setLoading(false);
     }
   };
+
+  // Cargar horarios cuando cambia la ciudad
+  useEffect(() => {
+    if (!formData.cityId) {
+      setSchedules([]);
+      return;
+    }
+
+    const fetchSchedules = async () => {
+      setLoadingSchedules(true);
+      try {
+        const { data, error } = await supabase
+          .from('schedules')
+          .select('*')
+          .eq('city_id', formData.cityId)
+          .eq('is_active', true)
+          .order('day_of_week');
+
+        if (error) throw error;
+        setSchedules(data || []);
+      } catch (error) {
+        console.error('Error fetching schedules:', error);
+        setSchedules([]);
+      } finally {
+        setLoadingSchedules(false);
+      }
+    };
+
+    fetchSchedules();
+  }, [formData.cityId]);
+
+  // Inicializar con parámetros URL solo al montar
+  useEffect(() => {
+    const updates: Partial<AppointmentFormData> = {};
+    
+    if (cityIdParam) {
+      updates.cityId = cityIdParam;
+    }
+    
+    if (dayParam) {
+      // Convertir día de la semana a fecha
+      const nextDate = getNextDateForWeekDay(dayParam);
+      updates.appointmentDate = nextDate;
+    }
+    
+    if (Object.keys(updates).length > 0) {
+      setFormData(prev => ({ ...prev, ...updates }));
+    }
+  }, []); // Solo al montar
+
+  // Cuando se cargan los schedules y hay un scheduleId en la URL, seleccionarlo
+  useEffect(() => {
+    if (!scheduleIdParam || schedules.length === 0 || !formData.appointmentDate) return;
+
+    const schedule = schedules.find(s => s.id === scheduleIdParam);
+    if (!schedule) return;
+
+    // Verificar que el schedule corresponda al día seleccionado
+    const selectedDayName = getDayNameFromDate(formData.appointmentDate);
+    if (schedule.day_of_week === selectedDayName) {
+      setFormData(prev => ({
+        ...prev,
+        appointmentTime: schedule.start_time,
+      }));
+    }
+  }, [scheduleIdParam, schedules, formData.appointmentDate]);
+
+  // Calcular los horarios filtrados según la fecha seleccionada
+  const filteredSchedules = useMemo(() => {
+    if (!formData.appointmentDate || schedules.length === 0) return [];
+
+    const selectedDayName = getDayNameFromDate(formData.appointmentDate);
+    
+    return schedules
+      .filter(s => s.day_of_week === selectedDayName)
+      .sort((a, b) => a.start_time.localeCompare(b.start_time));
+  }, [schedules, formData.appointmentDate]);
+
+  // Limpiar la hora seleccionada si ya no está en los horarios filtrados
+  useEffect(() => {
+    if (!formData.appointmentTime) return;
+    
+    const isTimeStillValid = filteredSchedules.some(
+      s => s.start_time === formData.appointmentTime
+    );
+    
+    if (!isTimeStillValid) {
+      setFormData(prev => ({ ...prev, appointmentTime: '' }));
+    }
+  }, [filteredSchedules, formData.appointmentTime]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,17 +227,7 @@ export default function Appointment() {
       if (error) throw error;
 
       setSuccess(true);
-      setFormData({
-        cityId: '',
-        courseTypeId: '',
-        fullName: '',
-        idNumber: '',
-        citationNumber: '',
-        phone: '',
-        email: '',
-        appointmentDate: '',
-        appointmentTime: '',
-      });
+      setFormData(initialFormData);
     } catch (error) {
       console.error('Error creating appointment:', error);
       alert('Hubo un error al agendar tu cita. Por favor intenta nuevamente.');
@@ -87,264 +237,54 @@ export default function Appointment() {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+    
+    setFormData(prev => {
+      const updates: Partial<AppointmentFormData> = { [name]: value };
+      
+      // Si cambia la ciudad, resetear horarios
+      if (name === 'cityId') {
+        updates.appointmentTime = '';
+      }
+      
+      // Si cambia la fecha, resetear la hora
+      if (name === 'appointmentDate') {
+        updates.appointmentTime = '';
+      }
+      
+      return { ...prev, ...updates };
     });
   };
 
-  const getMinDate = () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return tomorrow.toISOString().split('T')[0];
-  };
+  const handleNewAppointment = () => setSuccess(false);
+
+  const canSelectSchedule = Boolean(formData.cityId && formData.appointmentDate);
 
   if (loading) {
-    return (
-      <div className="pt-16 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="text-gray-600 mt-4">Cargando formulario...</p>
-        </div>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (success) {
-    return (
-      <div className="pt-16 min-h-screen bg-gray-50">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="text-green-600" size={48} />
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              ¡Agendamiento Exitoso!
-            </h2>
-            <p className="text-gray-700 text-lg mb-6">
-              Hemos recibido tu solicitud de agendamiento. En breve recibirás un correo electrónico con la confirmación y detalles de tu clase.
-            </p>
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8">
-              <p className="text-blue-900 font-medium">
-                Revisa tu correo electrónico (incluyendo spam) para más información.
-              </p>
-            </div>
-            <button
-              onClick={() => setSuccess(false)}
-              className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
-            >
-              Hacer otro agendamiento
-            </button>
-          </div>
-        </div>
-      </div>
-    );
+    return <SuccessMessage onNewAppointment={handleNewAppointment} />;
   }
 
   return (
     <div className="pt-16 min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Agendar mi Clase</h1>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-            Completa el formulario para reservar tu curso de educación vial
-          </p>
-        </div>
-      </section>
-
+      <PageHeader />
       <section className="py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-2xl shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="cityId" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Ciudad / Sede *
-                  </label>
-                  <select
-                    id="cityId"
-                    name="cityId"
-                    value={formData.cityId}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Selecciona una ciudad</option>
-                    {cities.map((city) => (
-                      <option key={city.id} value={city.id}>
-                        {city.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="courseTypeId" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Tipo de Curso *
-                  </label>
-                  <select
-                    id="courseTypeId"
-                    name="courseTypeId"
-                    value={formData.courseTypeId}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Selecciona un curso</option>
-                    {courseTypes.map((course) => (
-                      <option key={course.id} value={course.id}>
-                        {course.name} - ${course.price.toLocaleString()}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {formData.courseTypeId && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-sm text-blue-900">
-                    <strong>Descripción:</strong>{' '}
-                    {courseTypes.find((c) => c.id === formData.courseTypeId)?.description}
-                  </p>
-                  <p className="text-sm text-blue-900 mt-2">
-                    <strong>Duración:</strong>{' '}
-                    {courseTypes.find((c) => c.id === formData.courseTypeId)?.duration_hours} horas
-                  </p>
-                </div>
-              )}
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="appointmentDate" className="block text-sm font-semibold text-gray-900 mb-2">
-                    <Calendar className="inline mr-2" size={16} />
-                    Fecha *
-                  </label>
-                  <input
-                    type="date"
-                    id="appointmentDate"
-                    name="appointmentDate"
-                    value={formData.appointmentDate}
-                    onChange={handleChange}
-                    min={getMinDate()}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="appointmentTime" className="block text-sm font-semibold text-gray-900 mb-2">
-                    <Clock className="inline mr-2" size={16} />
-                    Hora *
-                  </label>
-                  <select
-                    id="appointmentTime"
-                    name="appointmentTime"
-                    value={formData.appointmentTime}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  >
-                    <option value="">Selecciona una hora</option>
-                    <option value="08:00">08:00 AM</option>
-                    <option value="10:00">10:00 AM</option>
-                    <option value="14:00">02:00 PM</option>
-                    <option value="16:00">04:00 PM</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="fullName" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Nombre Completo *
-                </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Juan Pérez García"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="idNumber" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Número de Cédula *
-                  </label>
-                  <input
-                    type="text"
-                    id="idNumber"
-                    name="idNumber"
-                    value={formData.idNumber}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="1234567890"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="citationNumber" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Número de Comparendo *
-                  </label>
-                  <input
-                    type="text"
-                    id="citationNumber"
-                    name="citationNumber"
-                    value={formData.citationNumber}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="ABC123456"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Teléfono *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="3001234567"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
-                    Correo Electrónico *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="correo@ejemplo.com"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                disabled={submitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {submitting ? 'Procesando...' : 'Confirmar Agendamiento'}
-              </button>
-            </form>
+            <AppointmentForm
+              formData={formData}
+              cities={cities}
+              cityId={cityIdParam}
+              schedules={filteredSchedules}
+              courseTypes={courseTypes}
+              submitting={submitting}
+              canSelectSchedule={canSelectSchedule}
+              onSubmit={handleSubmit}
+              onChange={handleChange}
+            />
           </div>
         </div>
       </section>

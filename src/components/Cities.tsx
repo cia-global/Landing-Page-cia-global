@@ -126,7 +126,7 @@ export default function Cities() {
                       <ChevronRight size={18} className="ml-1" />
                     </Link>
                    <Link
-                      to="/appointment" 
+                      to={`/appointment?city=${city.id}`} 
                       className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
                     >
                       Agendar

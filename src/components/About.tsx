@@ -1,6 +1,5 @@
 import { Target, Eye, Heart, Award, Shield, Users,  ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { supabase, City } from '../lib/supabase';
 import { partnersData,Partner} from '../data/partner';
 import { Sedes, SedesData } from '../data/sedes1';
 
