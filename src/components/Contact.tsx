@@ -1,5 +1,9 @@
 import { Phone, Mail, Clock } from 'lucide-react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { API_URL } from '../config/api';
+import ReCAPTCHA from 'react-google-recaptcha';
+
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,10 +13,11 @@ export default function Contact() {
     subject: '',
     message: '',
   });
-
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-
+  const [error, setError] = useState<string | null>(null);
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
@@ -24,35 +29,54 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setSuccess(false);
+  
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setLoading(true);
+  setSuccess(false);
+  setError(null);
+  try {
 
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+    const recaptchaToken = recaptchaRef.current?.getValue();
+     if (!recaptchaToken) {
+        setError('Por favor completa la verificación "No soy un robot"');
+        setLoading(false);
+        return;
+      }
 
-      if (!res.ok) throw new Error('Error enviando el mensaje');
+    const res = await fetch(`${API_URL}/api/contact`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...formData, recaptchaToken }),
+    });
 
-      setSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Error:', error);
-      alert('No se pudo enviar el mensaje. Intenta más tarde.');
-    } finally {
-      setLoading(false);
+    const data = await res.json(); 
+
+    if (!res.ok || !data.success) {
+      // Mostrar el error específico del backend si existe
+      throw new Error(data.error || 'Error enviando el mensaje');
     }
-  };
+
+    setSuccess(true);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    });
+
+    recaptchaRef.current?.reset();
+    alert('✅ ¡Mensaje enviado! Te responderemos pronto.');
+    
+  } catch (error: any) {
+    console.error('Error:', error);
+    alert(error.message || 'No se pudo enviar el mensaje. Intenta más tarde.');
+     recaptchaRef.current?.reset();
+  } finally {
+    setLoading(false);
+  }
+};
   
   return (
     <div className="pt-16">
@@ -209,10 +233,23 @@ export default function Contact() {
                       placeholder="Escribe tu mensaje aquí..."
                     ></textarea>
                   </div>
-
+                    <div className="flex justify-center">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                     sitekey={RECAPTCHA_SITE_KEY}
+                      theme="light"
+                      size="normal"
+                       onChange={(token) => {
+                        if (token) {
+                        setIsCaptchaValid(true);
+                    }
+                      }}
+                      onExpired={() => setIsCaptchaValid(false)}
+                    />
+                  </div>
                   <button
                     type="submit"
-                    disabled={loading}
+                    disabled={loading|| !isCaptchaValid}
                     className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Enviando...' : 'Enviar Mensaje'}

@@ -5,6 +5,7 @@ import AppointmentForm from './appointment/AppointmentForm';
 import {SuccessMessage} from './appointment/SuccessMessage';
 import {LoadingSpinner} from './appointment/LoadingSpinner';
 import {PageHeader} from './appointment/PageHeader';
+import {API_URL} from '../config/api';
 
 export interface AppointmentFormData {
   cityId: string;
@@ -42,6 +43,7 @@ const DAYS_MAP: Record<string, number> = {
 };
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
 
 // Función para obtener el nombre del día de una fecha
 const getDayNameFromDate = (dateString: string): string => {
@@ -207,10 +209,15 @@ export default function Appointment() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-
+     console.log('📤 Datos que se envían:', formData);
+  console.log('🌐 URL:', `${API_URL}/api/appointments`);
     try {
-      const { error } = await supabase.from('appointments').insert([
-        {
+      const response = await fetch(`${API_URL}/api/appointments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
           city_id: formData.cityId,
           course_type_id: formData.courseTypeId,
           full_name: formData.fullName,
@@ -221,11 +228,16 @@ export default function Appointment() {
           appointment_date: formData.appointmentDate,
           appointment_time: formData.appointmentTime,
           status: 'pending',
-        },
-      ]);
-
-      if (error) throw error;
-
+        }),
+      });
+       
+       const data = await response.json();
+         console.log('📥 Respuesta del backend:', data);
+    console.log('📊 Status:', response.status);
+      if (!response.ok || !data.success) {
+      throw new Error(data.error || 'Error al crear el agendamiento');
+    }
+       
       setSuccess(true);
       setFormData(initialFormData);
     } catch (error) {
