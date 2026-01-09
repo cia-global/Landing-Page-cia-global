@@ -30,9 +30,9 @@ export default async function handler(
 
   // Mapeo de asuntos
   const subjectMap: Record<string, string> = {
-    info: 'Información general',
+    informacion: 'Información general',
     appointment: 'Consulta sobre agendamiento',
-    city: 'Nueva ciudad',
+    ciudad: 'Nueva ciudad',
     other: 'Otro'
   };
 
