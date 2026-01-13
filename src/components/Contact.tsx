@@ -32,47 +32,48 @@ export default function Contact() {
   
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
+  console.log('🚀 INICIO - Datos:', formData);
+  
   setLoading(true);
   setSuccess(false);
   setError(null);
+  
   try {
-
     const recaptchaToken = recaptchaRef.current?.getValue();
-     if (!recaptchaToken) {
-        setError('Por favor completa la verificación "No soy un robot"');
-        setLoading(false);
-        return;
-      }
+    console.log('🤖 Token:', recaptchaToken ? '✅' : '❌');
+    
+    if (!recaptchaToken) {
+      setError('Por favor completa la verificación "No soy un robot"');
+      setLoading(false);
+      return;
+    }
+
+    const payload = { ...formData, recaptchaToken };
+    console.log('📤 Enviando:', payload);
 
     const res = await fetch(`${API_URL}/api/contact`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...formData, recaptchaToken }),
+      body: JSON.stringify(payload),
     });
 
-    const data = await res.json(); 
+    const data = await res.json();
+    console.log('📥 Respuesta:', { status: res.status, data });
 
     if (!res.ok || !data.success) {
-      // Mostrar el error específico del backend si existe
       throw new Error(data.error || 'Error enviando el mensaje');
     }
 
+    console.log('✅ ÉXITO');
     setSuccess(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    });
-
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     recaptchaRef.current?.reset();
     alert('✅ ¡Mensaje enviado! Te responderemos pronto.');
     
   } catch (error: any) {
-    console.error('Error:', error);
+    console.error('❌ ERROR:', error.message);
     alert(error.message || 'No se pudo enviar el mensaje. Intenta más tarde.');
-     recaptchaRef.current?.reset();
+    recaptchaRef.current?.reset();
   } finally {
     setLoading(false);
   }
