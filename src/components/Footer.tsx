@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -28,7 +29,7 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone size={18} className="mr-3 text-green-500" />
-                <span className="text-gray-400">+57 3175155967</span>
+                <span className="text-gray-400">+57 3207713935</span>
               </div>
               <div className="flex items-center">
                 <Mail size={18} className="mr-3 text-green-500" />
@@ -55,16 +56,18 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Link 
+                  to="/contact#more-questions"
+                className="text-gray-400 hover:text-white transition-colors">
                   Preguntas Frecuentes
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Educación Vial Colombia. Todos los derechos reservados.</p>
+          <p>&copy; 2026 Educación Vial Colombia. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

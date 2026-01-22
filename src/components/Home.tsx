@@ -75,7 +75,7 @@ export default function Home() {
               {
                 icon: Users,
                 title: 'Profesionales Certificados',
-                description: 'Instructores con amplia experiencia y certificación oficial',
+                description: 'Instructores con amplia experiencia y certificación',
               },
               {
                 icon: MapPin,

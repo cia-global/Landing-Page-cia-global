@@ -11,7 +11,7 @@ export default function Header() {
     { id: 'home', label: 'Inicio', path: '/' },
     { id: 'about', label: 'Quiénes Somos', path: '/about' },
     { id: 'cities', label: 'Ciudades', path: '/cities' },
-    { id: 'appointment', label: 'Agendar Clase', path: '/appointment' },
+    { id: 'appointment', label: 'Agendar Curso', path: '/appointment' },
     { id: 'contact', label: 'Contacto', path: '/contact' },
   ];
 

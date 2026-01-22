@@ -1,7 +1,9 @@
-import { Target, Eye, Heart, Award, Shield, Users,  ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { Target, Eye, Heart, Building2, Shield, Users,  ChevronLeft, ChevronRight,} from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { partnersData,Partner} from '../data/partner';
 import { Sedes, SedesData } from '../data/sedes1';
+import SectionCertificate from './section/SectionCertificate';
+
 
 export default function About() {
 
@@ -81,18 +83,18 @@ export default function About() {
               <p className="text-gray-700 text-lg mb-4 leading-relaxed">
                 Somos una plataforma nacional dedicada a la educación, formación y sensibilización vial para infractores vehiculares en Colombia. Trabajamos en articulación con diferentes centros de capacitación autorizados en el país, lo que nos permite ofrecer una red de sedes confiables, certificadas y alineadas con los estándares exigidos por las autoridades de tránsito.              </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos transparentes, eficientes y de alta calidad, asegurando que cada curso contribuya a mejorar la seguridad vial y a promover comportamientos responsables en las vías.              </p>
+                Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos transparentes, eficientes y de alta calidad, asegurando que cada curso contribuya a mejorar la seguridad vial y a promover comportamientos responsables en las vías.              </p>
             </div>
             <div className="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-2xl">
               <div className="space-y-6">
                 <div className="flex items-start">
-                  <Award className="text-blue-600 mr-4 flex-shrink-0" size={32} />
+                  <Building2 className="text-blue-600 mr-4 flex-shrink-0" size={32} />
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900 mb-1">
-                      Certificación Oficial
+                      Red de Centros Autorizados
                     </h3>
                     <p className="text-gray-700">
-                      Avalados por las autoridades de tránsito colombianas
+                      Convenios con centros certificados en todo el país
                     </p>
                   </div>
                 </div>
@@ -163,6 +165,8 @@ Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos t
           </div>
         </div>
       </section>
+
+      <SectionCertificate />
 
          <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -280,6 +284,8 @@ Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos t
         </div>
       </section>
 
+      
+
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -300,6 +306,7 @@ Nuestro objetivo es facilitar a los ciudadanos el acceso a procesos formativos t
           </div>
         </div>
       </section>
+      
     </div>
   );
 }
