@@ -64,7 +64,7 @@ export default function About() {
 
   return (
     <div className="pt-16">
-      <section className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Quiénes Somos</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
