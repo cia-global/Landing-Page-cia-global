@@ -314,7 +314,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 ¿El curso sirve para reducir el valor del comparendo?
               </h3>
               <p className="text-gray-700">
-                Sí. El curso de concientización vial permite acceder a los descuentos establecidos por la ley, siempre que se realice dentro de los plazos definidos por la autoridad de tránsito.
+                Sí. Nuestro curso sobre normas de tránsito te permite acceder a los descuentos en comparendos, siempre y cuando se realice dentro de los plazos definidos por la ley.
               </p>
             </div>
 
@@ -323,7 +323,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 ¿Cuánto tiempo dura el curso?
               </h3>
               <p className="text-gray-700">
-                La duración del curso de concientización vial es de aproximadamente 2 horas, de acuerdo con lo establecido por la normativa vigente.
+                La duración del curso de seguridad vial tiene una duracion de 2 horas de catedra, de acuerdo con lo establecido por la normativa vigente.
               </p>
             </div>
 
@@ -350,7 +350,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                 ¿Entregan certificado?
               </h3>
               <p className="text-gray-700">
-                Sí. Al finalizar el curso recibirás un certificado de asistencia, el cual es válido para el proceso de reducción del comparendo, según la normativa aplicable.
+                Sí. Al completar el curso, la SEMIt emite el certificado de asistencia, el cual es válido para acceder a los beneficios de reducción del comparendo según la ley.
               </p>
             </div>
           </div>
