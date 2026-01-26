@@ -1,5 +1,6 @@
   import { Link } from 'react-router-dom';
   import BackgroundElements from './BackgroundElemtents';
+  import { Calendar, Info, ChevronRight } from 'lucide-react';
 
 export default function BannerHomeIni() {
   return (
@@ -38,39 +39,46 @@ export default function BannerHomeIni() {
        <div className="relative mb-8">
                 <p className="text-lg text-blue-100 leading-relaxed bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
                   Agenda hoy tu curso de seguridad vial y aprovecha los beneficios
-                  en la reducción de comparendos de acuerdo con la <span className="font-semibold text-yellow-300">Ley 1383 de 2010</span>.
-                  Ponte al día con tus comparendos y ahórrate más dolores de cabeza.
+                  en la reducción del valor de comparendos de acuerdo con la <span className="font-semibold text-yellow-300">Ley 769 de 2002 </span>
+                  del Código Nacional de Tránsito.
                 </p>
               </div>
         {/* Buttons */}
         <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-  <Link
-    to="/appointment"
-    className="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition"
-  >
-    📆 Agenda tu curso
-  </Link>
+        <Link
+          to="/appointment"
+          className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 font-bold rounded-xl shadow-xl
+             overflow-hidden
+             animate-[float_4s_ease-in-out_infinite]
+             hover:animate-none
+             hover:shadow-2xl hover:scale-105 transition-all duration-300"
+        >
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <Calendar className="w-5 h-5" />
+                    Agenda tu curso
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+          </Link>
 
-  <button
-    onClick={() =>
-      document.getElementById('more-info')?.scrollIntoView({
-        behavior: 'smooth',
-      })
-    }
-    className="inline-flex items-center gap-2 border border-white/60 px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-  >
-    Más información
-  </button>
-  <p className="text-center lg:text-left text-sm text-white/80 pt-2">
-  ✔ Proceso 100% legal y seguro
-</p>
-
-</div>
-        
+        <button
+          onClick={() =>
+          document.getElementById('more-info')?.scrollIntoView({
+          behavior: 'smooth',
+          })
+          }
+          className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-xl hover:bg-white/20 hover:border-white/50 transition-all duration-300 font-semibold"
+        >
+        <span className="flex items-center justify-center gap-2">
+                    <Info className="w-5 h-5" />
+                    Más información
+                  </span>
+          </button>
+        <p className="text-center lg:text-left text-sm text-white/80 pt-2">
+          ✔ Proceso 100% legal y seguro
+        </p>
+    </div> 
       </div>
-
-      
-
     </div>
   </div>
       </section>
