@@ -61,3 +61,11 @@ export type Schedule = {
   is_active: boolean;
   created_at: string;
 };
+
+export type CityHours = {
+  id: string;
+  city_id: string;
+  applies_to: 'weekday' | 'friday' | 'saturday'; // ⬅️ Mejor con union type
+  start_time: string; 
+  end_time: string;
+}

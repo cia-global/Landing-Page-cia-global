@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { MapPin, Phone, Clock, ArrowLeft, Calendar } from 'lucide-react';
-import { supabase, City, Schedule } from '../lib/supabase';
+import { supabase, City, Schedule, CityHours } from '../lib/supabase';
 import MapBox from './map/MapBox';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { formatTime12h } from '../utils/time';
 
 
@@ -16,7 +16,8 @@ export default function CityDetail() {
   const [loadingSchedules, setLoadingSchedules] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null);
-  const navigate = useNavigate();
+  const [cityHours, setCityHours] = useState<CityHours[]>([]);
+  const [loadingHours, setLoadingHours] = useState(false);
 
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const dayLabels: Record<string, string> = {
@@ -51,6 +52,7 @@ const whatsappMessage = encodeURIComponent(
       setCity(data);
        if (data) {
         fetchSchedules(data.id);
+        fetchCityHours(data.id);
       }
     } catch (error) {
       console.error('Error fetching city:', error);
@@ -80,6 +82,48 @@ const whatsappMessage = encodeURIComponent(
       setLoadingSchedules(false);
     }
   };
+
+  const fetchCityHours = async (cId: string) => {
+  try {
+    setLoadingHours(true);
+    const { data, error } = await supabase
+      .from('city_business_hours') // ⬅️ Asegúrate que este sea el nombre correcto de tu tabla
+      .select('*')
+      .eq('city_id', cId)
+      .order('applies_to'); // Ordena por tipo: friday, saturday, weekday
+
+    if (error) throw error;
+    
+    // Filtra horarios vacíos (si start_time o end_time son null)
+    const validHours = (data || []).filter(
+      hour => hour.start_time && hour.end_time
+    );
+    setCityHours(validHours);
+  } catch (error) {
+    console.error('Error fetching city hours:', error);
+    setCityHours([]);
+  } finally {
+    setLoadingHours(false);
+  }
+};
+
+// 4. FUNCIONES HELPER: Para mostrar los horarios organizados
+const getHoursByType = (type: 'weekday' | 'friday' | 'saturday') => {
+  return cityHours.filter(hour => hour.applies_to === type);
+};
+
+// Formatear hora de 24h a 12h (opcional)
+const formatTime = (time: string) => {
+  const [hours, minutes] = time.split(':');
+  const hour = parseInt(hours);
+  const ampm = hour >= 12 ? 'PM' : 'AM';
+  const hour12 = hour % 12 || 12;
+  return `${hour12}:${minutes} ${ampm}`;
+};
+
+ const weekdayHours = getHoursByType('weekday');
+const fridayHours = getHoursByType('friday');
+const saturdayHours = getHoursByType('saturday');
 
   if (loading) {
     return (
@@ -190,9 +234,27 @@ const whatsappMessage = encodeURIComponent(
             Horarios de Atención
           </h3>
           <ul className="text-gray-700 space-y-1">
-            <li>Lunes a Viernes: 8:00 AM - 6:00 PM</li>
-            <li>Sábados: 8:00 AM - 12:00 PM</li>
-            <li>Domingos y Festivos: Cerrado</li>
+             {weekdayHours.map((hour) => (
+            <p key={hour.id} className="text-gray-600">
+            {fridayHours.length > 0 ? 'Lunes a Jueves: ' : 'Lunes a Viernes: '}{formatTime(hour.start_time)} - {formatTime(hour.end_time)}
+            </p>
+          ))}
+             {/* Viernes */}
+
+          {fridayHours.map((hour) => (
+            <p key={hour.id} className="text-gray-600">
+             Viernes: {formatTime(hour.start_time)} - {formatTime(hour.end_time)}
+            </p>
+          ))}
+
+      {/* Sábados */}
+          {saturdayHours.map((hour) => (
+            <p key={hour.id} className="text-gray-600">
+             Sabados: {formatTime(hour.start_time)} - {formatTime(hour.end_time)}
+            </p>
+          ))}
+    
+           <li>Domingos y Festivos: Cerrado</li>
           </ul>
         </div>
       </div>
