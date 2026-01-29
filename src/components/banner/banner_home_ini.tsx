@@ -1,5 +1,6 @@
   import { Link } from 'react-router-dom';
   import BackgroundElements from './BackgroundElemtents';
+  import { Calendar, Info, ChevronRight } from 'lucide-react';
 
 export default function BannerHomeIni() {
   return (
@@ -8,79 +9,76 @@ export default function BannerHomeIni() {
        <div className="max-w-7xl mx-auto px-6 lg:px-8">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
-      {/* LEFT CONTENT */}
+      {/* left IMAGE */}
+   <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px] xl:h-[600px]">
+  <img
+    src="/images/promocion.png"
+    alt="Descuento en comparendos"
+    className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 ease-out group-hover:scale-110"
+  />
+</div>
+    
+
+      {/* rihtf CONTENT */}
       <div className="space-y-6">
-        
+    
         {/* Badge */}
         <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-semibold">
           🚦 Aprovecha el beneficio
         </span>
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-          <span className="text-yellow-300">50% de descuento</span>
-          <br />
-          en comparendos manuales y
+        
+        <h1 className="text-center lg:text-left text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
+          En comparendos manuales y
           <br />
           fotomultas 
         </h1>
+
         {/* Description */}
-        <p className="text-lg text-white/90 max-w-xl">
-         Agenda hoy tu curso de concientización vial y aprovecha los beneficios en la reducción de comparendos
-          de acuerdo con la Ley 1383 de 2010. Ponte al día con tus comparendos y ahórrate más dolores de cabeza.
-        </p>
+
+       <div className="relative mb-8">
+                <p className="text-lg text-blue-100 leading-relaxed bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                  Agenda hoy tu curso de seguridad vial y aprovecha los beneficios
+                  en la reducción del valor de comparendos de acuerdo con la <span className="font-semibold text-yellow-300">Ley 769 de 2002 </span>
+                  del Código Nacional de Tránsito.
+                </p>
+              </div>
         {/* Buttons */}
-        <div className="flex flex-wrap gap-4 pt-2">
-          <Link
-            to="/appointment"
-            className="inline-flex items-center gap-2 bg-white text-blue-700 font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition"
-          >
-            📆 Agenda tu curso
+        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+        <Link
+          to="/appointment"
+          className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 font-bold rounded-xl shadow-xl
+             overflow-hidden
+             animate-[float_4s_ease-in-out_infinite]
+             hover:animate-none
+             hover:shadow-2xl hover:scale-105 transition-all duration-300"
+        >
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <span className="relative flex items-center justify-center gap-2">
+                    <Calendar className="w-5 h-5" />
+                    Agenda tu curso
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
           </Link>
 
-          <button
-              onClick={() =>
-                  document.getElementById('more-info')?.scrollIntoView({
-                    behavior: 'smooth',
-                  })
-                }
-            className="inline-flex items-center gap-2 border border-white/60 px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-          >
-            Más información
+        <button
+          onClick={() =>
+          document.getElementById('more-info')?.scrollIntoView({
+          behavior: 'smooth',
+          })
+          }
+          className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-xl hover:bg-white/20 hover:border-white/50 transition-all duration-300 font-semibold"
+        >
+        <span className="flex items-center justify-center gap-2">
+                    <Info className="w-5 h-5" />
+                    Más información
+                  </span>
           </button>
-        </div>
-
-        {/* Footer note */}
-        <p className="text-sm text-white/80 pt-2">
+        <p className="text-center lg:text-left text-sm text-white/80 pt-2">
           ✔ Proceso 100% legal y seguro
         </p>
+    </div> 
       </div>
-
-      {/* RIGHT IMAGE */}
-      <div className="relative flex justify-center lg:justify-end">
-        <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-md w-full">
-          <img
-            src="/images/policia.jpg"
-            alt="Descuento en comparendos"
-            className="w-full h-full object-cover"
-          />
-
-          {/* Floating card */}
-          <div className="absolute bottom-4 left-4 bg-white text-gray-900 px-4 py-3 rounded-xl shadow-lg flex items-center gap-3">
-            <div className="bg-green-100 text-green-600 p-2 rounded-full">
-              💰
-            </div>
-            <div>
-              <p className="text-xs font-semibold text-gray-500">
-                Ahorro estimado
-              </p>
-              <p className="text-lg font-bold">
-                Hasta $500.000
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
       </section>
