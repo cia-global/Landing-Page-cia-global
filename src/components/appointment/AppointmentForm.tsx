@@ -5,6 +5,8 @@ import {CourseInfo} from './CourseInfo';
 import FormInput from './FormInput';
 import {FormSelect} from './FormSelect';
 import { formatTime12h } from '../../utils/time';
+import TermsCheckbox from '../politics/TermCheckbox';
+import { useState } from 'react';
 
 interface AppointmentFormProps {
   formData: AppointmentFormData;
@@ -36,7 +38,7 @@ export default function AppointmentForm({
 
   const selectedCourse = courseTypes.find((c) => c.id === formData.courseTypeId);
   const selectedCity = cities.find((c) => c.id === formData.cityId);
-
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
   // Formatear fecha legible
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
@@ -300,11 +302,14 @@ export default function AppointmentForm({
           </div>
         </div>
       )}
-
+        <TermsCheckbox
+  checked={acceptedTerms}
+  onChange={setAcceptedTerms}
+/>
       {/* Botón de Envío */}
       <button
         type="submit"
-        disabled={submitting}
+        disabled={submitting || !acceptedTerms}
         className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
       >
         {submitting ? (

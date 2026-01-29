@@ -11,6 +11,8 @@ import Contact from './components/Contact';
 import CityDetail from './components/CityDetail';
 import NotFound from './components/NotFound';
 import WhatsAppBubble from './components/bubble/WhatsAppBubble';
+import PrivacyPolicy from './components/politics/PrivacyPolicy';
+import TermsAndConditions from './components/politics/TermsAndConditions';
 
 // Componente para scroll al cambiar de ruta
 function ScrollToTop() {
@@ -44,7 +46,9 @@ function Layout() {
           <Route path="/cities/:cityId" element={<CityDetail />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/contact" element={<Contact />} />
-          
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+
           {/* Ruta para página no encontrada */}
           <Route path="/404" element={<NotFound />} />
           
