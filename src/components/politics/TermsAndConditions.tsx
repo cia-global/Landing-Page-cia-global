@@ -1,7 +1,33 @@
 import {  CheckCircle, AlertCircle, Scale, Shield } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export default function TermsAndConditions() {
   return (
+    <>
+     <Helmet>
+        {/* Título simple */}
+        <title>Términos y Condiciones - Cursos Comparendos Colombia</title>
+        
+        {/* Descripción breve */}
+        <meta 
+          name="description" 
+          content="Términos y condiciones de uso del sitio web www.pagocursoscomparendos.com. Lee las condiciones del servicio de cursos de normas de tránsito." 
+        />
+        
+        {/* NO INDEXAR - ESTO ES LO MÁS IMPORTANTE */}
+        <meta name="robots" content="noindex, follow" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/terms-and-conditions" />
+        
+        {/* Open Graph (para si alguien lo comparte) */}
+        <meta property="og:title" content="Términos y Condiciones - Cursos Comparendos" />
+        <meta property="og:description" content="Términos y condiciones de uso del servicio." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.pagocursoscomparendos.com/terms-and-conditions" />
+        
+        {/* NO necesitas imagen OG aquí */}
+      </Helmet>
     <div className="pt-16">
     
     <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-16 relative overflow-hidden">
@@ -333,5 +359,6 @@ export default function TermsAndConditions() {
         </div>
       </div>
     </div>
+    </>
   );
 }

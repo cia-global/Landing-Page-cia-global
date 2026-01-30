@@ -2,6 +2,7 @@ import { Phone, Mail, Clock } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { API_URL } from '../config/api';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { Helmet } from 'react-helmet-async';
 
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || '';
 
@@ -88,6 +89,28 @@ const handleSubmit = async (e: React.FormEvent) => {
 };
   
   return (
+    <>
+    <Helmet>
+  <title>Contacto - Cursos Comparendos Colombia | Llámanos o Escríbenos</title>
+  
+  <meta 
+    name="description" 
+    content="Contáctanos para más información sobre cursos de comparendos. WhatsApp, teléfono, email. Atención: Lun-Vie 8AM-6PM, Sáb 9AM-1PM. Respuesta rápida." 
+  />
+  
+  <meta 
+    name="keywords" 
+    content="contacto cursos comparendos, teléfono CIA, whatsapp comparendos, email cursos tránsito" 
+  />
+  
+  <link rel="canonical" href="https://www.pagocursoscomparendos.com/contact" />
+  
+  <meta property="og:title" content="Contacto - Cursos Comparendos Colombia" />
+  <meta property="og:description" content="¿Tienes dudas? Contáctanos por WhatsApp, teléfono o email." />
+  <meta property="og:url" content="https://www.pagocursoscomparendos.com/contact" />
+  <meta name="robots" content="index,follow" />
+</Helmet>
+
     <div className="pt-16">
        <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -357,5 +380,6 @@ const handleSubmit = async (e: React.FormEvent) => {
         </div>
       </section>
     </div>
+    </>
   );
 }
