@@ -3,11 +3,25 @@ import BannerInfo from './banner/banner_home_info';
 import SectionCities from './section/Section_cities';
 import BannerHomeIni from './banner/banner_home_ini';
 import { Link } from 'react-router-dom';
-
+import { Helmet } from 'react-helmet-async';
 
 
 export default function Home() {
   return (
+     <>
+     <Helmet>
+        <title>Cursos Comparendos Colombia | 50% Descuento - Ley 769</title>
+        <meta name="description" content="Completa tu curso de educación vial con instructores certificados en Colombia. Agenda fácil, horarios flexibles y cobertura nacional." />
+        <meta name="keywords" content="cursos comparendos colombia, descuento comparendos 50%, ley 1383, reducir multas tránsito, cursos educación vial, descuento fotomultas, CIA colombia" />
+        <meta httpEquiv="content-language" content="es-CO" />
+         <link rel="canonical" href="https://www.pagocursoscomparendos.com/" />
+         <meta name="geo.region" content="CO" />
+        <meta name="geo.placename" content="Colombia" />
+        <meta property="og:title" content="Cursos comparendos de Colombia - Curso de Educación Vial" />
+        <meta property="og:description" content="Completa tu curso de educación vial con instructores certificados en Colombia. Agenda fácil, horarios flexibles y cobertura nacional." />
+        <meta property="og:type" content="website" />
+        <meta name="robots" content="index,follow" />
+      </Helmet>
     <div className="pt-6">
       <BannerHomeIni/>
       <SectionCities/>
@@ -110,5 +124,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import {SuccessMessage} from './appointment/SuccessMessage';
 import {LoadingSpinner} from './appointment/LoadingSpinner';
 import {PageHeader} from './appointment/PageHeader';
 import {API_URL} from '../config/api';
+import { Helmet } from 'react-helmet-async';
 
 export interface AppointmentFormData {
   cityId: string;
@@ -281,6 +282,19 @@ export default function Appointment() {
   }
 
   return (
+    <>
+      <Helmet>
+        <title>Agendar Curso de Comparendos en Colombia | Cita en Línea</title>
+        <meta name="description" content="Agenda tu curso de comparendos en minutos. Elige ciudad, fecha y horario. Proceso 100% en línea, confirmación inmediata. ¡Reserva tu cupo ahora!" />
+        <meta name="keywords" content="agendar curso comparendos, reservar curso tránsito, cita curso educación vial, horarios cursos comparendos," />
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/appointment" />
+        <meta name="author" content="Cursos comparendos Colombia" />
+        <meta property="og:title" content="agendamiento cursos comparendos" />
+        <meta property="og:description" content="Agenda tu cita de forma fácil y rápida." />
+        <meta property="og:type" content="website" />
+         <meta name="robots" content="index,follow" />
+      </Helmet>
+    
     <div className="pt-16 min-h-screen bg-gray-50">
       <PageHeader />
       <section className="py-16">
@@ -301,5 +315,6 @@ export default function Appointment() {
         </div>
       </section>
     </div>
+    </>
   );
 }

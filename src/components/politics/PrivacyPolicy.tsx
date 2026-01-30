@@ -1,8 +1,34 @@
 import { Shield, Lock, Database, FileText, UserCheck, Mail, Eye, AlertTriangle, CheckCircle, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function PrivacyPolicy() {
   return (
+    <>
+     <Helmet>
+        {/* Título simple */}
+        <title>Política de Privacidad - Cursos Comparendos Colombia</title>
+        
+        {/* Descripción breve */}
+        <meta 
+          name="description" 
+          content="Política de privacidad y protección de datos personales de www.pagocursoscomparendos.com según Ley 1581 de 2012." 
+        />
+        
+        {/* NO INDEXAR */}
+        <meta name="robots" content="noindex, follow" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/privacy-policy" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Política de Privacidad - Cursos Comparendos" />
+        <meta property="og:description" content="Política de protección de datos personales." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.pagocursoscomparendos.com/privacy-policy" />
+      </Helmet>
+
+
     <div className="pt-16">
     
        <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-16 relative overflow-hidden">
@@ -426,5 +452,6 @@ export default function PrivacyPolicy() {
       </div>
     </div>
     </div>
+    </>
   );
 }

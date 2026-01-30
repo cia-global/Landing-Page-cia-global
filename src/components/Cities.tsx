@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { MapPin, Phone, Search, ChevronRight } from 'lucide-react';
 import { supabase, City } from '../lib/supabase';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -53,6 +54,33 @@ export default function Cities() {
   };
 
   return (
+    <>
+    <Helmet>
+  <title>Ciudades y Sedes - Cursos Comparendos Colombia | Cobertura Nacional</title>
+  
+  <meta 
+    name="description" 
+    content="Sedes de cursos de comparendos en Colombia: Bogotá, Medellín, Cali, Bucaramanga y más. Encuentra la sede más cercana, horarios y dirección." 
+  />
+  
+  <meta 
+    name="keywords" 
+    content="sedes cursos comparendos, ciudades cursos tránsito, cursos comparendos bogotá, cursos comparendos bucaramanga, cursos de comparendos a nivel nacional, sedes autorizadas comparendos" 
+  />
+  
+  <link rel="canonical" href="https://www.pagocursoscomparendos.com/cities" />
+  
+  <meta property="og:title" content="Ciudades y Sedes - Cursos Comparendos" />
+  <meta 
+    property="og:description" 
+    content="Encuentra tu sede más cercana. Cobertura en principales ciudades de Colombia." 
+  />
+  <meta property="og:url" content="https://www.pagocursoscomparendos.com/cities" />
+  <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/og-cities.jpg" />
+  <meta name="robots" content="index,follow" />
+</Helmet>
+
+
     <div className="pt-16">
         <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -191,5 +219,6 @@ export default function Cities() {
         </div>
       </section>
     </div>
+    </>
   );
 }

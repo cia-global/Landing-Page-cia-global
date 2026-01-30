@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { partnersData,Partner} from '../data/partner';
 import { Sedes, SedesData } from '../data/sedes1';
 import SectionCertificate from './section/SectionCertificate';
+import { Helmet } from 'react-helmet-async';
 
 
 export default function About() {
@@ -63,6 +64,20 @@ export default function About() {
     };
 
   return (
+    <>
+
+    <Helmet>
+  <title>Quiénes Somos - Cursos Comparendos Colombia</title>
+  <meta name="description" content="Somos una plataforma nacional dedicada a la educación, formación y sensibilización vial para infractores en Colombia. Cursos certificados con cobertura nacional." />
+  <meta httpEquiv="content-language" content="es-CO" />
+  <meta name="keywords" content="quienes somos cursos comparendos, CIA colombia, cursos certificados, educación vial colombia" />
+  <link rel="canonical" href="https://www.pagocursoscomparendos.com/about" />
+  <meta property="og:title" content="Quiénes Somos - Cursos Comparendos Colombia" />
+  <meta property="og:description" content="Somos una plataforma nacional dedicada a la educación, formación y sensibilización vial para infractores en Colombia. Cursos certificados con cobertura nacional." />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index,follow" />
+</Helmet>
+
     <div className="pt-16">
       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -308,5 +323,6 @@ export default function About() {
       </section>
       
     </div>
+    </>
   );
 }

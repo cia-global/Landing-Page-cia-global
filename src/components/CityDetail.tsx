@@ -4,6 +4,7 @@ import { supabase, City, Schedule, CityHours } from '../lib/supabase';
 import MapBox from './map/MapBox';
 import { useParams, Link } from 'react-router-dom';
 import { formatTime12h } from '../utils/time';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -156,6 +157,40 @@ const saturdayHours = getHoursByType('saturday');
   }
 
   return (
+    <>
+      <Helmet>
+  {/* Título dinámico por ciudad */}
+  <title>Cursos Comparendos {city.name} | Sedes, Horarios y Teléfonos</title>
+  
+  {/* Descripción dinámica */}
+  <meta 
+    name="description" 
+    content={`Cursos de comparendos en ${city.name}, Colombia. 50% descuento, horarios flexibles, sedes autorizadas. Dirección: ${city.address}. Tel: ${city.phone}`}
+  />
+  
+  {/* Keywords dinámicas */}
+  <meta 
+    name="keywords" 
+    content={`cursos comparendos ${city.name}, CIA ${city.name}, reducir multas ${city.name}, curso tránsito ${city.name}`}
+  />
+  
+  {/* Geo tags específicos */}
+  <meta name="geo.placename" content={`${city.name}, Colombia`} />
+  <meta name="geo.position" content={`${city.coordinates.lat};${city.coordinates.lng}`} />
+  
+  {/* Canonical dinámico */}
+  <link rel="canonical" href={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
+  
+  {/* Open Graph */}
+  <meta property="og:title" content={`Cursos Comparendos ${city.name} - Sedes y Horarios`} />
+  <meta 
+    property="og:description" 
+    content={`Encuentra sedes, horarios y contacto en ${city.name}. 50% descuento en comparendos.`}
+  />
+  <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
+  <meta property="og:image" content={`https://www.pagocursoscomparendos.com/images/cities/${city.id}.jpg`} />
+</Helmet>
+
     <div className="pt-16 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Link
@@ -419,5 +454,6 @@ const saturdayHours = getHoursByType('saturday');
         </div>
       </section>
     </div>
+    </>
   );
 }
