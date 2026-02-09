@@ -222,7 +222,6 @@ export default function AppointmentForm({
                 <div>
                   <p className="text-sm text-gray-600 font-medium">Curso</p>
                   <p className="text-gray-900 font-semibold">{selectedCourse?.name}</p>
-                  <p className="text-green-600 font-bold">${selectedCourse?.price.toLocaleString()}</p>
                 </div>
               </div>
 
