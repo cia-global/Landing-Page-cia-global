@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
           </h2>
           <div className="bg-blue-50 rounded-xl p-6">
             <p className="text-gray-700 leading-relaxed">
-              <span className="font-semibold text-gray-900">Setvial S.A.S.</span>, identificada con NIT ######, es una empresa legalmente constituida en la <span className="font-semibold">República de Colombia</span>, responsable del tratamiento de los datos personales recopilados a través del sitio web <span className="font-semibold text-blue-600">https://www.pagocursoscomparendos.com</span>.
+              <span className="font-semibold text-gray-900">Setvial S.A.S.</span>, identificada con NIT 901524970-7, es una empresa legalmente constituida en la <span className="font-semibold">República de Colombia</span>, responsable del tratamiento de los datos personales recopilados a través del sitio web <span className="font-semibold text-blue-600">https://www.pagocursoscomparendos.com</span>.
             </p>
           </div>
         </div>
