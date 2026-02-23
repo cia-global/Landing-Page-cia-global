@@ -38,8 +38,10 @@ export default function Header() {
             <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-green-500 rounded-full flex items-center justify-center">
              
       <img
-        src="/images/icon.png"
+        src="/images/icon.webp"
         alt="Banner decorativo"
+        width={48}
+        height={49}
         // className="absolute right-0 top-0 h-full w-5.1/12 object-contain opacity-30 md:opacity-40"
       />
               {/* <span className="text-white font-bold text-xl">CC</span> */}
@@ -69,6 +71,7 @@ export default function Header() {
           <button
             className="md:hidden text-gray-700"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Abrir menú de navegación"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

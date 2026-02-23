@@ -16,7 +16,7 @@ const supabase = createClient(
   import.meta.env.VITE_SUPABASE_ANON_KEY as string
 );
 
-const SIMIT_URL = "https://www.simit.org.co/";
+const SIMIT_URL = "https://www.fcm.org.co/simit/#/home-public";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 interface Certificado {

@@ -14,11 +14,15 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/profile.php?id=61583609490273"     
                   target="_blank"
-                  
+          
                   aria-label="Visítanos en Facebook" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.instagram.com/cursoscomparendos/" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/cursoscomparendos/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Visítanos en Instagram"
+              className="text-gray-400 hover:text-white transition-colors">
                 <Instagram size={20} />
               </a>
               {/* <a href="#" className="text-gray-400 hover:text-white transition-colors">
