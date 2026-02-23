@@ -14,7 +14,7 @@ export default function Home() {
         <meta name="description" content="Completa tu curso de educación vial con instructores certificados en Colombia. Agenda fácil, horarios flexibles y cobertura nacional." />
         <meta name="keywords" content="cursos comparendos colombia, descuento comparendos 50%, ley 1383, reducir multas tránsito, cursos educación vial, descuento fotomultas, CIA colombia" />
         <meta httpEquiv="content-language" content="es-CO" />
-         <link rel="canonical" href="https://pagocursoscomparendos.com" />
+         <link rel="canonical" href="https://www.pagocursoscomparendos.com" />
          <meta name="geo.region" content="CO" />
         <meta name="geo.placename" content="Colombia" />
         <meta property="og:title" content="Cursos comparendos de Colombia - Curso de Educación Vial" />

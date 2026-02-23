@@ -12,6 +12,7 @@ export default function Header() {
     { id: 'about', label: 'Quiénes Somos', path: '/about' },
     { id: 'cities', label: 'Ciudades', path: '/cities' },
     { id: 'appointment', label: 'Agendar Curso', path: '/appointment' },
+    { id: 'certificados', label: 'Certificados', path: '/certificados' },
     { id: 'contact', label: 'Contacto', path: '/contact' },
   ];
 

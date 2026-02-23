@@ -69,3 +69,15 @@ export type CityHours = {
   start_time: string; 
   end_time: string;
 }
+
+export type Certificado = {
+  id: string | number;
+  codigo: string;
+  empresa: string;
+  nombre_completo: string;
+  documento: string;
+  curso: string;
+  fecha_certificado: string;
+  horas: string | number;
+  foto_url?: string;
+}
