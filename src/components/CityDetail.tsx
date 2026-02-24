@@ -309,6 +309,22 @@ const saturdayHours = getHoursByType('saturday');
 
     {/* Columna Derecha: Mapa */}
     <div className="w-full">
+       <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative h-64 overflow-hidden bg-gray-200">
+                      {city.image ? (
+                        <img
+                          src={city.image}
+                          alt={city.name}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
+                          <span className="text-gray-400 text-sm">Sin imagen</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  <div className="h-8"></div>
       <MapBox coordinates={`${city.coordinates.lat},${city.coordinates.lng}`} />
     </div>
 

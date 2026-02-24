@@ -15,6 +15,7 @@ export type City = {
   is_active: boolean;
   created_at: string;
   nameSede: string;
+  image: string;
 };
 
 export type CourseType = {
