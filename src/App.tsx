@@ -57,7 +57,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/cities" element={<Cities />} />
-          <Route path="/cities/:cityId" element={<CityDetail />} />
+          <Route path="/cities/:slug" element={<CityDetail />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

@@ -16,6 +16,7 @@ export type City = {
   created_at: string;
   nameSede: string;
   image: string;
+  slug: string;
 };
 
 export type CourseType = {

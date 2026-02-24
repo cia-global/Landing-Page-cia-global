@@ -13,7 +13,7 @@ export default function CityDetail() {
   const [city, setCity] = useState<City | null>(null);
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loading, setLoading] = useState(true);
-  const { cityId } = useParams<{ cityId: string }>();
+ const { slug } = useParams<{ slug: string }>();
   const [loadingSchedules, setLoadingSchedules] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null);
@@ -39,14 +39,14 @@ const whatsappMessage = encodeURIComponent(
 
   useEffect(() => {
     fetchCity();
-  }, [cityId]);
+  }, [slug]);
 
   const fetchCity = async () => {
     try {
       const { data, error } = await supabase
         .from('cities')
         .select('*')
-        .eq('id', cityId)
+        .eq('slug', slug)
         .maybeSingle();
 
       if (error) throw error;
