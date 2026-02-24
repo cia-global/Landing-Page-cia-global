@@ -67,7 +67,7 @@ const getNextDateForWeekDay = (dayName: string): string => {
   let daysToAdd = dayIndex - todayIndex;
   
   // Si el día ya pasó esta semana, ir a la próxima semana
-  if (daysToAdd <= 0) {
+  if (daysToAdd < 0) {
     daysToAdd += 7;
   }
   
