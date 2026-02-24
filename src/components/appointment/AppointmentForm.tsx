@@ -32,7 +32,7 @@ export default function AppointmentForm({
 }: AppointmentFormProps) {
   const getMinDate = () => {
     const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setDate(tomorrow.getDate());
     return tomorrow.toISOString().split('T')[0];
   };
 

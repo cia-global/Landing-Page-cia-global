@@ -15,6 +15,8 @@ export type City = {
   is_active: boolean;
   created_at: string;
   nameSede: string;
+  image: string;
+  slug: string;
 };
 
 export type CourseType = {
@@ -68,4 +70,16 @@ export type CityHours = {
   applies_to: 'weekday' | 'friday' | 'saturday'; // ⬅️ Mejor con union type
   start_time: string; 
   end_time: string;
+}
+
+export type Certificado = {
+  id: string | number;
+  codigo: string;
+  empresa: string;
+  nombre_completo: string;
+  documento: string;
+  curso: string;
+  fecha_certificado: string;
+  horas: string | number;
+  foto_url?: string;
 }

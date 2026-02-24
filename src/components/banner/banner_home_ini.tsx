@@ -12,8 +12,9 @@ export default function BannerHomeIni() {
       {/* left IMAGE */}
    <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px] xl:h-[600px]">
   <img
-    src="/images/promocion.png"
+    src="/images/promocion.webp"
     alt="Descuento en comparendos"
+    fetchPriority="high"
     className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 ease-out group-hover:scale-110"
   />
 </div>
