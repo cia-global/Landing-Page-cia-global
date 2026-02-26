@@ -20,7 +20,7 @@ export default function Home() {
         <meta property="og:title" content="Cursos comparendos de Colombia - Curso de Educación Vial" />
         <meta property="og:description" content="Completa tu curso de educación vial con instructores certificados en Colombia. Agenda fácil, horarios flexibles y cobertura nacional." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/og-home.webp" />
+        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/oghome.webp" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Cursos Comparendos" />
