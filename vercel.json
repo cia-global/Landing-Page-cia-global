@@ -4,12 +4,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "redirects": [
-    {
-      "source": "https://pagocursoscomparendos.com/(.*)",
-      "destination": "https://www.pagocursoscomparendos.com/$1",
-      "permanent": true
-    }
   ]
 }
