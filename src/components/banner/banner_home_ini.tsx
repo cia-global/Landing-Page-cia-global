@@ -9,6 +9,7 @@ export default function BannerHomeIni() {
        <div className="max-w-7xl mx-auto px-6 lg:px-8">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
+      {/* left IMAGE */}
    <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px] xl:h-[600px]">
   <img
     src="/images/promocion.webp"
@@ -19,14 +20,14 @@ export default function BannerHomeIni() {
 </div>
     
 
-     
+      {/* rihtf CONTENT */}
       <div className="space-y-6">
     
-      
+        {/* Badge */}
         <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-semibold">
           🚦 Aprovecha el beneficio
         </span>
-
+        {/* Title */}
         
         <h1 className="text-center lg:text-left text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
           En comparendos manuales y
@@ -34,7 +35,7 @@ export default function BannerHomeIni() {
           fotomultas 
         </h1>
 
-       
+        {/* Description */}
 
        <div className="relative mb-8">
                 <p className="text-lg text-blue-100 leading-relaxed bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
@@ -43,7 +44,7 @@ export default function BannerHomeIni() {
                   del Código Nacional de Tránsito.
                 </p>
               </div>
-        
+        {/* Buttons */}
         <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
         <Link
           to="/appointment"
@@ -79,7 +80,6 @@ export default function BannerHomeIni() {
         </p>
     </div> 
       </div>
-
     </div>
   </div>
       </section>

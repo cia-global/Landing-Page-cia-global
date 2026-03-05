@@ -99,10 +99,14 @@ export default function Cities() {
     content="Encuentra tu sede más cercana. Cobertura en principales ciudades de Colombia." 
   />
   <meta property="og:url" content="https://www.pagocursoscomparendos.com/cities" />
+<<<<<<< HEAD
   <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/oghome.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Cursos Comparendos" />
+=======
+  <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/og-cities.jpg" />
+>>>>>>> 216c28db1b3b9d76d477ca163eb6be5c6423dbae
   <meta name="robots" content="index,follow" />
 </Helmet>
 
