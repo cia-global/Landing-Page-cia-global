@@ -238,6 +238,12 @@ export default function Appointment() {
       if (!response.ok || !data.success) {
       throw new Error(data.error || 'Error al crear el agendamiento');
     }
+
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-17906931957/C9uGCPmlpoMcEPWx2NpC', // ← tu label de formulario
+      });
+    }
        
       setSuccess(true);
       setFormData(initialFormData);
