@@ -27,13 +27,18 @@
       http-equiv="Content-Security-Policy" 
       content="
         default-src 'self';
-        script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com;
-        script-src-elem 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com;
-        frame-src https://www.google.com https://maps.google.com https://www.google.com/maps https://recaptcha.google.com;
+        script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com  https://googleads.g.doubleclick.net;
+        script-src-elem 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com  https://googleads.g.doubleclick.net;
+        frame-src https://www.google.com https://www.google.com.co https://maps.google.com 
+        https://www.google.com/maps 
+        https://recaptcha.google.com
+        https://www.googletagmanager.com
+        https://td.doubleclick.net;;
         style-src 'self' 'unsafe-inline';
         img-src 'self' data: https: https://www.googletagmanager.com https://www.google-analytics.com;
         font-src 'self' data:;
-        connect-src 'self' https://www.google.com https://www.googletagmanager.com https://www.google-analytics.com https://stats.g.doubleclick.net https://preqwoznjufvrrzwfzqs.supabase.co https://backend-cias-api-production-2acb.up.railway.app;
+        connect-src 'self' https://www.google.com https://www.google.com.co https://www.googletagmanager.com https://www.google-analytics.com https://www.googleadservices.com
+      https://googleads.g.doubleclick.net https://stats.g.doubleclick.net https://preqwoznjufvrrzwfzqs.supabase.co https://backend-cias-api-production-2acb.up.railway.app;
       "
     />
     <meta name="google-site-verification" content="pYaB2vkdIw8T4HLJnmNty9x6SmtWo_dxps1fuamznRY" />
