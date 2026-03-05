@@ -18,7 +18,30 @@ export default function Cities() {
   );
 
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+  
+  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault(); // 👈 detiene la navegación hasta que gtag responda
 
+    const callback = () => {
+      window.open(whatsappUrl, '_blank'); // abre WhatsApp después del evento
+    };
+
+      if (typeof window.gtag === 'undefined') {
+      callback();
+      return;
+    }
+
+    // 👇 Si gtag tarda o falla, abre WhatsApp igual después de 1s
+    const timeout = setTimeout(callback, 1000);
+
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-17906931957/d5AsCPylpoMcEPWx2NpC',
+      event_callback: () => {
+        clearTimeout(timeout); // gtag respondió, cancelar el timeout
+        callback();
+      },
+    });
+  };
 
   useEffect(() => {
     fetchCities();
@@ -76,7 +99,7 @@ export default function Cities() {
     content="Encuentra tu sede más cercana. Cobertura en principales ciudades de Colombia." 
   />
   <meta property="og:url" content="https://www.pagocursoscomparendos.com/cities" />
-  <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/og-home.webp" />
+  <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/oghome.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Cursos Comparendos" />
@@ -104,6 +127,7 @@ export default function Cities() {
                 <p className="text-lg mb-4">Escribenos ahora mismo</p>
                 <a
                   href={whatsappUrl}
+                  onClick={handleWhatsAppClick}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center lg:justify-end w-full gap-3   bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold transition-all duration-200 hover:scale-105 transform"

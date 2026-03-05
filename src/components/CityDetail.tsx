@@ -36,6 +36,31 @@ export default function CityDetail() {
 const whatsappMessage = encodeURIComponent(
   `Hola, quiero información sobre los cursos de concientización vial en la sede de ${city?.name}.`
 );
+ const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+ const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  e.preventDefault(); // 👈 detiene la navegación hasta que gtag responda
+
+    const callback = () => {
+      window.open(whatsappUrl, '_blank'); // abre WhatsApp después del evento
+    };
+
+      if (typeof window.gtag === 'undefined') {
+      callback();
+      return;
+    }
+
+    // 👇 Si gtag tarda o falla, abre WhatsApp igual después de 1s
+    const timeout = setTimeout(callback, 1000);
+
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-17906931957/d5AsCPylpoMcEPWx2NpC',
+      event_callback: () => {
+        clearTimeout(timeout); // gtag respondió, cancelar el timeout
+        callback();
+      },
+    });
+  };
 
   useEffect(() => {
     fetchCity();
@@ -429,7 +454,10 @@ const saturdayHours = getHoursByType('saturday');
                     Contáctanos directamente
                   </p> 
                   <a
-                     href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
+                     href={whatsappUrl}
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     onClick={handleWhatsAppClick}
                     className="block w-full bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg text-center font-semibold hover:bg-opacity-30 transition-colors mb-2"
                   >
                    Escribenos por WhatsApp
