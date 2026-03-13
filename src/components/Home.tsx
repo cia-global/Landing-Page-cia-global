@@ -2,6 +2,7 @@ import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
 import BannerInfo from './banner/banner_home_info';
 import SectionCities from './section/Section_cities';
 import BannerHomeIni from './banner/banner_home_ini';
+import HomeStats from './section/SectionStatsHome';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -88,6 +89,9 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             ¿Por qué elegirnos?
           </h2>
+          <div className="m-24">
+          <HomeStats />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {

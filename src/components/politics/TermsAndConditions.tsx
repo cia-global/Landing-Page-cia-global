@@ -53,7 +53,7 @@ export default function TermsAndConditions() {
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Introducción</h2>
               <p className="text-gray-600 leading-relaxed">
-                El presente sitio web, <span className="font-semibold text-blue-600">www.pagocursoscomparendos.com</span>, es operado por <span className="font-semibold">Setvial S.A.S.</span>, y tiene como finalidad brindar información, orientación y facilitar la inscripción, gestión y pago de cursos de normas de tránsito, dirigidos a personas que han sido sancionadas por infracciones de tránsito en el territorio colombiano.
+                El presente sitio web, <span className="font-semibold text-blue-600">www.pagocursoscomparendos.com</span>, es operado por <span className="font-semibold">VIALSEG S.A.S.</span>, y tiene como finalidad brindar información, orientación y facilitar la inscripción, gestión y pago de cursos de normas de tránsito, dirigidos a personas que han sido sancionadas por infracciones de tránsito en el territorio colombiano.
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function TermsAndConditions() {
 
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
               <p className="text-gray-700 text-sm">
-                <span className="font-semibold">IMPORTANTE:</span> SETVIAL S.A.S. no será responsable por inconvenientes, rechazos, sanciones, pérdidas de cupos, reprocesos o perjuicios derivados del suministro de información incorrecta, incompleta o falsa por parte del usuario.
+                <span className="font-semibold">IMPORTANTE:</span> VIALSEG S.A.S. no será responsable por inconvenientes, rechazos, sanciones, pérdidas de cupos, reprocesos o perjuicios derivados del suministro de información incorrecta, incompleta o falsa por parte del usuario.
               </p>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function TermsAndConditions() {
             <ul className="space-y-2 mb-3">
               {[
                 'El agendamiento realizado por el usuario no garantiza automáticamente la disponibilidad, hasta que el sistema confirme la inscripción.',
-                'SETVIAL S.A.S. se reserva el derecho de reprogramar, modificar o cancelar horarios por razones operativas, logísticas, fuerza mayor o disposiciones de la autoridad competente.'
+                'VIALSEG S.A.S. se reserva el derecho de reprogramar, modificar o cancelar horarios por razones operativas, logísticas, fuerza mayor o disposiciones de la autoridad competente.'
               ].map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
@@ -214,7 +214,7 @@ export default function TermsAndConditions() {
               ))}
             </ul>
             <p className="text-gray-600 text-sm">
-              SETVIAL S.A.S. no garantiza que la reprogramación pueda realizarse en la fecha exacta solicitada por el usuario.
+              VIALSEG S.A.S. no garantiza que la reprogramación pueda realizarse en la fecha exacta solicitada por el usuario.
             </p>
           </div>
 
@@ -256,7 +256,7 @@ export default function TermsAndConditions() {
             </ul>
             <div className="mt-4 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
               <p className="text-gray-700 text-sm">
-                SETVIAL S.A.S. no se hace responsable por sanciones, recargos o consecuencias derivadas del incumplimiento de los plazos legales por parte del usuario.
+                VIALSEG S.A.S. no se hace responsable por sanciones, recargos o consecuencias derivadas del incumplimiento de los plazos legales por parte del usuario.
               </p>
             </div>
           </div>
@@ -272,11 +272,11 @@ export default function TermsAndConditions() {
             <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded">
               <p className="font-semibold text-gray-900 mb-2">Actualmente:</p>
               <p className="text-gray-700">
-                SETVIAL S.A.S. <span className="font-semibold">no realiza pagos a través del sitio web</span>. Todos los pagos correspondientes a los cursos de normas de tránsito se realizan de manera presencial en las sedes autorizadas, bajo las condiciones y tarifas informadas al usuario en el momento de la inscripción o agendamiento.
+                VIALSEG S.A.S. <span className="font-semibold">no realiza pagos a través del sitio web</span>. Todos los pagos correspondientes a los cursos de normas de tránsito se realizan de manera presencial en las sedes autorizadas, bajo las condiciones y tarifas informadas al usuario en el momento de la inscripción o agendamiento.
               </p>
             </div>
             <p className="text-gray-600 text-sm">
-              En caso de que en el futuro se habiliten pagos en línea, SETVIAL S.A.S. informará oportunamente a los usuarios y actualizará los presentes Términos y Condiciones.
+              En caso de que en el futuro se habiliten pagos en línea, VIALSEG S.A.S. informará oportunamente a los usuarios y actualizará los presentes Términos y Condiciones.
             </p>
           </div>
         </div>
@@ -289,10 +289,10 @@ export default function TermsAndConditions() {
           </h2>
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              SETVIAL S.A.S. se compromete a prestar sus servicios de manera diligente, profesional y conforme a la normatividad vigente aplicable a los Centros Integrales de Atención (CIA).
+              VIALSEG S.A.S. se compromete a prestar sus servicios de manera diligente, profesional y conforme a la normatividad vigente aplicable a los Centros Integrales de Atención (CIA).
             </p>
             <p className="font-semibold text-gray-900">
-              Sin embargo, el usuario entiende y acepta que SETVIAL S.A.S. no será responsable por:
+              Sin embargo, el usuario entiende y acepta que VIALSEG S.A.S. no será responsable por:
             </p>
             <div className="space-y-3">
               {[
@@ -309,7 +309,7 @@ export default function TermsAndConditions() {
             </div>
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
               <p className="text-gray-700 text-sm">
-                SETVIAL S.A.S. no garantiza que el uso del sitio web asegure resultados específicos frente a procesos administrativos de tránsito distintos a la correcta prestación del curso conforme a la normativa vigente.
+                VIALSEG S.A.S. no garantiza que el uso del sitio web asegure resultados específicos frente a procesos administrativos de tránsito distintos a la correcta prestación del curso conforme a la normativa vigente.
               </p>
             </div>
           </div>
@@ -323,7 +323,7 @@ export default function TermsAndConditions() {
           </h2>
           <div className="space-y-4 text-gray-700 leading-relaxed">
             <p>
-              SETVIAL S.A.S. se reserva el derecho de modificar en cualquier momento los presentes Términos y Condiciones.
+              VIALSEG S.A.S. se reserva el derecho de modificar en cualquier momento los presentes Términos y Condiciones.
             </p>
             <p>
               Las modificaciones serán publicadas en el sitio web y entrarán en vigencia desde su publicación. El uso continuado del sitio web por parte del usuario se entenderá como aceptación de los cambios realizados.

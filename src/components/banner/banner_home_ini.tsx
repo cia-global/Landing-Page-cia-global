@@ -1,52 +1,47 @@
   import { Link } from 'react-router-dom';
   import BackgroundElements from './BackgroundElemtents';
-  import { Calendar, Info, ChevronRight } from 'lucide-react';
+  import { Calendar, Info, ChevronRight, } from 'lucide-react';
+  import ColombiaMap from '../map/ColombiaMap';
 
+
+// ─── Hero principal ───────────────────────────────────────────────────────────
 export default function BannerHomeIni() {
   return (
-   <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-40">
-       <BackgroundElements />
-       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      
-      {/* left IMAGE */}
-   <div className="relative w-full h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px] xl:h-[600px]">
-  <img
-    src="/images/promocion.webp"
-    alt="Descuento en comparendos"
-    fetchPriority="high"
-    className="absolute inset-0 w-full h-full object-contain transition-transform duration-300 ease-out group-hover:scale-110"
-  />
-</div>
-    
+    <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white py-20 md:py-26 overflow-hidden">
+      <BackgroundElements />
 
-      {/* rihtf CONTENT */}
-      <div className="space-y-6">
-    
-        {/* Badge */}
-        <span className="inline-flex items-center gap-2 bg-white/20 backdrop-blur px-4 py-1 rounded-full text-sm font-semibold">
-          🚦 Aprovecha el beneficio
-        </span>
-        {/* Title */}
-        
-        <h1 className="text-center lg:text-left text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight">
-          En comparendos manuales y
-          <br />
-          fotomultas 
-        </h1>
+      <div className="relative z-10 w-10/12 mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-        {/* Description */}
+          {/* ── IZQUIERDA: Contenido ── */}
+          <div className="space-y-10 order-2 lg:order-1 md:pl-6">
 
-       <div className="relative mb-8">
-                <p className="text-lg text-blue-100 leading-relaxed bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-                  Agenda hoy tu curso de seguridad vial y aprovecha los beneficios
-                  en la reducción del valor de comparendos de acuerdo con la <span className="font-semibold text-yellow-300">Ley 769 de 2002 </span>
-                  del Código Nacional de Tránsito.
-                </p>
-              </div>
-        {/* Buttons */}
-        <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-        <Link
+            {/* Imagen promo */}
+            <div className="flex justify-center">
+              <img
+                src="/images/promocion.webp"
+                alt="50% descuento en comparendos"
+                fetchPriority="high"
+                className=" sm:w-72 md:w-80 lg:w-80 xl:w-96 object-contain drop-shadow-2xl"
+              />
+            </div>
+            {/* Título */}
+            <h1 className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-center">
+              En comparendos manuales y{" "}
+              <span className="text-yellow-300">fotomultas</span>
+            </h1>
+
+            {/* Descripción */}
+            <p className="text-lg text-blue-100 leading-relaxed bg-white/5 backdrop-blur-sm rounded-2xl p-5 border border-white/10">
+              Agenda hoy tu curso de seguridad vial y aprovecha los beneficios
+              en la reducción del valor de comparendos de acuerdo con la{" "}
+              <span className="font-semibold text-yellow-300">Ley 769 de 2002</span>{" "}
+              del Código Nacional de Tránsito.
+            </p>
+
+            {/* Botones */}
+            <div className="flex flex-wrap gap-4 pt-1 justify-center">
+                <Link
           to="/appointment"
           className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 font-bold rounded-xl shadow-xl
              overflow-hidden
@@ -75,13 +70,53 @@ export default function BannerHomeIni() {
                     Más información
                   </span>
           </button>
-        <p className="text-center lg:text-left text-sm text-white/80 pt-2">
-          ✔ Proceso 100% legal y seguro
-        </p>
-    </div> 
-      </div>
-    </div>
+            </div>
+
+            <p className="text-sm text-white/70">✔ Proceso 100% legal y seguro</p>
+          </div>
+
+          {/* ── DERECHA: Mapa de Colombia ── */}
+          <div className=" order-1 lg:order-2 flex flex-col items-start gap-6">     
+            <div className=" relative  w-full max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-xl h-[380px] sm:h-[460px] lg:h-[620px]">
+               <div className=''><ColombiaMap/></div>
+
+    {/* Badge */}
+   
   </div>
-      </section>
-    );
-  }
+          
+          </div>
+
+        </div>
+
+        {/* ── Avalados y vigilados por ── */}
+        <div className="mt-16 pt-10 border-t border-white/20">
+          <p className="text-center text-xs font-semibold text-white/60 tracking-widest uppercase mb-6">
+            Avalados y vigilados por
+          </p>
+          <div className="flex justify-center items-center">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-4 flex items-center gap-6 sm:gap-10">
+              <img
+                src="/images/certification/iconmin.png"
+                alt="Ministerio de Transporte"
+                className="h-8 sm:h-10 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+              />
+              <div className="w-px h-7 bg-white/25" />
+              <img
+                src="/images/certification/surpericon.PNG"
+                alt="Superintendencia"
+                className="h-8 sm:h-10 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+              />
+              <div className="w-px h-7 bg-white/25" />
+              <img
+                src="/images/certification/runt.webp"
+                alt="RUNT"
+                className="h-8 sm:h-10 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
+              />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}

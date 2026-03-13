@@ -18,6 +18,20 @@ export default function SectionCertificate() {
           image: '/images/certification/iconmin.png',
           color: 'bg-white',
         },
+         {
+          title: 'Vigilados por la Super de puertos y transporte',
+          issuer: 'Superintendencia de Puertos y Transporte - Colombia',
+          year: '2023',
+          image: '/images/certification/surper.png',
+          color: 'bg-white',
+        },
+         {
+          title: 'Empresa registrada en el sistema RUNT',
+          issuer: 'Centro registrado en el sistema RUNT para el reporte y validación de cursos de seguridad vial.',
+          year: '2023',
+          image: '/images/certification/runt.webp',
+          color: 'bg-white',
+        },
         {
           title: 'Certificación ISO 9001',
           issuer: 'Calidad en Servicios de Capacitación',
