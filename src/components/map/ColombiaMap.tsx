@@ -29,7 +29,7 @@ const PINES: Pin[] = [
   { id: 9,  ciudad: "Floridablanca",   cx: 357, cy: 245, cityId: "floridablanca" },
   { id: 10, ciudad: "Granada",         cx: 335, cy: 390, cityId: "granada" },
   { id: 11, ciudad: "Ibagué",          cx: 270, cy: 350, cityId: "ibague" },
-  { id: 12, ciudad: "Los patios",      cx: 270, cy: 130, cityId: "los-patios" },
+  { id: 12, ciudad: "Los patios",      cx: 370, cy: 200, cityId: "los-patios" },
   { id: 13, ciudad: "Manizales",       cx: 267, cy: 305, cityId: "manizales" },
   { id: 14, ciudad: "Neiva",           cx: 260, cy: 405, cityId: "neiva" },
   { id: 15, ciudad: "Pasto",           cx: 180, cy: 470, cityId: "pasto" },
@@ -37,7 +37,8 @@ const PINES: Pin[] = [
   { id: 17, ciudad: "Piedecuesta",     cx: 360, cy: 258, cityId: "piedecuesta" },
   { id: 18, ciudad: "Restrepo",        cx: 335, cy: 350, cityId: "restrepo" },
   { id: 19, ciudad: "Tulua",           cx: 217, cy: 368, cityId: "tulua" },
-  { id: 20, ciudad: "Yopal",           cx: 390, cy: 300, cityId: "yopal" },  
+  { id: 20, ciudad: "Yopal",           cx: 390, cy: 300, cityId: "yopal" },
+  { id: 21, ciudad: "La plata",        cx: 250, cy: 425, cityId: "la-plata" },  
 ];
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
@@ -231,7 +232,7 @@ export default function ColombiaMap({ size = 500 }: ColombiaMapProps) {
           </g>
         ))}
       </svg>
-       <div className="absolute bottom-2 left-12 flex items-center gap-1.5 bg-yellow-400 text-blue-900 font-extrabold text-xs px-3 py-1.5 rounded-full shadow-lg">
+       <div className="absolute bottom-10 md:bottom-20 lg:bottom-56 xl:bottom-12 left-12 flex items-center gap-1.5 bg-yellow-400 text-blue-900 font-extrabold text-xs px-3 py-1.5 rounded-full shadow-lg">
       + 25 sedes
     </div>
         <p className="text-white/60 text-xs text-center tracking-wide">
