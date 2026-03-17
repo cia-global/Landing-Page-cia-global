@@ -70,7 +70,7 @@ export default function PrivacyPolicy() {
           </h2>
           <div className="bg-blue-50 rounded-xl p-6">
             <p className="text-gray-700 leading-relaxed">
-              <span className="font-semibold text-gray-900">Setvial S.A.S.</span>, identificada con NIT 901524970-7, es una empresa legalmente constituida en la <span className="font-semibold">República de Colombia</span>, responsable del tratamiento de los datos personales recopilados a través del sitio web <span className="font-semibold text-blue-600">https://www.pagocursoscomparendos.com</span>.
+              <span className="font-semibold text-gray-900">VIALSEG S.A.S.</span>, identificada con NIT 901534525, es una empresa legalmente constituida en la <span className="font-semibold">República de Colombia</span>, responsable del tratamiento de los datos personales recopilados a través del sitio web <span className="font-semibold text-blue-600">https://www.pagocursoscomparendos.com</span>.
             </p>
           </div>
         </div>
@@ -89,7 +89,7 @@ export default function PrivacyPolicy() {
               2.1 Datos personales suministrados directamente por el titular
             </h3>
             <p className="text-gray-700 mb-4">
-              A través del sitio web, Setvial S.A.S. podrá recopilar los siguientes datos personales proporcionados voluntariamente por los usuarios:
+              A través del sitio web, VIALSEG S.A.S. podrá recopilar los siguientes datos personales proporcionados voluntariamente por los usuarios:
             </p>
             <ul className="space-y-2">
               {[
@@ -142,7 +142,7 @@ export default function PrivacyPolicy() {
             Finalidades del tratamiento
           </h2>
           <p className="text-gray-700 mb-4">
-            Los datos personales recolectados por Setvial S.A.S. serán tratados exclusivamente para las siguientes finalidades:
+            Los datos personales recolectados por VIALSEG S.A.S. serán tratados exclusivamente para las siguientes finalidades:
           </p>
           <div className="space-y-3">
             {[
@@ -150,7 +150,7 @@ export default function PrivacyPolicy() {
               'Comunicación con el usuario a través de correo electrónico, llamadas telefónicas, mensajes de texto o aplicaciones de mensajería instantánea como WhatsApp, para informar sobre procesos, horarios, requisitos y estados del servicio.',
               'Gestión administrativa y operativa del servicio, incluyendo control interno, atención al cliente y gestión de registros.',
               'Envío de información relacionada con el curso, trámites o servicios contratados, tales como recordatorios, confirmaciones y notificaciones importantes.',
-              'Envío de publicidad, promociones, campañas informativas o comerciales relacionadas con los servicios ofrecidos por Setvial S.A.S.'
+              'Envío de publicidad, promociones, campañas informativas o comerciales relacionadas con los servicios ofrecidos por VIALSEG S.A.S.'
             ].map((item, index) => (
               <div key={index} className="flex items-start gap-3 bg-gray-50 p-4 rounded-lg">
                 <span className="font-bold text-blue-600 flex-shrink-0">{index + 1}.</span>
@@ -176,10 +176,10 @@ export default function PrivacyPolicy() {
           </p>
           <div className="space-y-3">
             {[
-              'Conocer, actualizar y rectificar sus datos personales frente a Setvial S.A.S., especialmente cuando sean parciales, inexactos, incompletos o induzcan a error.',
+              'Conocer, actualizar y rectificar sus datos personales frente a VIALSEG S.A.S., especialmente cuando sean parciales, inexactos, incompletos o induzcan a error.',
               'Solicitar prueba de la autorización otorgada para el tratamiento de sus datos personales, salvo cuando dicha autorización no sea requerida por la ley.',
               'Ser informados, previa solicitud, respecto del uso que se ha dado a sus datos personales.',
-              'Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a lo dispuesto en la normativa vigente, una vez hayan agotado el trámite de consulta o reclamo ante Setvial S.A.S.',
+              'Presentar quejas ante la Superintendencia de Industria y Comercio (SIC) por infracciones a lo dispuesto en la normativa vigente, una vez hayan agotado el trámite de consulta o reclamo ante VIALSEG S.A.S.',
               'Revocar la autorización y/o solicitar la supresión de los datos, cuando en el tratamiento no se respeten los principios, derechos y garantías constitucionales y legales.',
               'Acceder en forma gratuita a sus datos personales que hayan sido objeto de tratamiento.'
             ].map((item, index) => (
@@ -228,7 +228,7 @@ export default function PrivacyPolicy() {
               <h3 className="font-semibold text-gray-900">Plazo de respuesta</h3>
             </div>
             <p className="text-gray-700">
-              Setvial S.A.S. dará respuesta a las consultas y reclamos relacionados con el tratamiento de datos personales dentro de un plazo máximo de <span className="font-semibold">quince (15) días hábiles</span>, contados a partir de la fecha de recepción de la solicitud.
+              VIALSEG S.A.S. dará respuesta a las consultas y reclamos relacionados con el tratamiento de datos personales dentro de un plazo máximo de <span className="font-semibold">quince (15) días hábiles</span>, contados a partir de la fecha de recepción de la solicitud.
             </p>
           </div>
         </div>
@@ -240,7 +240,7 @@ export default function PrivacyPolicy() {
             Seguridad de la información
           </h2>
           <p className="text-gray-700 mb-4">
-            Setvial S.A.S. adopta las medidas técnicas, humanas y administrativas necesarias para proteger los datos personales de los titulares, evitando su adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento.
+            VIALSEG S.A.S. adopta las medidas técnicas, humanas y administrativas necesarias para proteger los datos personales de los titulares, evitando su adulteración, pérdida, consulta, uso o acceso no autorizado o fraudulento.
           </p>
           <p className="text-gray-700 mb-4 font-semibold">
             En particular, se implementan las siguientes medidas:
@@ -260,7 +260,7 @@ export default function PrivacyPolicy() {
           </ul>
           <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
             <p className="text-gray-700 text-sm">
-              <span className="font-semibold">Advertencia:</span> El titular reconoce que ningún sistema es completamente infalible, por lo que Setvial S.A.S. no puede garantizar la seguridad absoluta de la información, aunque se compromete a actuar diligentemente ante cualquier incidente de seguridad.
+              <span className="font-semibold">Advertencia:</span> El titular reconoce que ningún sistema es completamente infalible, por lo que VIALSEG S.A.S. no puede garantizar la seguridad absoluta de la información, aunque se compromete a actuar diligentemente ante cualquier incidente de seguridad.
             </p>
           </div>
         </div>
@@ -272,7 +272,7 @@ export default function PrivacyPolicy() {
             Transmisión de datos a terceros
           </h2>
           <p className="text-gray-700 mb-4">
-            Setvial S.A.S. podrá transmitir o transferir datos personales a terceros únicamente cuando sea necesario para el cumplimiento de las finalidades descritas en la presente Política de Privacidad.
+            VIALSEG S.A.S. podrá transmitir o transferir datos personales a terceros únicamente cuando sea necesario para el cumplimiento de las finalidades descritas en la presente Política de Privacidad.
           </p>
           <p className="text-gray-700 mb-4 font-semibold">
             En particular, los datos personales podrán ser transmitidos a:
@@ -314,19 +314,19 @@ export default function PrivacyPolicy() {
           <div className="space-y-4">
             <div className="bg-purple-50 border-l-4 border-blue-400 p-4 rounded">
               <p className="text-gray-700 text-sm">
-                Estas transmisiones se realizan bajo acuerdos que garantizan el cumplimiento de estándares adecuados de seguridad y confidencialidad, y los terceros solo podrán tratar los datos conforme a las instrucciones de Setvial S.A.S. y para las finalidades autorizadas.
+                Estas transmisiones se realizan bajo acuerdos que garantizan el cumplimiento de estándares adecuados de seguridad y confidencialidad, y los terceros solo podrán tratar los datos conforme a las instrucciones de VIALSEG S.A.S. y para las finalidades autorizadas.
               </p>
             </div>
 
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
               <p className="text-gray-700 text-sm">
-                En caso de transferencias internacionales de datos, Setvial S.A.S. verificará que el país receptor cuente con niveles adecuados de protección de datos personales o, en su defecto, adoptará las medidas contractuales necesarias para garantizar la seguridad de la información.
+                En caso de transferencias internacionales de datos, VIALSEG S.A.S. verificará que el país receptor cuente con niveles adecuados de protección de datos personales o, en su defecto, adoptará las medidas contractuales necesarias para garantizar la seguridad de la información.
               </p>
             </div>
 
             <div className="bg-red-50 border-l-4 border-red-400 p-4 rounded">
               <p className="text-gray-700 text-sm">
-                <span className="font-semibold">Importante:</span> Setvial S.A.S. no venderá, alquilará ni cederá los datos personales a terceros para fines distintos a los aquí establecidos sin la autorización previa, expresa e informada del titular.
+                <span className="font-semibold">Importante:</span> VIALSEG S.A.S. no venderá, alquilará ni cederá los datos personales a terceros para fines distintos a los aquí establecidos sin la autorización previa, expresa e informada del titular.
               </p>
             </div>
           </div>
@@ -339,7 +339,7 @@ export default function PrivacyPolicy() {
             Procedimiento para consultas y reclamos
           </h2>
           <p className="text-gray-700 mb-4">
-            Los titulares de los datos personales podrán ejercer sus derechos de consulta, actualización, rectificación, supresión o revocatoria de la autorización, mediante solicitud dirigida a Setvial S.A.S., a través del siguiente canal:
+            Los titulares de los datos personales podrán ejercer sus derechos de consulta, actualización, rectificación, supresión o revocatoria de la autorización, mediante solicitud dirigida a VIALSEG S.A.S., a través del siguiente canal:
           </p>
           
           <div className="bg-blue-50 rounded-xl p-6 mb-6">
@@ -422,7 +422,7 @@ export default function PrivacyPolicy() {
             </div>
             <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
               <p className="text-sm">
-                Setvial S.A.S. se reserva el derecho de modificar la presente Política de Privacidad en cualquier momento, en cumplimiento de cambios normativos o ajustes internos, garantizando siempre los derechos de los titulares.
+                VIALSEG S.A.S. se reserva el derecho de modificar la presente Política de Privacidad en cualquier momento, en cumplimiento de cambios normativos o ajustes internos, garantizando siempre los derechos de los titulares.
               </p>
             </div>
           </div>

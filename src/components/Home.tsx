@@ -1,12 +1,55 @@
-import { CheckCircle, Users, MapPin, Calendar, Clock } from 'lucide-react';
+import { CheckCircle, Users, MapPin, Calendar, Clock, ChevronLeft, ChevronRight, } from 'lucide-react';
 import BannerInfo from './banner/banner_home_info';
 import SectionCities from './section/Section_cities';
 import BannerHomeIni from './banner/banner_home_ini';
+import HomeStats from './section/SectionStatsHome';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { Sedes, SedesData } from '../data/sedes1';
+import { useState, useEffect } from 'react';
+
 
 
 export default function Home() {
+    const [cities, setCities] = useState<Sedes[]>([]);
+    const [loadingCities, setLoadingCities] = useState(true);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+   useEffect(() => {
+      fetchCities();
+    }, []);
+
+     const fetchCities = async () => {
+        try {
+          setTimeout(() => {
+              setCities(SedesData);
+              setLoadingCities(false);
+            }, 1000);
+          
+        } catch (error) {
+          console.error('Error fetching cities:', error);
+        } finally {
+          setLoadingCities(false);
+        }
+      };
+    
+      const handlePrev = () => {
+        setCurrentIndex((prev) => (prev === 0 ? cities.length - 1 : prev - 1));
+      };
+    
+      const handleNext = () => {
+        setCurrentIndex((prev) => (prev === cities.length - 1 ? 0 : prev + 1));
+      };
+    
+      const getVisibleCities = () => {
+        const itemsPerPage = window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1;
+        const visible = [];
+        for (let i = 0; i < itemsPerPage; i++) {
+          visible.push(cities[(currentIndex + i) % cities.length]);
+        }
+        return visible;
+      };
+
   return (
      <>
      <Helmet>
@@ -88,6 +131,75 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             ¿Por qué elegirnos?
           </h2>
+          <div className="sm:m-16 ">
+          <HomeStats />
+          </div>
+          <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {loadingCities ? (
+            <div className="flex justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+          ) : cities.length > 0 ? (
+            <div className="relative">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {getVisibleCities().map((city, idx) => (
+                  <div key={`${city.id}-${idx}`} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div className="relative h-64 overflow-hidden bg-gray-200">
+                      {city.image ? (
+                        <img
+                          src={city.image}
+                          alt={city.name}
+                          className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-green-100">
+                          <span className="text-gray-400 text-sm">Sin imagen</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-center text-gray-900 mb-2">{city.name}</h3>   
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {cities.length > 3 && (
+                <div className="flex justify-center gap-4 mt-8">
+                  <button
+                    onClick={handlePrev}
+                    className="bg-white text-blue-600 p-3 rounded-full shadow-lg hover:bg-blue-50 transition-colors duration-200"
+                    aria-label="Anterior"
+                  >
+                    <ChevronLeft size={24} />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="bg-white text-blue-600 p-3 rounded-full shadow-lg hover:bg-blue-50 transition-colors duration-200"
+                    aria-label="Siguiente"
+                  >
+                    <ChevronRight size={24} />
+                  </button>
+                </div>
+              )}
+
+              <div className="flex justify-center gap-2 mt-6">
+                {cities.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      idx === currentIndex ? 'bg-blue-600 w-8' : 'bg-gray-300 w-2'
+                    }`}
+                    aria-label={`Ir a ciudad ${idx + 1}`}
+                  ></button>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
