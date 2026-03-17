@@ -107,7 +107,7 @@ export default function BannerHomeIni() {
               <div className="w-px h-7 bg-white/25" />
               <div className="group relative flex items-center justify-center">
       <img
-        src="/images/certification/surpericon.png"
+        src="/images/certification/surpericon.PNG"
         alt="Superintendencia"
         className="h-8 sm:h-10 w-auto object-contain opacity-80 group-hover:opacity-100 transition-opacity"
       />
