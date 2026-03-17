@@ -22,11 +22,21 @@ export const SedesData: Sedes[] = [
   },
   {
     id: "4",
+    name: "Florencia Vialseg",
+    image: "/images/sedes/p1/dosquebradas.webp",
+  },
+  {
+    id: "5",
     name: "La Plata",
     image: "/images/sedes/p1/laplatasede.png",
   },
   {
-    id: "5",
+    id: "6",
+    name: "Dosquebradas",
+    image: "/images/sedes/p1/florencia.webp",
+  },
+  {
+    id: "7",
     name: "Calarca",
     image: "/images/sedes/p1/calarcasede.png",
   },

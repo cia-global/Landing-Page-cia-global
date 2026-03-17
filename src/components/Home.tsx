@@ -131,7 +131,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             ¿Por qué elegirnos?
           </h2>
-          <div className="m-24">
+          <div className="sm:m-16 ">
           <HomeStats />
           </div>
           <section className="py-16 bg-gray-50">
