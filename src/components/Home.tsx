@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Sedes, SedesData } from '../data/sedes1';
 import { useState, useEffect } from 'react';
+import CertHome from './certification/CerticadoHome';
 
 
 
@@ -70,7 +71,10 @@ export default function Home() {
         <meta name="robots" content="index,follow" />
       </Helmet>
     <div className="pt-6">
+      <div>
       <BannerHomeIni/>
+      <CertHome/>
+      </div>
       <SectionCities/>
 
       <section className="pt-20 pb-36 bg-gray-50">

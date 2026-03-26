@@ -3,9 +3,9 @@ import { drawPath, stateCode } from "@react-map/colombia/src/constants";
 import { useNavigate } from 'react-router-dom';
 
 // ─── Colores ──────────────────────────────────────────────────────────────────
-const COLOR_DEFAULT  = "rgba(255,255,255,0.10)";
-const COLOR_HOVER    = "rgba(255,255,255,0.28)";
-const STROKE_COLOR   = "rgba(255,255,255,0.30)";
+const COLOR_DEFAULT  = "rgba(217,217,217)";
+const COLOR_HOVER    = "rgba(250,250,250)";
+const STROKE_COLOR   = "rgba(0,0,0,0.30)";
 
 
 // ─── Pines en coordenadas del viewBox SVG ────────────────────────────────────
@@ -49,12 +49,9 @@ interface HoveredDepto {
   y: number;
 }
 
-interface ColombiaMapProps {
-  size?: number;
-}
 
 // ─── Componente ───────────────────────────────────────────────────────────────
-export default function ColombiaMap({ size = 500 }: ColombiaMapProps) {
+export default function ColombiaMap() {
   const svgRef = useRef<SVGSVGElement>(null);
   const [viewBox, setViewBox] = useState("0 0 100 100");
   const [hoveredDepto, setHoveredDepto] = useState<HoveredDepto | null>(null);
@@ -232,12 +229,6 @@ export default function ColombiaMap({ size = 500 }: ColombiaMapProps) {
           </g>
         ))}
       </svg>
-       <div className="absolute bottom-10 md:bottom-20 lg:bottom-56 xl:bottom-12 left-12 flex items-center gap-1.5 bg-yellow-400 text-blue-900 font-extrabold text-xs px-3 py-1.5 rounded-full shadow-lg">
-      + 25 sedes
-    </div>
-        <p className="text-white/60 text-xs text-center tracking-wide">
-              Cobertura nacional · Presencia en las principales ciudades
-            </p>
     </div>
   );
 }
