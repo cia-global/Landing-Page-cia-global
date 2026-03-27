@@ -42,7 +42,7 @@ const BannerInfo = () => {
   ];
 
   return (
-    <section id='more-info' className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 text-white overflow-hidden">
+    <section id='more-info' className="relative bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white overflow-hidden">
       {/* Imagen decorativa optimizada */}
       <div className="absolute inset-0 pointer-events-none">
         <img
@@ -54,7 +54,7 @@ className="absolute right-0 top-0 h-full w-full object-cover opacity-25 md:opaci
           }}
         />
         {/* Gradiente overlay mejorado */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-blue-700/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-800/50 to-transparent"></div>
       </div>
 
       {/* Contenido principal */}
@@ -63,7 +63,7 @@ className="absolute right-0 top-0 h-full w-full object-cover opacity-25 md:opaci
           {/* Header section */}
           <div className="mb-10 md:mb-12">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
               <span className="text-sm font-semibold">Información Importante</span>
             </div>
             
@@ -87,12 +87,12 @@ className="absolute right-0 top-0 h-full w-full object-cover opacity-25 md:opaci
                 }}
               >
                 {/* Badge de descuento */}
-                <div className="absolute -top-3 -right-3 bg-gradient-to-br from-green-500 to-green-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                <div className="absolute -top-3 -right-3 bg-gradient-to-br from-yellow-400 to-amber-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                   {card.title.includes('50%') ? '50%' : '25%'}
                 </div>
 
                 {/* Icono */}
-                <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div className="flex items-center justify-center text-amber-400 w-12 h-12 bg-gray-950 rounded-xl mb-4 group-hover:bg-slate-400 group-hover:text-white transition-colors">
                   {card.icon}
                 </div>
 

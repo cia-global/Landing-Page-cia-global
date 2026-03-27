@@ -59,8 +59,8 @@ export default function Header() {
                 to={item.path || '#'}
                 className={`font-medium transition-colors duration-200 ${
                   isActive(item.path!, item.id)
-                    ? 'text-amber-500 border-b-2 border-amber-500 pb-1'
-                    : 'text-gray-700 hover:text-amber-500'
+                    ? 'text-gray-900 border-b-2 border-gray-900 pb-1'
+                    : 'text-gray-900 hover:text-gray-600'
                 }`}
               >
                 {item.label}
@@ -87,8 +87,8 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`font-medium transition-colors duration-200 text-left py-2 ${
                     isActive(item.path!, item.id)
-                      ? 'text-amber-500 font-semibold border-l-4 border-amber-500 pl-3'
-                      : 'text-gray-700 hover:text-amber-500 pl-3'
+                      ? 'text-gray-900 font-semibold border-l-4 border-gray-900 pl-3'
+                      : 'text-gray-900 hover:text-gray-600 pl-3'
                   }`}
                 >
                   {item.label}

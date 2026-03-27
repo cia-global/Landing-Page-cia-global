@@ -115,8 +115,8 @@ export default function Home() {
                 
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <step.icon className="text-white" size={32} />
+                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <step.icon className="text-gray-950" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2 text-center">
                   {step.title}
@@ -231,8 +231,8 @@ export default function Home() {
                 key={index}
                 className="text-center p-6 rounded-lg hover:bg-gray-50 transition-colors duration-200"
               >
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  <benefit.icon className="text-blue-600" size={32} />
+                <div className="w-16 h-16 bg-gray-950 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  <benefit.icon className="text-amber-300" size={32} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
                   {benefit.title}

@@ -10,7 +10,7 @@ export default function BannerHomeIni() {
     
     <section className="relative bg-gray-50 text-white py-20 md:py-26 overflow-hidden">
         <div className="absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full lg:bg-gray-950 " />
-        <div className="absolute top-0 left-1/2 w-20 h-full bg-gradient-to-r from-gray-50 to-transparent"></div>
+        <div className="absolute top-0 left-1/2 w-20 h-full bg-gradient-to-r from-gray-50 to-gray-950/30"></div>
       <BackgroundElements />
         {/*  bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 */}
       <div className="relative z-10  mx-auto">
@@ -48,7 +48,7 @@ export default function BannerHomeIni() {
             <div className="flex flex-wrap gap-4 pt-1 justify-center">
               <Link
                 to="/appointment"
-                className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-blue-900 font-bold rounded-xl shadow-xl
+                className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 font-bold rounded-xl shadow-xl
                             overflow-hidden
                             animate-[float_4s_ease-in-out_infinite]
                             hover:animate-none
