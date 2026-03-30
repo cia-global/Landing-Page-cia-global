@@ -17,9 +17,9 @@ export default function HomeStats() {
         </span>{" "}
         usuarios y{" "}
         <span className="text-2xl font-bold text-amber-400 sm:text-4xl lg:text-5xl">
-          {inView && <CountUp end={50000} duration={3} separator="." />}
+          {inView && <CountUp end={56000} duration={3} separator="." />}
         </span>{" "}
-        cursos impartidos en{" "}
+        cursos impartidos solo en{" "}
         <span className="font-semibold text-amber-400">2025</span>.
       </p>
     </div>

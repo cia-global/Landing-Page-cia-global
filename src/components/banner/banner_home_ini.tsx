@@ -10,7 +10,7 @@ export default function BannerHomeIni() {
     
     <section className="relative bg-gray-50 text-white py-20 md:py-26 overflow-hidden">
         <div className="absolute lg:top-0 lg:right-0 lg:w-1/2 lg:h-full lg:bg-gray-950 " />
-        <div className="absolute top-0 left-1/2 w-20 h-full bg-gradient-to-r from-gray-50 to-gray-950/30"></div>
+        <div className="absolute top-0 left-1/2 w-20 h-full bg-gradient-to-r from-gray-50 to-gray-950"></div>
       <BackgroundElements />
         {/*  bg-gradient-to-br from-blue-600 via-blue-700 to-green-600 */}
       <div className="relative z-10  mx-auto">
@@ -30,8 +30,8 @@ export default function BannerHomeIni() {
             {/* <div className="bg-gray-900 backdrop-blur-md border border-white/20 rounded-3xl p-8 shadow-2xl"></div> */}
             {/* Título */}
             <h1 className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight text-center text-black">
-              EN COMPARENDOS MANUALES Y{" "}
-              <span className="text-amber-300 ">FOTOMULTAS</span>
+              EN COMPARENDOS Y{" "}
+              <span className="text-amber-400 ">FOTOMULTAS</span>
             </h1>
 
             {/* Descripción */}

@@ -309,7 +309,7 @@ export default function AppointmentForm({
       <button
         type="submit"
         disabled={submitting || !acceptedTerms}
-        className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
+        className="w-full bg-gradient-to-br from-yellow-400 to-amber-500  text-gray-900 py-3 rounded-lg font-semibold hover:from-yellow-500 hover:to-amber-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98]"
       >
         {submitting ? (
           <span className="flex items-center justify-center">

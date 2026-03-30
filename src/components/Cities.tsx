@@ -108,7 +108,7 @@ export default function Cities() {
 
 
     <div className="pt-16">
-        <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-20 relative overflow-hidden">
+        <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mb-48"></div>
@@ -184,12 +184,12 @@ export default function Cities() {
                   className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-200 p-6"
                 >
                   <div className="flex items-start mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="text-white" size={24} />
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="text-amber-300" size={24} />
                     </div>
                     <div className="ml-4">
                       <h3 className="text-xl font-bold text-gray-900">{city.name}</h3>
-                      <span className="inline-block bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full mt-1">
+                      <span className="inline-block bg-blue-400/20 text-blue-600 text-xs px-2 py-1 rounded-full mt-1">
                         Disponible
                       </span>
                     </div>
@@ -217,7 +217,7 @@ export default function Cities() {
                     </Link>
                    <Link
                       to={`/appointment?city=${city.id}`} 
-                      className="flex-1 bg-gradient-to-r from-blue-600 to-green-600 text-white text-center py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
+                      className="flex-1 bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white text-center py-2 rounded-lg font-semibold hover:from-blue-800 hover:to-indigo-800 transition-all duration-200"
                     >
                       Agendar
                     </Link> 
@@ -239,7 +239,7 @@ export default function Cities() {
           </p>
           <Link
             to="/contact"
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+            className="bg-blue-800 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
           >
             Contáctanos
           </Link>
