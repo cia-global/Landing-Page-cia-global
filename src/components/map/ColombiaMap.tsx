@@ -177,7 +177,7 @@ export default function ColombiaMap() {
             style={{ cursor: "pointer" }}
           >
             {/* Pulso */}
-            <circle cx={pin.cx} cy={pin.cy} r={pulseR} fill="rgba(251,191,36,0.15)">
+            <circle cx={pin.cx} cy={pin.cy} r={pulseR} fill="rgba(250,250,250)">
               <animate attributeName="r"
                 from={pinR} to={pulseR}
                 dur="2.2s" begin={`${pin.id * 0.25}s`}
@@ -191,10 +191,11 @@ export default function ColombiaMap() {
             <circle cx={pin.cx} cy={pin.cy}
               r={pinR * 1.7}
               fill="rgba(251,191,36,0.25)"
-              stroke="#fbbf24" strokeWidth={0.8}
+             
+              stroke="gray" strokeWidth={0.8}
             />
             {/* Punto central */}
-            <circle cx={pin.cx} cy={pin.cy} r={pinR} fill="#fbbf24" />
+            <circle cx={pin.cx} cy={pin.cy} r={pinR} fill="#FBBF24" />
 
             {/* Tooltip del pin */}
             {hoveredPin === pin.id && (
