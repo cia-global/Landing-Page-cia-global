@@ -81,5 +81,6 @@ export type Certificado = {
   curso: string;
   fecha_certificado: string;
   horas: string | number;
+  ciudad: string;
   foto_url?: string;
 }

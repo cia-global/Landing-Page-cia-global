@@ -14,9 +14,9 @@ const MESES = [
   "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",
 ];
 
-function formatFecha(fechaStr: string){
+function formatFecha(fechaStr: string, ciudad: string){
   const d = new Date(fechaStr + "T00:00:00");
-  return `Dado en Yopal, ${MESES[d.getMonth()]} ${d.getDate()} de ${d.getFullYear()}`;
+  return `Dado en ${ciudad}, ${MESES[d.getMonth()]} ${d.getDate()} de ${d.getFullYear()}`;
 }
 
 const PLACEHOLDER =
@@ -36,7 +36,7 @@ export default function CertificadoDetalle() {
   const { codigo } = useParams();
   const navigate = useNavigate();
 
-  const [cert, setCert] = useState<Certificado[]>([]);
+  const [cert, setCert] = useState<Certificado | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [imgSrc, setImgSrc] = useState(PLACEHOLDER);
@@ -92,20 +92,8 @@ export default function CertificadoDetalle() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-200 py-10 px-4 font-[Montserrat,sans-serif] italic">
+    <div className="min-h-screen bg-gray-200 py-10 px-4  font-[Montserrat,sans-serif] italic ">
 
-      {/* Botón volver */}
-      <div className="max-w-3xl mx-auto mb-4">
-        <button
-          onClick={() => navigate("/certificados")}
-          className="flex items-center gap-2 text-sky-700 hover:text-sky-900 font-semibold text-sm transition-colors not-italic"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-          </svg>
-          Volver a certificados
-        </button>
-      </div>
 
       {/* Tarjeta */}
       <div className="relative max-w-3xl mx-auto bg-white rounded-2xl overflow-hidden shadow-2xl p-10 py-32">
@@ -119,12 +107,12 @@ export default function CertificadoDetalle() {
             backgroundSize: "contain",
             backgroundPosition: "center",
             transform: "rotate(30deg) scale(1.2)",
-            opacity: 0.6,
+            opacity: 0.5,
             zIndex: 0,
           }}
         />
 
-        <div className="relative z-10 space-y-6">
+        <div className="relative z-10 space-y-16">
 
           {/* Encabezado */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -150,14 +138,17 @@ export default function CertificadoDetalle() {
 
             {/* Foto + nombre */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-left">
+              {imgSrc && imgSrc !== PLACEHOLDER && (
               <img
                 src={imgSrc}
                 alt={`Foto de ${cert.nombre_completo}`}
                 onError={() => setImgSrc(PLACEHOLDER)}
                 className="w-28 h-auto rounded-lg shadow-md border border-gray-200 object-cover"
               />
+              
+              )}
               <div>
-                <p className="font-bold text-sm uppercase tracking-widest text-gray-500">
+                <p className="text-center font-bold text-sm uppercase tracking-widest text-gray-800">
                   HACE CONSTAR QUE:
                 </p>
                 <p className="text-xl sm:text-2xl font-bold text-gray-800 mt-1">
@@ -173,7 +164,7 @@ export default function CertificadoDetalle() {
 
             <p className="text-gray-600 text-sm">Asistió al</p>
             <p className="font-bold text-base text-gray-800">{cert.curso}</p>
-            <p className="text-gray-700 text-sm">{formatFecha(cert.fecha_certificado)}</p>
+            <p className="text-gray-700 text-sm">{formatFecha(cert.fecha_certificado, cert.ciudad)}</p>
             <p className="text-gray-600 text-sm">Duración: {cert.horas || "0"} horas</p>
           </div>
 
