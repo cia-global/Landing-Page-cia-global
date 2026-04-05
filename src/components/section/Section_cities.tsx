@@ -49,7 +49,9 @@ export default function SectionCities () {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {cities.map((city) => (
-                <div
+                
+                <Link 
+                to={`/cities/${city.slug}`}
                   key={city.id}
                   className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-200"
                 >
@@ -65,7 +67,8 @@ export default function SectionCities () {
                     <Clock size={16} className="mr-2 text-gray-400" />
                     {city.phone}
                   </p>
-                </div>
+                </Link>
+
               ))}
             </div>
           )}
