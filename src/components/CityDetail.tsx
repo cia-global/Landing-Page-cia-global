@@ -227,7 +227,7 @@ const saturdayHours = getHoursByType('saturday');
         </Link>
       </div>
 
-      <section className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
+      <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div>
@@ -271,8 +271,8 @@ const saturdayHours = getHoursByType('saturday');
       </div>
 
       <div className="flex items-start">
-        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-          <Phone className="text-green-600" size={24} />
+        <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <Phone className="text-yellow-500" size={24} />
         </div>
         <div className="ml-4">
           <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -378,7 +378,7 @@ const saturdayHours = getHoursByType('saturday');
                             onClick={() => setSelectedDay(day)}
                             className={`py-3 px-2 rounded-lg font-semibold transition-all duration-200 text-center text-sm ${
                               selectedDay === day
-                                ? 'bg-blue-600 text-white shadow-lg scale-105'
+                                ? 'bg-blue-700 text-white shadow-lg scale-105'
                                 : schedules.some((s) => s.day_of_week === day)
                                 ? 'bg-gray-100 text-gray-900 hover:bg-gray-200'
                                 : 'bg-gray-50 text-gray-400 cursor-not-allowed'
@@ -408,7 +408,7 @@ const saturdayHours = getHoursByType('saturday');
                                 className={`py-3 px-4 border-2 rounded-lg transition-all duration-200 text-center group
                                   ${
                                     selectedSchedule?.id === schedule.id
-                                    ? 'bg-gradient-to-r from-blue-50 to-green-50 text-white border-blue-600 shadow-lg'
+                                    ? 'bg-gradient-to-r from-blue-50 to-green-50 text-white border-blue-700 shadow-lg'
                                     : 'bg-gradient-to-r from-blue-50 to-green-50 border-blue-200 hover:border-blue-600'
                                     }
                                 `}
@@ -432,7 +432,7 @@ const saturdayHours = getHoursByType('saturday');
 
 
             <div>
-              <div className="bg-gradient-to-br from-blue-600 to-green-600 text-white rounded-xl shadow-lg p-8 sticky top-24">
+              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white rounded-xl shadow-lg p-8 sticky top-24">
                 <h2 className="text-2xl font-bold mb-6">¿Listo para agendar?</h2>
 
                 <p className="mb-6 text-blue-100">
@@ -441,7 +441,7 @@ const saturdayHours = getHoursByType('saturday');
 
                 <Link
                   to ={`/appointment?city=${city.id}&day=${selectedDay}&schedule=${selectedSchedule?.id}`} 
-                  className="w-full bg-white text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
+                  className="w-full bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
                 >
                   <Calendar size={20} className="mr-2" />
                   Agendar Clase

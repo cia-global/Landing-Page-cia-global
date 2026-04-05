@@ -31,23 +31,23 @@ export default function Header() {
     return location.pathname.startsWith(path);
   };
   return (
-    <header className="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+    <header className="bg-yellow-300 shadow-md fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center cursor-pointer">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-green-500 rounded-full flex items-center justify-center">
-             
+              <div className="w-16 h-14 bg-white rounded-full flex items-center justify-center"> 
       <img
         src="/images/icon.webp"
-        alt="Banner decorativo"
-        width={48}
-        height={49}
+        alt="Icono de Cursos Comparendos"
+        width={55}
+        height={38}
         // className="absolute right-0 top-0 h-full w-5.1/12 object-contain opacity-30 md:opacity-40"
       />
+      </div>  
               {/* <span className="text-white font-bold text-xl">CC</span> */}
-            </div>
+            
             <div className="ml-3">
-              <h1 className="text-xl font-bold text-blue-900">Cursos Comparendos</h1>
+              <h1 className="text-xl font-bold text-black">Cursos Comparendos</h1>
               <p className="text-xs text-gray-600">Seguridad y Responsabilidad</p>
             </div>
           </Link>
@@ -59,8 +59,8 @@ export default function Header() {
                 to={item.path || '#'}
                 className={`font-medium transition-colors duration-200 ${
                   isActive(item.path!, item.id)
-                    ? 'text-blue-600 border-b-2 border-blue-600 pb-1'
-                    : 'text-gray-700 hover:text-blue-600'
+                    ? 'text-gray-900 border-b-2 border-gray-900 pb-1'
+                    : 'text-gray-900 hover:text-gray-600'
                 }`}
               >
                 {item.label}
@@ -87,8 +87,8 @@ export default function Header() {
                   onClick={() => setIsMenuOpen(false)}
                   className={`font-medium transition-colors duration-200 text-left py-2 ${
                     isActive(item.path!, item.id)
-                      ? 'text-blue-600 font-semibold border-l-4 border-blue-600 pl-3'
-                      : 'text-gray-700 hover:text-blue-600 pl-3'
+                      ? 'text-gray-900 font-semibold border-l-4 border-gray-900 pl-3'
+                      : 'text-gray-900 hover:text-gray-600 pl-3'
                   }`}
                 >
                   {item.label}

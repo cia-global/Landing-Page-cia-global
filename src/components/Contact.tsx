@@ -134,7 +134,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 </Helmet>
 
     <div className="pt-16">
-       <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-16 relative overflow-hidden">
+       <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-16 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -mr-48 -mt-48"></div>
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full -ml-48 -mb-48"></div>
@@ -195,8 +195,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
 
                 <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="text-green-600" size={24} />
+                  <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="text-yellow-600" size={24} />
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -210,8 +210,8 @@ const handleSubmit = async (e: React.FormEvent) => {
                 </div>
 
                 <div className="flex items-start bg-white p-6 rounded-xl shadow-md">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="text-green-600" size={24} />
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Clock className="text-blue-800" size={24} />
                   </div>
                   <div className="ml-4">
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -331,7 +331,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                   <button
                     type="submit"
                     disabled={loading|| !isCaptchaValid}
-                    className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-br from-yellow-400 to-amber-500 text-white py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {loading ? 'Enviando...' : 'Enviar Mensaje'}
                   </button>

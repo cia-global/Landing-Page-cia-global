@@ -30,7 +30,6 @@ export default function About() {
 
   return (
     <>
-
     <Helmet>
   <title>Quiénes Somos - Cursos Comparendos Colombia</title>
   <meta name="description" content="Somos una plataforma nacional dedicada a la educación, formación y sensibilización vial para infractores en Colombia. Cursos certificados con cobertura nacional." />
@@ -44,7 +43,7 @@ export default function About() {
 </Helmet>
 
     <div className="pt-16">
-      <section className="bg-gradient-to-br from-blue-700 via-blue-600 to-green-600 text-white py-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Quiénes Somos</h1>
           <p className="text-xl text-blue-100 max-w-3xl mx-auto">
@@ -79,7 +78,7 @@ export default function About() {
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Shield className="text-green-600 mr-4 flex-shrink-0" size={32} />
+                  <Shield className="text-amber-500 mr-4 flex-shrink-0" size={32} />
                   <div>
                     <h3 className="font-semibold text-lg text-gray-900 mb-1">
                       Instructores Calificados
@@ -110,8 +109,8 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-xl shadow-md text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <Target className="text-blue-600" size={32} />
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Target className="text-gray-950" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Misión</h3>
               <p className="text-gray-700 leading-relaxed">
@@ -120,8 +119,8 @@ export default function About() {
             </div>
 
             <div className="bg-white p-8 rounded-xl shadow-md text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <Eye className="text-green-600" size={32} />
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Eye className="text-amber-400" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Visión</h3>
               <p className="text-gray-700 leading-relaxed">
@@ -130,8 +129,8 @@ export default function About() {
             </div>
 
             <div className="bg-white p-8 rounded-xl shadow-md text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                <Heart className="text-blue-600" size={32} />
+              <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center mb-4 mx-auto">
+                <Heart className="text-gray-950" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Valores</h3>
               <ul className="text-gray-700 text-left space-y-2">
@@ -207,11 +206,11 @@ export default function About() {
             <p className="text-gray-700 text-lg leading-relaxed text-center mb-8">
               Más allá de cumplir con una obligación legal, nuestros cursos buscan generar un cambio real en la forma de conducir de cada participante. Trabajamos con metodologías pedagógicas actualizadas, casos prácticos y contenidos que promueven la reflexión sobre el impacto de nuestras acciones en la vía.
             </p>
-            <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white p-8 rounded-2xl text-center">
+            <div className="bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-950 p-8 rounded-2xl text-center">
               <h3 className="text-2xl font-bold mb-4">
                 La seguridad vial es responsabilidad de todos
               </h3>
-              <p className="text-blue-100 text-lg">
+              <p className="text-gray-800 text-lg">
                 Juntos construimos vías más seguras para Colombia
               </p>
             </div>

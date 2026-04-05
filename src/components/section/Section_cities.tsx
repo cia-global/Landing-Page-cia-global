@@ -55,7 +55,7 @@ export default function SectionCities () {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <h3 className="text-lg font-bold text-gray-900">{city.name}</h3>
-                    <MapPin className="text-green-600" size={24} />
+                    <MapPin className="text-amber-400" size={24} />
                   </div>
                   <p className="text-sm text-gray-600 flex items-start mb-3">
                     <MapPin size={16} className="mr-2 mt-0.5 text-gray-400 flex-shrink-0" />
@@ -73,7 +73,7 @@ export default function SectionCities () {
           <div className="text-center">
             <Link
               to="/cities"
-              className="inline-flex items-center bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-green-700 transition-all duration-200"
+              className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:from-amber-500 hover:to-yellow-400 transition-all duration-200"
             >
               Ver todas las ciudades
               <ArrowRight size={20} className="ml-2" />

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -35,15 +35,15 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Contacto</h3>
             <div className="space-y-3">
               <div className="flex items-center">
-                <Phone size={18} className="mr-3 text-green-500" />
+                <Phone size={18} className="mr-3 text-amber-400" />
                 <span className="text-gray-400">+57 3207713935</span>
               </div>
               <div className="flex items-center">
-                <Mail size={18} className="mr-3 text-green-500" />
+                <Mail size={18} className="mr-3 text-amber-400" />
                 <span className="text-gray-400">sistemasciaglobal@gmail.com</span>
               </div>
               <div className="flex items-center">
-                <MapPin size={18} className="mr-3 text-green-500" />
+                <MapPin size={18} className="mr-3 text-amber-400" />
                 <span className="text-gray-400">Cobertura Nacional</span>
               </div>
             </div>

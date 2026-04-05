@@ -92,6 +92,22 @@ export default function Appointment() {
   const cityIdParam = params.get('city');
   const dayParam = params.get('day'); // Día de la semana (ej: "Monday")
   const scheduleIdParam = params.get('schedule');
+  const holidays = [
+  '2026-04-02', // Jueves Santo
+  '2026-04-03', // Viernes Santo
+  '2026-05-01', // Año nuevo (ejemplo)
+  '2026-06-08', 
+  '2026-06-15', 
+  '2026-06-29',
+  '2026-07-20',
+  '2026-08-07',
+  '2026-08-17',
+  '2026-10-12',
+  '2026-11-02',
+  '2026-11-16',
+  '2026-12-08',
+  '2026-12-25',         
+];
 
   // Cargar datos iniciales
   useEffect(() => {
@@ -261,6 +277,22 @@ export default function Appointment() {
     setFormData(prev => {
       const updates: Partial<AppointmentFormData> = { [name]: value };
       
+      if (name === 'appointmentDate') {
+      const date = new Date(value + 'T00:00:00');
+      const day = date.getDay(); // 0 = domingo
+
+      if (day === 0) {
+        return prev; // 🚨 NO actualiza el estado
+      }
+
+       if (holidays.includes(value)) {
+        alert('No hay atención en días festivos');
+        return prev;
+      }
+      // Resetear hora si cambia la fecha
+      updates.appointmentTime = '';
+    }
+
       // Si cambia la ciudad, resetear horarios
       if (name === 'cityId') {
         updates.appointmentTime = '';
