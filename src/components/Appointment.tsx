@@ -239,7 +239,7 @@ export default function Appointment() {
           course_type_id: formData.courseTypeId,
           full_name: formData.fullName,
           id_number: formData.idNumber,
-          citation_number: formData.citationNumber,
+          citation_number: formData.citationNumber || "No especificado",
           phone: formData.phone,
           email: formData.email,
           appointment_date: formData.appointmentDate,
