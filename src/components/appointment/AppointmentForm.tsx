@@ -177,7 +177,6 @@ export default function AppointmentForm({
           value={formData.citationNumber}
           onChange={onChange}
           placeholder="ABC123456"
-          required
         />
       </div>
 
