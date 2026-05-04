@@ -217,23 +217,14 @@ const saturdayHours = getHoursByType('saturday');
 </Helmet>
 
     <div className="pt-16 min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Link
-          to="/cities"
-          className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold mb-8 transition-colors"
-        >
-          <ArrowLeft size={20} className="mr-2" />
-          Volver a Ciudades
-        </Link>
-      </div>
-
+    
       <section className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold mb-4">{city.nameSede}</h1>
+              <h1 className="text-4xl font-bold mb-4">Cursos Comparendos {city.name}</h1>
               <p className="text-xl text-blue-100">
-                Sede de educación y sensibilización vial
+                {city.nameSede}
               </p>
             </div>
             <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center hidden md:flex">
