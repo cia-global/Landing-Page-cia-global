@@ -15,6 +15,7 @@ import PrivacyPolicy from './components/politics/PrivacyPolicy';
 import TermsAndConditions from './components/politics/TermsAndConditions';
 import Certificados from './components/Certification';
 import CertificadoDetalle from './components/certification/CertificadoDetail';
+import BucaramangaCity from './components/cityseo/CitySeoCourses';
 
 // Componente para scroll al cambiar de ruta
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/certificados" element={<Certificados />} />
+          <Route path="/curso-comparendo-bucaramanga" element={<BucaramangaCity />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>

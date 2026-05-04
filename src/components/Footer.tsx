@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">Educación Vial</h3>
             <p className="text-gray-400 mb-4">
@@ -74,8 +74,29 @@ export default function Footer() {
                   Preguntas Frecuentes
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/curso-comparendo-bucaramanga"
+                className="text-gray-400 hover:text-white transition-colors">
+                  Comarendos Bucaramanga
+                </Link>
+              </li>
             </ul>
           </div>
+
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Nuestras Sedes</h3>
+            <ul className="space-y-2"> 
+              <li>
+                <Link 
+                  to="/curso-comparendo-bucaramanga"
+                className="text-gray-400 hover:text-white transition-colors">
+                  Comarendos Bucaramanga
+                </Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
