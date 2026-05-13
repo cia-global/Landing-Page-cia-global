@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { MapPin, Phone, Clock, ArrowLeft, Calendar } from 'lucide-react';
+import { MapPin, Phone, Clock, ArrowLeft, Calendar, Info } from 'lucide-react';
 import { supabase, City, Schedule, CityHours } from '../lib/supabase';
 import MapBox from './map/MapBox';
 import { useParams, Link } from 'react-router-dom';
@@ -19,7 +19,7 @@ export default function CityDetail() {
   const [selectedSchedule, setSelectedSchedule] = useState<Schedule | null>(null);
   const [cityHours, setCityHours] = useState<CityHours[]>([]);
   const [loadingHours, setLoadingHours] = useState(false);
-
+  
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const dayLabels: Record<string, string> = {
     Monday: 'Lun',
@@ -321,6 +321,13 @@ const saturdayHours = getHoursByType('saturday');
           <p className="text-gray-700">info@educacionvial.co</p>
         </div> */}
       </div>
+       <Link
+                  to ={`/curso-comparendo/${city.slug}`} 
+                  className="w-full bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
+                >
+                  <Info size={20} className="mr-2" />
+                  Saber mas
+                </Link> 
     </div>
 
     {/* Columna Derecha: Mapa */}

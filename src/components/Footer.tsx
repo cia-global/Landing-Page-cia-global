@@ -94,6 +94,27 @@ export default function Footer() {
                   Comarendos Bucaramanga
                 </Link>
               </li>
+              <li>
+                <Link 
+                  to="/curso-comparendo-florencia"
+                className="text-gray-400 hover:text-white transition-colors">
+                  Comarendos Florencia
+                </Link>
+              </li>
+               <li>
+                <Link 
+                  to="/curso-comparendo/pasto"
+                className="text-gray-400 hover:text-white transition-colors">
+                  Comarendos Pasto
+                </Link>
+              </li>
+                <li>
+                <Link 
+                  to="/curso-comparendo/pereira"
+                className="text-gray-400 hover:text-white transition-colors">
+                  Comarendos Pereira
+                </Link>
+              </li>
             </ul>
           </div>
 
