@@ -26,7 +26,7 @@ interface City {
 }
 
 // ─── Componente ───────────────────────────────────────────────────────────────
-export default function SedesBucaramanga() {
+export default function SedesFlorencia() {
   const [sedes, setSedes] = useState<City[]>([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<City | null>(null);
@@ -36,7 +36,7 @@ export default function SedesBucaramanga() {
       const { data, error } = await supabase
         .from("cities")
         .select("*")
-        .ilike("slug", "%bucaramanga%")  // filtra todas las sedes de Bucaramanga
+        .ilike("slug", "%florencia%")  // filtra todas las sedes de Florencia
         .eq("is_active", true)
         .order("nameSede", { ascending: true });
 
@@ -69,10 +69,10 @@ export default function SedesBucaramanga() {
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 bg-[#253688]/10 text-[#253688] text-xs font-bold px-4 py-1.5 rounded-full mb-3">
             <Building2 className="w-3.5 h-3.5" />
-            Presencia en Bucaramanga
+            Presencia en Florencia
           </span>
           <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
-            Nuestras sedes en Bucaramanga
+            Nuestras sedes en Florencia
           </h2>
           <p className="text-gray-500 text-sm">
             Selecciona la sede más cercana a ti para ver todos los detalles
