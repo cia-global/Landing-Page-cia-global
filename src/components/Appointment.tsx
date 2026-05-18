@@ -96,6 +96,7 @@ export default function Appointment() {
   '2026-04-02', // Jueves Santo
   '2026-04-03', // Viernes Santo
   '2026-05-01', // Año nuevo (ejemplo)
+  '2026-05-18',
   '2026-06-08', 
   '2026-06-15', 
   '2026-06-29',
