@@ -1,22 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { supabase, Certificado} from '../../lib/supabase';
-
-
+import { courseSyllabus } from "../../data/courseSyllabus";
+import { supabase, Certificado } from "../../lib/supabase";
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 
-
-
-
 const MESES = [
-  "Enero","Febrero","Marzo","Abril","Mayo","Junio",
-  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
 ];
 
-function formatFecha(fechaStr: string, ciudad: string){
+function formatFecha(fechaStr: string, ciudad: string) {
   const d = new Date(fechaStr + "T00:00:00");
   return `Dado en ${ciudad}, ${MESES[d.getMonth()]} ${d.getDate()} de ${d.getFullYear()}`;
+  console.log(courseSyllabus);
 }
 
 const PLACEHOLDER =
@@ -26,10 +33,15 @@ const PLACEHOLDER =
 function Loader() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white">
-      <img src="https://i.gifer.com/XYdq.gif" alt="Cargando..." className="rounded-full w-64" />
+      <img
+        src="https://i.gifer.com/XYdq.gif"
+        alt="Cargando..."
+        className="rounded-full w-64"
+      />
     </div>
   );
 }
+
 
 // ─── Componente principal ─────────────────────────────────────────────────────
 export default function CertificadoDetalle() {
@@ -41,6 +53,12 @@ export default function CertificadoDetalle() {
   const [error, setError] = useState<string | null>(null);
   const [imgSrc, setImgSrc] = useState(PLACEHOLDER);
 
+  const temario = useMemo(() => {
+    if (!cert?.curso) return [];
+    const syllabus = courseSyllabus[cert.curso as keyof typeof courseSyllabus];
+    console.log("Curso:", cert.curso, "Syllabus:", syllabus);
+    return syllabus || [];
+  }, [cert?.curso]);
   useEffect(() => {
     if (!codigo) {
       setError("Código de certificado no proporcionado.");
@@ -66,7 +84,8 @@ export default function CertificadoDetalle() {
 
       if (result.foto_url) {
         let path = result.foto_url;
-        if (!path.startsWith("/") && !path.startsWith("http")) path = "/" + path;
+        if (!path.startsWith("/") && !path.startsWith("http"))
+          path = "/" + path;
         setImgSrc(path);
       }
 
@@ -80,7 +99,9 @@ export default function CertificadoDetalle() {
   if (error || !cert) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 gap-4">
-        <p className="text-xl font-semibold text-gray-700">{error ?? "Certificado no encontrado."}</p>
+        <p className="text-xl font-semibold text-gray-700">
+          {error ?? "Certificado no encontrado."}
+        </p>
         <button
           onClick={() => navigate("/certificados")}
           className="text-sky-600 hover:underline text-sm font-semibold"
@@ -93,11 +114,8 @@ export default function CertificadoDetalle() {
 
   return (
     <div className="min-h-screen bg-gray-200 py-10 px-4  font-[Montserrat,sans-serif] italic ">
-
-
       {/* Tarjeta */}
       <div className="relative max-w-3xl mx-auto bg-white rounded-2xl overflow-hidden shadow-2xl p-10 py-32">
-
         {/* Marca de agua */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -113,39 +131,45 @@ export default function CertificadoDetalle() {
         />
 
         <div className="relative z-10 space-y-16">
-
           {/* Encabezado */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <img src="/images/certificados/escudo.jpg" alt="Escudo de Colombia" className="w-20" />
+            <img
+              src="/images/certificados/escudo.jpg"
+              alt="Escudo de Colombia"
+              className="w-20"
+            />
             <div className="text-center">
-              <p className="font-bold text-lg tracking-wide">REPÚBLICA DE COLOMBIA</p>
+              <p className="font-bold text-lg tracking-wide">
+                REPÚBLICA DE COLOMBIA
+              </p>
               <p className="text-sm text-gray-600">{cert.empresa}</p>
             </div>
           </div>
 
           {/* Decreto */}
           <div className="text-center text-sm leading-relaxed text-gray-700">
-            Conforme el Decreto único reglamentario 1075 del 26 de mayo de 2015 expedido
-            por el ministerio de Educación Nacional y estricto cumplimiento de los
-            requisitos establecidos en el artículo 2.6.6.8.
-            <br /><br />
-            <p className="font-semibold">CENTRO INTEGRAL DE ATENCIÓN PREVIAL S.A.S</p>
+            Conforme el Decreto único reglamentario 1075 del 26 de mayo de 2015
+            expedido por el ministerio de Educación Nacional y estricto
+            cumplimiento de los requisitos establecidos en el artículo 2.6.6.8.
+            <br />
+            <br />
+            <p className="font-semibold">
+              CENTRO INTEGRAL DE ATENCIÓN PREVIAL S.A.S
+            </p>
             <p>NIT.: 900462369-9 - Matrícula Mercantil 87978</p>
           </div>
 
           {/* Cuerpo */}
           <div className="text-center space-y-3">
-
             {/* Foto + nombre */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-left">
               {imgSrc && imgSrc !== PLACEHOLDER && (
-              <img
-                src={imgSrc}
-                alt={`Foto de ${cert.nombre_completo}`}
-                onError={() => setImgSrc(PLACEHOLDER)}
-                className="w-28 h-auto rounded-lg shadow-md border border-gray-200 object-cover"
-              />
-              
+                <img
+                  src={imgSrc}
+                  alt={`Foto de ${cert.nombre_completo}`}
+                  onError={() => setImgSrc(PLACEHOLDER)}
+                  className="w-28 h-auto rounded-lg shadow-md border border-gray-200 object-cover"
+                />
               )}
               <div>
                 <p className="text-center font-bold text-sm uppercase tracking-widest text-gray-800">
@@ -164,8 +188,12 @@ export default function CertificadoDetalle() {
 
             <p className="text-gray-600 text-sm">Asistió al</p>
             <p className="font-bold text-base text-gray-800">{cert.curso}</p>
-            <p className="text-gray-700 text-sm">{formatFecha(cert.fecha_certificado, cert.ciudad)}</p>
-            <p className="text-gray-600 text-sm">Duración: {cert.horas || "0"} horas</p>
+            <p className="text-gray-700 text-sm">
+              {formatFecha(cert.fecha_certificado, cert.ciudad)}
+            </p>
+            <p className="text-gray-600 text-sm">
+              Duración: {cert.horas || "0"} horas
+            </p>
           </div>
 
           {/* Firma */}
@@ -183,12 +211,52 @@ export default function CertificadoDetalle() {
               <p className="text-xs text-gray-500">REPRESENTANTE LEGAL</p>
             </div>
             <div className="text-center">
-              <img src="/images/certificados/Logo.jpg" alt="Logo" className="w-28 mx-auto" />
+              <img
+                src="/images/certificados/Logo.jpg"
+                alt="Logo"
+                className="w-28 mx-auto"
+              />
             </div>
           </div>
-
         </div>
       </div>
+      {temario.length > 0 && (
+        <section className="max-w-3xl mx-auto mt-8">
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">
+              Temario del curso
+            </h2>
+
+            <div className="space-y-6">
+              {temario.map((modulo, index) => (
+                <div
+                  key={index}
+                  className="border rounded-xl overflow-hidden">
+                  <div className="bg-sky-50 px-5 py-4 font-bold text-sky-800">
+                    {modulo.modulo}
+                  </div>
+
+                  <div className="divide-y">
+                    {modulo.sesiones.map((sesion, i) => (
+                      <div
+                        key={i}
+                        className="flex gap-4 px-5 py-3 hover:bg-gray-50 "
+                      >
+                        <div className=" w-8 h-8 rounded-full bg-sky-100 text-sky-700 font-bold flex items-center justify-center shrink-0 ">
+                          {i + 1}
+                        </div>
+                        <p className=" text-sm text-gray-700">
+                          {sesion}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

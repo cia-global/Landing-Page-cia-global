@@ -1,11 +1,4 @@
-/**
- * Certificados.tsx
- * Ruta: /certificados  (con Header y Footer)
- *
- * Opciones:
- *  1. Reducción de comparendos → redirige al SIMIT
- *  2. Otros cursos → buscador por cédula → lista desplegable → seleccionar
- */
+
 
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
