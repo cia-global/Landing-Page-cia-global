@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 import { Sedes, SedesData } from '../data/sedes1';
 import { useState, useEffect } from 'react';
 import CertHome from './certification/CerticadoHome';
+import SectionNotice from './section/Section_notice';
 
 
 
@@ -129,6 +130,8 @@ export default function Home() {
       </section>
       
       <BannerInfo/>
+
+      <SectionNotice/>
 
       <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

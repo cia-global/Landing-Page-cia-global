@@ -18,6 +18,8 @@ import CertificadoDetalle from './components/certification/CertificadoDetail';
 import BucaramangaCity from './components/cityseo/CitySeoBucaramanga';
 import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
 import CityPage from './components/cityseo/CitiesSeoPage';
+import NewsBogotaSuba from './components/news/NewsBogota';
+import NewsSoatNacional from './components/news/NewsSoat';
 
 // Componente para scroll al cambiar de ruta
 
@@ -69,6 +71,8 @@ function App() {
           <Route path="/curso-comparendo-bucaramanga" element={<BucaramangaCity />} />
           <Route path="/curso-comparendo-florencia" element={<FlorenciaCity />} />
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />
+          <Route path="/noticias/nueva-sede-bogota-suba" element={<NewsBogotaSuba />} />
+          <Route path="/noticias/soat-nacional" element={<NewsSoatNacional />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>
