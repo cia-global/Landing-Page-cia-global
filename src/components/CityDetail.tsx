@@ -348,7 +348,7 @@ const saturdayHours = getHoursByType('saturday');
                     </div>
                   </div>
                   <div className="h-8"></div>
-      <MapBox coordinates={`${city.coordinates.lat},${city.coordinates.lng}`} />
+      <MapBox placeId={city.placeId} />
     </div>
 
   </div>

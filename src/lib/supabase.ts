@@ -17,6 +17,7 @@ export type City = {
   nameSede: string;
   image: string;
   slug: string;
+  placeId: string;
 };
 
 export type CourseType = {
