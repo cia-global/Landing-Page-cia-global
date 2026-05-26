@@ -182,18 +182,35 @@ export default function NewsSoatNacional() {
               </div>
 
               {/* CTA */}
-              <div className="bg-blue-800 rounded-3xl p-8 text-white text-center">
+              <div className="bg-blue-900 rounded-3xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-3">¿Listo para renovar tu SOAT?</h3>
                 <p className="text-blue-200 mb-6 leading-relaxed">
-                  Encuentra tu sede más cercana y realiza el trámite hoy mismo. Sin filas, sin demoras, con el respaldo de Cursos Comparendos.
+                  Encuentra tu sede más cercana y realiza el trámite hoy mismo o contactanos por WhatsApp. Sin filas, sin demoras, con el respaldo de Cursos Comparendos.
                 </p>
-                <Link
-                  to="/cities"
-                  className="inline-flex items-center gap-2 bg-amber-400 text-amber-900 font-bold px-7 py-3 rounded-xl hover:scale-105 transition"
-                >
-                  <MapPin size={18} />
-                  Ver sedes cercanas
-                </Link>
+                <div className="inline-flex items-center justify-center gap-3">
+                  <Link
+                    to="/cities"
+                    className="inline-flex items-center gap-2 bg-amber-400 text-amber-900 font-bold px-7 py-3 rounded-xl hover:scale-105 transition"
+                  >
+                    <MapPin size={18} />
+                    Ver sedes cercanas
+                  </Link>
+                  {/* WhatsApp contact button */}
+                  <a
+                    href="https://wa.me/573207713935?text= Hola%2C%20quiero%20adquirir%20mi%20SOAT%20¿Podrían%20darme%20más%20información%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-6 py-3 rounded-xl hover:scale-105 transition"
+                    aria-label="Contactar por WhatsApp"
+                  >
+                    <img
+                      src="/images/whatsapp.png"
+                      alt="Banner decorativo"
+                      className="centered-icon w-6 h-6"
+                    />
+                    Contactar por WhatsApp
+                  </a>
+                </div>
               </div>
 
             </article>
