@@ -39,6 +39,7 @@ export type Appointment = {
   citation_number: string;
   phone: string;
   email: string;
+  vehicle_plate: string;
   appointment_date: string;
   appointment_time: string;
   status: 'pending' | 'confirmed' | 'completed' | 'cancelled';

@@ -18,6 +18,7 @@ export interface AppointmentFormData {
   email: string;
   appointmentDate: string;
   appointmentTime: string;
+  vehiclePlate: string;
 }
 
 const initialFormData: AppointmentFormData = {
@@ -30,6 +31,7 @@ const initialFormData: AppointmentFormData = {
   email: '',
   appointmentDate: '',
   appointmentTime: '',
+  vehiclePlate: '',
 };
 
 // Mapeo de días en español e inglés
@@ -243,6 +245,7 @@ export default function Appointment() {
           citation_number: formData.citationNumber || "No especificado",
           phone: formData.phone,
           email: formData.email,
+          vehicle_plate: formData.vehiclePlate || "NoPlaca",
           appointment_date: formData.appointmentDate,
           appointment_time: formData.appointmentTime,
           status: 'pending',
@@ -266,7 +269,7 @@ export default function Appointment() {
       setFormData(initialFormData);
     } catch (error) {
       console.error('Error creating appointment:', error);
-      alert('Hubo un error al agendar tu cita. Por favor intenta nuevamente.');
+      alert(error);
     } finally {
       setSubmitting(false);
     }
