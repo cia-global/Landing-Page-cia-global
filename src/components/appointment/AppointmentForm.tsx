@@ -61,7 +61,8 @@ export default function AppointmentForm({
     formData.idNumber &&
     formData.citationNumber &&
     formData.phone &&
-    formData.email;
+    formData.email&&
+    formData.vehiclePlate;
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
@@ -145,6 +146,8 @@ export default function AppointmentForm({
       </div>
 
       {/* Nombre Completo */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="md:col-span-2 grid grid-cols-1 gap-6">
       <FormInput
         type="text"
         id="fullName"
@@ -154,7 +157,19 @@ export default function AppointmentForm({
         onChange={onChange}
         placeholder="Nombre Apellido"
         required
-      />
+      /></div>
+          <div className="md:col-span-1">
+          <FormInput
+            type="text"
+            id="vehiclePlate"
+            name="vehiclePlate"
+            label="Placa del Vehículo"
+            value={formData.vehiclePlate}
+            onChange={onChange}
+            placeholder="ABC123"        
+          />
+        </div>
+      </div>
 
       {/* Cédula y Comparendo */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -173,7 +188,7 @@ export default function AppointmentForm({
           type="text"
           id="citationNumber"
           name="citationNumber"
-          label="Número de Comparendo *"
+          label="Número de Comparendo "
           value={formData.citationNumber}
           onChange={onChange}
           placeholder="ABC123456"
