@@ -214,6 +214,41 @@ const saturdayHours = getHoursByType('saturday');
   />
   <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
   <meta property="og:image" content={`https://www.pagocursoscomparendos.com/images/cities/${city.id}.jpg`} />
+
+  <script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+
+    name: `Cursos Comparendos ${city.name}`,
+
+    image:
+      city.image ||
+      "https://www.pagocursoscomparendos.com/images/logo.png",
+
+    url: `https://www.pagocursoscomparendos.com/cities/${city.slug}`,
+
+    telephone: city.phone,
+
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: city.address,
+      addressCountry: "CO",
+    },
+
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: city.coordinates.lat,
+      longitude: city.coordinates.lng,
+    },
+
+    areaServed: {
+      "@type": "City",
+      name: city.name,
+    },
+
+  })}
+</script>
 </Helmet>
 
     <div className="pt-16 min-h-screen bg-gray-50">
