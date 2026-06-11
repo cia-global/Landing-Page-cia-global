@@ -18,6 +18,8 @@ export type City = {
   image: string;
   slug: string;
   placeId: string;
+  google_rating: number;
+  google_reviews_count: number;
 };
 
 export type CourseType = {

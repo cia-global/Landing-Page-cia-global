@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { MapPin, Phone, Clock, ArrowLeft, Calendar, Info } from 'lucide-react';
+import { MapPin, Phone, Clock, ArrowLeft, Calendar, Info, Star } from 'lucide-react';
 import { supabase, City, Schedule, CityHours } from '../lib/supabase';
 import MapBox from './map/MapBox';
 import { useParams, Link } from 'react-router-dom';
 import { formatTime12h } from '../utils/time';
 import { Helmet } from 'react-helmet-async';
+import CityReviewsSummary from './reviews/CityReviewsSummary';
 
 
 
@@ -214,6 +215,41 @@ const saturdayHours = getHoursByType('saturday');
   />
   <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
   <meta property="og:image" content={`https://www.pagocursoscomparendos.com/images/cities/${city.id}.jpg`} />
+
+  <script type="application/ld+json">
+  {JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+
+    name: `Cursos Comparendos ${city.nameSede}`,
+
+    image:
+      city.image ||
+      "https://www.pagocursoscomparendos.com/images/logo.png",
+
+    url: `https://www.pagocursoscomparendos.com/cities/${city.slug}`,
+
+    telephone: city.phone,
+
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: city.address,
+      addressCountry: "CO",
+    },
+
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: city.coordinates.lat,
+      longitude: city.coordinates.lng,
+    },
+
+    areaServed: {
+      "@type": "City",
+      name: city.name,
+    },
+
+  })}
+</script>
 </Helmet>
 
     <div className="pt-16 min-h-screen bg-gray-50">
@@ -321,6 +357,10 @@ const saturdayHours = getHoursByType('saturday');
           <p className="text-gray-700">info@educacionvial.co</p>
         </div> */}
       </div>
+      <CityReviewsSummary
+            rating={city.google_rating}
+            reviewsCount={city.google_reviews_count}
+          />
        <Link
                   to ={`/curso-comparendo/${city.slug}`} 
                   className="w-full bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
@@ -328,6 +368,7 @@ const saturdayHours = getHoursByType('saturday');
                   <Info size={20} className="mr-2" />
                   Saber mas
                 </Link> 
+  
     </div>
 
     {/* Columna Derecha: Mapa */}
@@ -493,7 +534,7 @@ const saturdayHours = getHoursByType('saturday');
             </div>
 
           </div> 
-        </div>
+        </div>   
       </section>
     </div>
     </>

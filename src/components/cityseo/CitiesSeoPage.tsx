@@ -19,6 +19,7 @@ import {
   ChevronRight, ChevronDown, Calendar, Phone,
   Building2, X,
 } from "lucide-react";
+import CityReviews from "../reviews/CityReviews";
 
 // ─── Supabase ─────────────────────────────────────────────────────────────────
 const supabase = createClient(
@@ -39,6 +40,10 @@ interface City {
   nameSede: string;
   image: string;
   slug: string;
+  placeId: string;
+  google_rating: number;
+  google_reviews_count: number;
+
 }
 
 // ─── Helper: capitalizar nombre de ciudad ─────────────────────────────────────
@@ -87,7 +92,11 @@ function SedesSection({ slug, ciudad }: { slug: string; ciudad: string }) {
         .eq("is_active", true)
         .order("nameSede", { ascending: true });
 
-      if (!error && data) setSedes(data as City[]);
+      if (!error && data) {
+        setSedes(data as City[]);
+        // 👇 Selecciona la sede automáticamente al cargar
+        if (data.length > 0) setSelected(data[0] as City);
+      }
       setLoading(false);
     })();
   }, [slug]);
@@ -96,11 +105,7 @@ function SedesSection({ slug, ciudad }: { slug: string; ciudad: string }) {
     return (
       <section className="py-16 bg-gray-50">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {[1, 2].map((i) => (
-              <div key={i} className="h-48 bg-gray-200 rounded-2xl animate-pulse" />
-            ))}
-          </div>
+          <div className="h-72 bg-gray-200 rounded-2xl animate-pulse" />
         </div>
       </section>
     );
@@ -108,194 +113,174 @@ function SedesSection({ slug, ciudad }: { slug: string; ciudad: string }) {
 
   if (sedes.length === 0) return null;
 
+  const sede = sedes[0];
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
 
+        {/* Encabezado */}
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-2 bg-[#253688]/10 text-[#253688] text-xs font-bold px-4 py-1.5 rounded-full mb-3">
             <Building2 className="w-3.5 h-3.5" />
             Presencia en {ciudad}
           </span>
           <h2 className="text-3xl font-extrabold text-gray-900 mb-2">
-            Nuestras sedes en {ciudad}
+            Nuestra sede en {ciudad}
           </h2>
           <p className="text-gray-500 text-sm">
-            Selecciona la sede más cercana a ti para ver todos los detalles
+            Visítanos y resuelve tu comparendo de forma rápida y certificada
           </p>
         </div>
 
-        {/* Tarjetas */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-          {sedes.map((sede) => (
-            <button
-              key={sede.id}
-              onClick={() => setSelected(selected?.id === sede.id ? null : sede)}
-              className={`group text-left rounded-2xl border-2 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 ${
-                selected?.id === sede.id
-                  ? "border-yellow-400 shadow-yellow-400/20 shadow-lg"
-                  : "border-gray-200 hover:border-[#253688]/40"
-              }`}
-            >
-              {sede.image ? (
-                <div className="relative h-40 overflow-hidden">
-                  <img
-                    src={sede.image}
-                    alt={sede.nameSede}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 to-transparent" />
-                  {selected?.id === sede.id && (
-                    <div className="absolute top-3 right-3 bg-yellow-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full">
-                      Seleccionada
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className={`h-40 flex items-center justify-center transition-colors ${
-                  selected?.id === sede.id ? "bg-[#253688]" : "bg-gray-100 group-hover:bg-[#253688]/10"
-                }`}>
-                  <Building2 className={`w-12 h-12 ${selected?.id === sede.id ? "text-yellow-400" : "text-gray-300"}`} />
-                </div>
-              )}
+        {/* Layout: imagen + detalles side by side en desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden border-2 border-yellow-400 shadow-lg shadow-yellow-400/10">
 
-              <div className="p-5 bg-white">
-                <div className="flex items-start justify-between gap-2 mb-3">
-                  <div>
-                    <p className="text-xs font-semibold text-[#253688] uppercase tracking-wider mb-0.5">Sede</p>
-                    <h3 className="font-bold text-gray-800 text-base leading-tight">
-                      {sede.nameSede || sede.name}
-                    </h3>
-                  </div>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                    selected?.id === sede.id
-                      ? "bg-yellow-400 text-gray-900"
-                      : "bg-gray-100 text-gray-400 group-hover:bg-[#253688] group-hover:text-white"
-                  }`}>
-                    <ChevronRight className="w-4 h-4" />
-                  </div>
+          {/* Imagen */}
+          <div className="relative h-64 lg:h-auto min-h-[280px]">
+            {sede.image ? (
+              <>
+                <img
+                  src={sede.image}
+                  alt={sede.nameSede || sede.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-gray-900/20" />
+                {/* Badge sobre la imagen */}
+                <div className="absolute top-4 left-4 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                  <Building2 className="w-3 h-3" />
+                  Sede {ciudad}
                 </div>
-                <div className="space-y-1.5">
-                  <div className="flex items-start gap-2 text-gray-500 text-xs">
-                    <MapPin className="w-3.5 h-3.5 text-yellow-500 shrink-0 mt-0.5" />
-                    <span className="line-clamp-2">{sede.address}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-gray-500 text-xs">
-                    <Phone className="w-3.5 h-3.5 text-yellow-500 shrink-0" />
-                    <span>{sede.phone}</span>
-                  </div>
-                </div>
+              </>
+            ) : (
+              <div className="absolute inset-0 bg-[#253688]/10 flex items-center justify-center">
+                <Building2 className="w-20 h-20 text-[#253688]/30" />
               </div>
-            </button>
-          ))}
-        </div>
+            )}
+          </div>
 
-        {/* Panel de detalles */}
-        {selected && (
-          <div className="bg-white border-2 border-yellow-400 rounded-2xl p-6 shadow-lg animate-[fadeIn_0.3s_ease]">
-            <div className="flex items-start justify-between mb-5">
-              <div>
-                <p className="text-xs font-semibold text-[#253688] uppercase tracking-wider mb-0.5">
-                  Detalles de la sede
-                </p>
-                <h3 className="text-xl font-extrabold text-gray-900">
-                  {selected.nameSede || selected.name}
-                </h3>
-              </div>
-              <button
-                onClick={() => setSelected(null)}
-                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-              >
-                <X className="w-4 h-4 text-gray-500" />
-              </button>
-            </div>
+          {/* Panel de detalles */}
+          <div className="bg-white p-6 sm:p-8 flex flex-col justify-between">
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-              <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 mb-0.5">Dirección</p>
-                  <p className="text-sm font-medium text-gray-800">{selected.address}</p>
-                </div>
-              </div>
+            <div>
+              <p className="text-xs font-semibold text-[#253688] uppercase tracking-wider mb-1">
+                Sede
+              </p>
+              <h3 className="text-xl font-extrabold text-gray-900 mb-6">
+                {sede.nameSede || sede.name}
+              </h3>
 
-              <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 mb-0.5">Teléfono</p>
-                  <a
-                    href={`tel:${selected.phone}`}
-                    className="text-sm font-medium text-[#253688] hover:text-yellow-600 transition-colors"
-                  >
-                    {selected.phone}
-                  </a>
-                </div>
-              </div>
+              <div className="space-y-4">
 
-              <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
-                  <Clock className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-gray-400 mb-0.5">Horario</p>
-                  <p className="text-sm font-medium text-gray-800">Lunes a Viernes</p>
-                  <p className="text-xs text-gray-500">8:00 AM – 6:00 PM</p>
-                </div>
-              </div>
-
-              {selected.coordinates?.lat && (
                 <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
                   <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-gray-400 mb-0.5">Ubicación</p>
+                    <p className="text-xs font-semibold text-gray-400 mb-0.5">Dirección</p>
+                    <p className="text-sm font-medium text-gray-800">{sede.address}</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+                  <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 mb-0.5">Teléfono</p>
                     <a
-                      href={`https://www.google.com/maps?q=${selected.coordinates.lat},${selected.coordinates.lng}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href={`tel:${sede.phone}`}
                       className="text-sm font-medium text-[#253688] hover:text-yellow-600 transition-colors"
                     >
-                      Ver en Google Maps →
+                      {sede.phone}
                     </a>
                   </div>
                 </div>
-              )}
+
+                <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+                  <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-400 mb-0.5">Horario</p>
+                    <p className="text-sm font-medium text-gray-800">Lunes a Viernes</p>
+                    <p className="text-xs text-gray-500">8:00 AM – 6:00 PM</p>
+                  </div>
+                </div>
+
+                {sede.coordinates?.lat && (
+                  <div className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
+                    <div className="w-9 h-9 bg-[#253688] text-yellow-400 rounded-lg flex items-center justify-center shrink-0">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-gray-400 mb-0.5">Ubicación</p>
+                      <a 
+                        href={`https://www.google.com/maps?q=${sede.coordinates.lat},${sede.coordinates.lng}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-medium text-[#253688] hover:text-yellow-600 transition-colors"
+                      >
+                        Ver en Google Maps →
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            {/* CTA */}
+            <div className="mt-6">
               <Link
-                to={`/appointment?city=${selected.id}`}
-                className="group inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-6 py-3 rounded-xl shadow-md hover:shadow-yellow-400/30 hover:scale-105 transition-all duration-300 text-sm"
+                to={`/appointment?city=${sede.id}`}
+                className="group w-full inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-bold px-6 py-3.5 rounded-xl shadow-md hover:shadow-yellow-400/30 hover:scale-[1.02] transition-all duration-300 text-sm"
               >
                 <Clock className="w-4 h-4" />
                 Agendar en esta sede
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-          </div>
-        )}
-      </div>
 
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-8px); }
-          to   { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
+          </div>
+        </div>
+
+      </div>
     </section>
   );
 }
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // PÁGINA PRINCIPAL
 // ═══════════════════════════════════════════════════════════════════════════════
 export default function CityPage() {
   const { slug } = useParams<{ slug: string }>();
+  const [city, setCity] = useState<City | null>(null);
+  const [loadingCity, setLoadingCity] = useState(true);
+
+  useEffect(() => {
+    if (!slug) return;
+
+    setCity(null);
+    setLoadingCity(true);
+
+    const fetchCity = async () => {
+      const { data, error } = await supabase
+        .from("cities")
+        .select("*")
+        .eq("slug", slug)
+        .eq("is_active", true)
+        .single();
+
+      if (!error && data) {
+        setCity(data as City);
+      }
+      setLoadingCity(false);
+    };
+
+    fetchCity();
+  }, [slug]);
 
   // Ciudad formateada para mostrar en textos
   const ciudad = capitalizar(slug ?? "");
@@ -507,7 +492,7 @@ export default function CityPage() {
 
         {/* ── SEDES ── */}
         <SedesSection slug={slug} ciudad={ciudad} />
-
+        <CityReviews cityId={city?.id} rating={city?.google_rating} reviewsCount={city?.google_reviews_count} placeId={city?.placeId} />
         {/* ── FAQ ── */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-3xl mx-auto px-6 lg:px-8">
