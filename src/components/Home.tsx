@@ -9,6 +9,7 @@ import { Sedes, SedesData } from '../data/sedes1';
 import { useState, useEffect } from 'react';
 import CertHome from './certification/CerticadoHome';
 import SectionNotice from './section/Section_notice';
+import ReviewsStats from './reviews/ReviewsStats';
 
 
 
@@ -77,7 +78,7 @@ export default function Home() {
       <CertHome/>
       </div>
       <SectionCities/>
-
+      <ReviewsStats />
       <section className="pt-20 pb-36 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
