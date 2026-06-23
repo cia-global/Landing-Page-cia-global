@@ -17,7 +17,7 @@ export const newsData: News[] = [
     description:
       "Conozca cómo solicitar el cambio de infractor en fotomultas a través del RUNT y cuándo es posible trasladar la responsabilidad al conductor real.",
     image_url: "/images/news/cambio.png",
-    published_date: "2026-06-22",
+    published_date: "2026-06-23",
     is_active: true,
     created_at: "2026-6-22T11:00:00Z",
     link: "/noticias/cambio-infractor-comparendo",
@@ -28,7 +28,7 @@ export const newsData: News[] = [
     description:
       "Conozca cómo solicitar el cambio de infractor en fotomultas a través del RUNT y cuándo es posible trasladar la responsabilidad al conductor real.",
     image_url: "/images/news/descuento.png",
-    published_date: "2026-06-22",
+    published_date: "2026-06-23",
     is_active: true,
     created_at: "2026-6-22T11:00:00Z",
     link: "/noticias/descuento-comparendos",

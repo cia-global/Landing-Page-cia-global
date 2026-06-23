@@ -413,7 +413,7 @@ export default function NewsDescuentoComparendos() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 bg-slate-900 text-white rounded-2xl p-10 text-center">
+        <div className="mt-16 bg-blue-900 text-white rounded-2xl p-10 text-center">
 
           <Clock
             size={50}

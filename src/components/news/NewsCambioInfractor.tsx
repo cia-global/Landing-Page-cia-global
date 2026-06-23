@@ -24,7 +24,7 @@ export default function NewsCambioInfractor() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30" />
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 h-full flex flex-col justify-end pb-12 text-white">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 h-full flex flex-col justify-end py-8 text-white">
             
             <Link to="/#news"
             className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white mb-2 w-fit">
@@ -288,7 +288,7 @@ export default function NewsCambioInfractor() {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 bg-slate-900 text-white rounded-2xl p-10 text-center">
+        <div className="mt-16 bg-blue-900 text-white rounded-2xl p-10 text-center">
 
           <UserCheck
             size={48}

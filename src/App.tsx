@@ -20,7 +20,6 @@ import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
 import CityPage from './components/cityseo/CitiesSeoPage';
 import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsSoatNacional from './components/news/NewsSoat';
-import NewsLicense from './components/news/NewsLicense';
 import NewsCambioInfractor from './components/news/NewsCambioInfractor';
 import NewsDescuentoComparendos from './components/news/NewsDescuentoComparendos';
 
@@ -97,7 +96,6 @@ function App() {
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />
           <Route path="/noticias/nueva-sede-bogota-suba" element={<NewsBogotaSuba />} />
           <Route path="/noticias/soat-nacional" element={<NewsSoatNacional />} />
-          <Route path="/noticias/licencia-conduccion-por-puntos-colombia" element={<NewsLicense />} />
           <Route path="/noticias/cambio-infractor-comparendo" element={<NewsCambioInfractor />} />
           <Route path="/noticias/descuento-comparendos" element={<NewsDescuentoComparendos />} />
           <Route path="/404" element={<NotFound />} />
