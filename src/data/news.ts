@@ -12,6 +12,28 @@ type News = {
 
 export const newsData: News[] = [
   {
+    id: "news-003",
+    title: "¿Le Llegó una Fotomulta que No Cometió? Ahora Puede Cambiar el Infractor",
+    description:
+      "Conozca cómo solicitar el cambio de infractor en fotomultas a través del RUNT y cuándo es posible trasladar la responsabilidad al conductor real.",
+    image_url: "/images/news/cambio.png",
+    published_date: "2026-06-23",
+    is_active: true,
+    created_at: "2026-6-22T11:00:00Z",
+    link: "/noticias/cambio-infractor-comparendo",
+  },
+  {
+    id: "news-004",
+    title: "Descuento en Comparendos: ¡No te lo pierdas!",
+    description:
+      "Conozca cómo solicitar el cambio de infractor en fotomultas a través del RUNT y cuándo es posible trasladar la responsabilidad al conductor real.",
+    image_url: "/images/news/descuento.png",
+    published_date: "2026-06-23",
+    is_active: true,
+    created_at: "2026-6-22T11:00:00Z",
+    link: "/noticias/descuento-comparendos",
+  },
+  {
     id: "news-001",
     title: "Nueva sede en Bogotá: ampliamos nuestra cobertura",
     description:
@@ -34,4 +56,6 @@ export const newsData: News[] = [
     created_at: "2026-05-21T11:00:00Z",
     link: "/noticias/soat-nacional",
   },
+   
+
 ];

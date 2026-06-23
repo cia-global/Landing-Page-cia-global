@@ -42,7 +42,7 @@ export default function NewsSoatNacional() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-black/30" />
 
           <div className="relative z-10 max-w-6xl mx-auto px-6 h-full flex flex-col justify-end pb-12 text-white">
-            <Link to="/noticias" className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white mb-6 w-fit">
+            <Link to="/#news" className="inline-flex items-center gap-2 text-sm text-gray-300 hover:text-white mb-6 w-fit">
               <ArrowLeft size={16} />
               Volver a noticias
             </Link>

@@ -1,4 +1,5 @@
-import { Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
+import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+import { FaTiktok } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -25,9 +26,13 @@ export default function Footer() {
               className="text-gray-400 hover:text-white transition-colors">
                 <Instagram size={20} />
               </a>
-              {/* <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter size={20} />
-              </a> */}
+               <a href="https://vt.tiktok.com/ZSCRMWj1P/" 
+               target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Visítanos en TikTok"
+              className="text-gray-400 hover:text-white transition-colors">
+                <FaTiktok size={20} />
+              </a>
             </div>
           </div>
 

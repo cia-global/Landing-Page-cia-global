@@ -20,16 +20,39 @@ import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
 import CityPage from './components/cityseo/CitiesSeoPage';
 import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsSoatNacional from './components/news/NewsSoat';
+import NewsCambioInfractor from './components/news/NewsCambioInfractor';
+import NewsDescuentoComparendos from './components/news/NewsDescuentoComparendos';
 
 // Componente para scroll al cambiar de ruta
 
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+function ScrollManager() {
+    const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [pathname]);
+    if (hash) {
+      const id = hash.replace("#", "");
+
+      setTimeout(() => {
+        const element = document.getElementById(id);
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }, 100);
+
+      return;
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+  }, [pathname, hash]);
 
   return null;
 }
@@ -51,7 +74,7 @@ function Layout() {
 function App() {
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <ScrollManager />
       <Routes>
 
         {/* Rutas SIN Header ni Footer */}
@@ -73,6 +96,8 @@ function App() {
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />
           <Route path="/noticias/nueva-sede-bogota-suba" element={<NewsBogotaSuba />} />
           <Route path="/noticias/soat-nacional" element={<NewsSoatNacional />} />
+          <Route path="/noticias/cambio-infractor-comparendo" element={<NewsCambioInfractor />} />
+          <Route path="/noticias/descuento-comparendos" element={<NewsDescuentoComparendos />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>
