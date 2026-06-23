@@ -132,7 +132,9 @@ export default function Home() {
       
       <BannerInfo/>
 
-      <SectionNotice/>
+      <section id="news">
+        <SectionNotice/>
+      </section>
 
       <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
