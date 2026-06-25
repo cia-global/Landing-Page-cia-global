@@ -202,7 +202,7 @@ const handleSubmit = async (e: React.FormEvent) => {
                     <h3 className="text-lg font-semibold text-gray-900 mb-1">
                       Correo Electrónico
                     </h3>
-                    <p className="text-gray-700">sistemasciaglobal@gmail.com</p>
+                    <p className="text-gray-700">info@vialseg.co</p>
                     <p className="text-sm text-gray-500 mt-1">
                       Respuesta en menos de 24 horas
                     </p>
