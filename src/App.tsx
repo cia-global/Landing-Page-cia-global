@@ -22,6 +22,8 @@ import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsSoatNacional from './components/news/NewsSoat';
 import NewsCambioInfractor from './components/news/NewsCambioInfractor';
 import NewsDescuentoComparendos from './components/news/NewsDescuentoComparendos';
+import NewsTablaComparendos2026 from './components/news/NewsTablaComparendos2026';
+import NewsRadiografiaAccidentalidad from './components/news/NewsRadiografiaAccidentalidad';
 
 // Componente para scroll al cambiar de ruta
 
@@ -98,6 +100,8 @@ function App() {
           <Route path="/noticias/soat-nacional" element={<NewsSoatNacional />} />
           <Route path="/noticias/cambio-infractor-comparendo" element={<NewsCambioInfractor />} />
           <Route path="/noticias/descuento-comparendos" element={<NewsDescuentoComparendos />} />
+          <Route path="/noticias/tabla-comparendos-2026" element={<NewsTablaComparendos2026 />} />
+          <Route path="/noticias/radiografia-accidentalidad" element={<NewsRadiografiaAccidentalidad />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>

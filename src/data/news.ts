@@ -11,6 +11,29 @@ type News = {
 
 
 export const newsData: News[] = [
+  
+   {
+    id: "news-006",
+    title: "Radiografía de la Accidentalidad Vial en Colombia",
+    description:
+      "Conozca las principales causas de los accidentes de tránsito en Colombia, las cifras más recientes y las acciones necesarias para reducir la siniestralidad vial.",
+    image_url: "/images/news/noticia6.png",
+    published_date: "2026-07-06",
+    is_active: true,
+    created_at: "2026-6-22T11:00:00Z",
+    link: "/noticias/radiografia-accidentalidad",
+  },
+   {
+    id: "news-005",
+    title: "Tabla Oficial de Comparendos y Fotomultas en Colombia 2026",
+    description:
+      "Consulte los valores actualizados de las multas de tránsito, las categorías A, B, C, D y E, y conozca cómo acceder hasta al 50% de descuento.",
+    image_url: "/images/news/noticia5.png",
+    published_date: "2026-07-06",
+    is_active: true,
+    created_at: "2026-6-22T11:00:00Z",
+    link: "/noticias/tabla-comparendos-2026",
+  },
   {
     id: "news-003",
     title: "¿Le Llegó una Fotomulta que No Cometió? Ahora Puede Cambiar el Infractor",
