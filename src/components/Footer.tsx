@@ -108,9 +108,9 @@ export default function Footer() {
               </li>
                <li>
                 <Link 
-                  to="/curso-comparendo/pasto"
+                  to="/curso-comparendo-bogota"
                 className="text-gray-400 hover:text-white transition-colors">
-                  Comarendos Pasto
+                  Comarendos Bogotá
                 </Link>
               </li>
                 <li>
