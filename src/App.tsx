@@ -17,6 +17,7 @@ import Certificados from './components/Certification';
 import CertificadoDetalle from './components/certification/CertificadoDetail';
 import BucaramangaCity from './components/cityseo/CitySeoBucaramanga';
 import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
+import BogotaCity from './components/cityseo/CitySeoBogota';
 import CityPage from './components/cityseo/CitiesSeoPage';
 import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsSoatNacional from './components/news/NewsSoat';
@@ -93,6 +94,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
           <Route path="/certificados" element={<Certificados />} />
+          <Route path="/curso-comparendo-bogota" element={<BogotaCity />} />
           <Route path="/curso-comparendo-bucaramanga" element={<BucaramangaCity />} />
           <Route path="/curso-comparendo-florencia" element={<FlorenciaCity />} />
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />

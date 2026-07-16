@@ -10,6 +10,7 @@ import { useState, useEffect } from 'react';
 import CertHome from './certification/CerticadoHome';
 import SectionNotice from './section/Section_notice';
 import ReviewsStats from './reviews/ReviewsStats';
+import VideoRedesSection from './section/Section_media';
 
 
 
@@ -78,6 +79,7 @@ export default function Home() {
       <CertHome/>
       </div>
       <SectionCities/>
+      <VideoRedesSection/>
       <ReviewsStats />
       <section className="pt-20 pb-36 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

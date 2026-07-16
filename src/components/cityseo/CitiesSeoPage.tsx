@@ -88,7 +88,7 @@ function SedesSection({ slug, ciudad }: { slug: string; ciudad: string }) {
       const { data, error } = await supabase
         .from("cities")
         .select("*")
-        .ilike("slug", `%${slug}%`)
+        .ilike("slug", `${slug}`)
         .eq("is_active", true)
         .order("nameSede", { ascending: true });
 
