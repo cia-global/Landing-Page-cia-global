@@ -11,6 +11,19 @@ type News = {
 
 
 export const newsData: News[] = [
+
+
+   {
+    id: "news-001",
+    title: "Nueva sede en Bogotá: ampliamos nuestra cobertura",
+    description:
+      "Seguimos creciendo. Ahora contamos con una nueva sede en Bogotá para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
+    image_url: "/images/sedes/bogotaNp.webp",
+    published_date: "2026-07-23",
+    is_active: true,
+    created_at: "2026-05-21T10:00:00Z",
+    link: "/noticias/nueva-sede-bogota-north-point",
+  },
   
    {
     id: "news-006",
@@ -56,18 +69,7 @@ export const newsData: News[] = [
     created_at: "2026-6-22T11:00:00Z",
     link: "/noticias/descuento-comparendos",
   },
-  {
-    id: "news-001",
-    title: "Nueva sede en Bogotá: ampliamos nuestra cobertura",
-    description:
-      "Seguimos creciendo. Ahora contamos con una nueva sede en Bogotá para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
-    image_url: "/images/sedes/bogota.png",
-    published_date: "2026-05-25",
-    is_active: true,
-    created_at: "2026-05-21T10:00:00Z",
-    link: "/noticias/nueva-sede-bogota-suba",
-  },
-
+ 
   {
     id: "news-002",
     title: "Ahora puedes adquirir tu SOAT en nuestras sedes",
