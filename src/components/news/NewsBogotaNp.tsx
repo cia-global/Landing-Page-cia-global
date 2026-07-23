@@ -6,25 +6,25 @@ export default function NewsBogotaNp() {
   return (
     <>
       <Helmet>
-        <title>Nueva sede en Bogotá Suba | Cursos Comparendos</title>
-        <meta name="description" content="Cursos Comparendos abre su primera sede en Bogotá, localidad de Suba. Cursos de comparendos, asesoría personalizada y gestión de trámites cerca de ti." />
-        <meta name="keywords" content="cursos de comparendos en bogotá, cursos comparendos suba, sede cursos comparendos bogotá, descuento comparendos bogotá, cia suba, cursos tránsito bogotá" />
-        <meta property="og:title" content="Nueva sede en Bogotá - Suba | Cursos Comparendos" />
-        <meta property="og:description" content="Abrimos nuestra primera sede en Bogotá. Conócela en Suba e inicia tu proceso de comparendo con nosotros." />
-        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/sedes/bogota.webp" />
-        <meta property="og:url" content="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-suba" />
+        <title>Nueva sede en Bogotá North Point | Cursos Comparendos</title>
+        <meta name="description" content="Cursos Comparendos abre su primera sede en Bogotá, localidad de North Point. Cursos de comparendos, asesoría personalizada y gestión de trámites cerca de ti." />
+        <meta name="keywords" content="cursos de comparendos en bogotá, cursos comparendos north point, sede cursos comparendos bogotá, descuento comparendos bogotá, cia north point, cursos tránsito bogotá" />
+        <meta property="og:title" content="Nueva sede en Bogotá - North Point | Cursos Comparendos" />
+        <meta property="og:description" content="Abrimos nuestra primera sede en Bogotá. Conócela en North Point e inicia tu proceso de comparendo con nosotros." />
+        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/sedes/bogotaNp.webp" />
+        <meta property="og:url" content="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-north-point" />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-suba" />
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-north-point" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "NewsArticle",
-            headline: "Cursos Comparendos abre su primera sede en Bogotá, localidad de Suba",
+            headline: "Cursos Comparendos abre su primera sede en Bogotá, localidad de Usaquen",
             image: ["https://www.pagocursoscomparendos.com/images/sedes/bogota.webp"],
             datePublished: "2026-05-25",
             author: { "@type": "Organization", name: "Cursos Comparendos" },
             publisher: { "@type": "Organization", name: "Cursos Comparendos" },
-            description: "Cursos Comparendos inicia su expansión en Bogotá con una nueva sede en la localidad de Suba, ofreciendo cursos de comparendos, asesoría y gestión de trámites.",
+            description: "Cursos Comparendos inicia su expansión en Bogotá con una nueva sede en la localidad de Usaquen, ofreciendo cursos de comparendos, asesoría y gestión de trámites.",
           })}
         </script>
       </Helmet>
@@ -34,7 +34,7 @@ export default function NewsBogotaNp() {
         {/* HERO */}
         <section className="relative h-[440px] overflow-hidden">
           <img
-            src="/images/sedes/bogota.png"
+            src="/images/sedes/bogotaNp.webp"
             alt="Nueva sede de Cursos Comparendos en Suba, Bogotá"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -51,13 +51,13 @@ export default function NewsBogotaNp() {
             </span>
 
             <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-300">
-              <span className="flex items-center gap-2"><CalendarDays size={15} /> 25 mayo 2026</span>
-              <span className="flex items-center gap-2"><MapPin size={15} /> Suba, Bogotá</span>
+              <span className="flex items-center gap-2"><CalendarDays size={15} /> 23 julio 2026</span>
+              <span className="flex items-center gap-2"><MapPin size={15} /> Usaquen, Bogotá</span>
               <span className="flex items-center gap-2"><Clock size={15} /> 3 min de lectura</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-extrabold max-w-3xl leading-tight">
-              Iniciamos nuestra expansión en Bogotá: nueva sede en Suba
+              Iniciamos nuestra expansión en Bogotá: nueva sede en North Point
             </h1>
           </div>
         </section>
@@ -69,7 +69,7 @@ export default function NewsBogotaNp() {
 
               {/* Lead */}
               <p className="text-lg text-gray-700 leading-relaxed">
-                En <strong>Cursos Comparendos</strong> estamos marcando un hito en nuestra historia: abrimos nuestra primera sede en Bogotá, ubicada en la localidad de <strong>Suba</strong>. Este paso representa el inicio de una expansión que nos acercará a miles de conductores en la capital del país.
+                En <strong>Cursos Comparendos</strong> estamos marcando un hito en nuestra historia: abrimos nuestra primera sede en Bogotá, ubicada en la localidad de <strong>Usaquen</strong>. Este paso representa el inicio de una expansión que nos acercará a miles de conductores en la capital del país.
               </p>
 
               <p className="text-gray-600 leading-relaxed">
@@ -110,7 +110,7 @@ export default function NewsBogotaNp() {
               {/* Cita destacada */}
               <blockquote className="border-l-4 border-[#253688] pl-5 py-1">
                 <p className="text-gray-600 italic leading-relaxed">
-                  "Bogotá ha sido un objetivo estratégico para nosotros desde hace tiempo. Suba es solo el comienzo: queremos estar presentes en cada rincón de la ciudad para facilitarle la vida a los conductores bogotanos."
+                  "Bogotá ha sido un objetivo estratégico para nosotros desde hace tiempo. North Point es solo el comienzo: queremos estar presentes en cada rincón de la ciudad para facilitarle la vida a los conductores bogotanos."
                 </p>
               </blockquote>
 
@@ -122,11 +122,11 @@ export default function NewsBogotaNp() {
               <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-5">
                 <MapPin size={24} className="text-[#253688] flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-gray-800">Localidad de Suba, Bogotá D.C.</p>
-                  <p className="text-sm text-gray-500">Calle 147 # 101-56 centro comercial fiesta suba local 1</p>
+                  <p className="font-semibold text-gray-800">Localidad de Usaquen, Bogotá D.C.</p>
+                  <p className="text-sm text-gray-500">Centro Comercial North Point P2, Ak 7 #155-80 local 44</p>
                 </div>
                 <a
-                  href="https://maps.app.goo.gl/zKGkYtjU69apN4y98"
+                  href="https://maps.app.goo.gl/gCQukw93WaFLfrDz8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ml-auto inline-flex items-center gap-2 bg-amber-400 text-amber-900 font-semibold px-4 py-2 rounded-lg hover:scale-105 transition"
@@ -141,7 +141,7 @@ export default function NewsBogotaNp() {
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">Hoja de ruta de expansión</p>
                 <div className="space-y-4">
                   {[
-                    { active: true, label: "Mayo 2026", desc: "Apertura sede Suba, Bogotá. Inicio de operaciones con equipo completo de atención y cursos." },
+                    { active: true, label: "Julio 2026", desc: "Apertura sede Suba, Bogotá. Inicio de operaciones con equipo completo de atención y cursos." },
                     { active: false, label: "Próximamente", desc: "Nuevas sedes en otras localidades de Bogotá. Seguiremos anunciando aperturas en nuestras redes y web." },
                     { active: false, label: "Futuro", desc: "Expansión a más ciudades del país, llevando el servicio de Cursos Comparendos a nivel nacional." },
                   ].map(({ active, label, desc }) => (
@@ -163,10 +163,10 @@ export default function NewsBogotaNp() {
               <div className="bg-[#253688] rounded-3xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-3">¿Tienes un comparendo en Bogotá?</h3>
                 <p className="text-blue-200 mb-6 leading-relaxed">
-                  Agenda tu curso en nuestra nueva sede de Suba y reduce tu sanción de forma rápida, segura y certificada.
+                  Agenda tu curso en nuestra nueva sede en North Point y reduce tu sanción de forma rápida, segura y certificada.
                 </p>
                 <Link
-                  to="/cities/bogota"
+                  to="/cities/bogota-north-point"
                   className="inline-flex items-center gap-2 bg-amber-400 text-amber-900 font-bold px-7 py-3 rounded-xl hover:scale-105 transition"
                 >
                   <CheckCircle size={18} />

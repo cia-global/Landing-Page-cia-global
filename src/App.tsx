@@ -20,6 +20,7 @@ import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
 import BogotaCity from './components/cityseo/CitySeoBogota';
 import CityPage from './components/cityseo/CitiesSeoPage';
 import NewsBogotaSuba from './components/news/NewsBogota';
+import NewsBogotaNp from './components/news/NewsBogotaNp';
 import NewsSoatNacional from './components/news/NewsSoat';
 import NewsCambioInfractor from './components/news/NewsCambioInfractor';
 import NewsDescuentoComparendos from './components/news/NewsDescuentoComparendos';
@@ -99,6 +100,7 @@ function App() {
           <Route path="/curso-comparendo-florencia" element={<FlorenciaCity />} />
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />
           <Route path="/noticias/nueva-sede-bogota-suba" element={<NewsBogotaSuba />} />
+           <Route path="/noticias/nueva-sede-bogota-north-point" element={<NewsBogotaNp />} />
           <Route path="/noticias/soat-nacional" element={<NewsSoatNacional />} />
           <Route path="/noticias/cambio-infractor-comparendo" element={<NewsCambioInfractor />} />
           <Route path="/noticias/descuento-comparendos" element={<NewsDescuentoComparendos />} />
