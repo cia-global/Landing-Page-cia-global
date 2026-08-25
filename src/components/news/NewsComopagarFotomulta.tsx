@@ -117,10 +117,10 @@ export default function NewsComopagarFotomulta() {
         />
         <meta property="og:title" content="Cómo pagar una fotomulta en Colombia — Guía completa 2026" />
         <meta property="og:description" content="Plazos exactos, descuentos del 50%, cambio de infractor y cómo impugnar una fotomulta en Colombia. Todo actualizado para 2026." />
-        <meta property="og:image" content="https://tudominio.com/images/news/pagar-fotomulta-2026.jpg" />
-        <meta property="og:url" content="https://tudominio.com/noticias/como-pagar-fotomulta-colombia-2026" />
+        <meta property="og:image" content="https://https://www.pagocursoscomparendos.com/images/news/noticia8.webp" />
+        <meta property="og:url" content="https://https://www.pagocursoscomparendos.com/noticias/como-pagar-una-fotomulta" />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://tudominio.com/noticias/como-pagar-fotomulta-colombia-2026" />
+        <link rel="canonical" href="https://https://www.pagocursoscomparendos.com/noticias/como-pagar-una-fotomulta" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -139,7 +139,7 @@ export default function NewsComopagarFotomulta() {
         {/* HERO */}
          <section className="relative h-[440px] overflow-hidden">
           <img
-            src="/images/sedes/bogotaNp.webp"
+            src="/images/news/noticia8.webp"
             alt="Nueva sede de Cursos Comparendos en Suba, Bogotá"
             className="absolute inset-0 w-full h-full object-cover"
           />

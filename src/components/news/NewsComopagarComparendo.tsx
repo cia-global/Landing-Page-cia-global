@@ -105,7 +105,7 @@ export default function NewsComopagarComparendo() {
         />
         <meta property="og:title" content="Cómo pagar un comparendo de tránsito en Colombia — Guía 2026" />
         <meta property="og:description" content="Guía completa para consultar y pagar su comparendo con hasta 50% de descuento usando SIMIT, RUNT y el curso pedagógico autorizado." />
-        <meta property="og:image" content="https://pagocursoscomparendos.com/images/news/pagar-comparendo-2026.jpg" />
+        <meta property="og:image" content="https://pagocursoscomparendos.com/images/news/noticia7.webp" />
         <meta property="og:url" content="https://pagocursoscomparendos.com/noticias/como-pagar-un-comparendo" />
         <meta property="og:type" content="article" />
         <link rel="canonical" href="https://pagocursoscomparendos.com/noticias/como-pagar-un-comparendo" />
@@ -129,7 +129,7 @@ export default function NewsComopagarComparendo() {
        
            <section className="relative h-[440px] overflow-hidden">
           <img
-            src="/images/sedes/bogotaNp.webp"
+            src="/images/news/noticia7.webp"
             alt="Nueva sede de Cursos Comparendos en Suba, Bogotá"
             className="absolute inset-0 w-full h-full object-cover"
           />
