@@ -65,13 +65,25 @@ export default function SectionNotice() {
                   </div>
                 </div>
               ))}
+             
             </div>
+            
           ) : (
             <div className="bg-white rounded-lg p-8 text-center">
               <p className="text-gray-600">No hay noticias disponibles en este momento</p>
             </div>
           )}
         </div>
+            <div className="flex justify-center mt-10">
+                <Link
+                  to="/noticias"
+                  className="inline-flex items-center gap-2 bg-[#253688] hover:bg-[#1a2660] text-white font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-md"
+                >
+                  <Newspaper size={18} />
+                  Ver todas las noticias
+                  <ChevronRight size={18} />
+                </Link>
+              </div>
       </section>
   );
 }

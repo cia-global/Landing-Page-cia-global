@@ -19,13 +19,19 @@ import BucaramangaCity from './components/cityseo/CitySeoBucaramanga';
 import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
 import BogotaCity from './components/cityseo/CitySeoBogota';
 import CityPage from './components/cityseo/CitiesSeoPage';
+import News from './components/News';
 import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsBogotaNp from './components/news/NewsBogotaNp';
+import NewsFontibon from './components/news/NewsFontibon';
+import NewsMadrid from './components/news/NewsMadrid';
 import NewsSoatNacional from './components/news/NewsSoat';
 import NewsCambioInfractor from './components/news/NewsCambioInfractor';
 import NewsDescuentoComparendos from './components/news/NewsDescuentoComparendos';
 import NewsTablaComparendos2026 from './components/news/NewsTablaComparendos2026';
 import NewsRadiografiaAccidentalidad from './components/news/NewsRadiografiaAccidentalidad';
+import NewsComoPagarComparendo from './components/news/NewsComopagarComparendo';
+import NewsComopagarFotomulta from './components/news/NewsComopagarFotomulta';
+
 
 // Componente para scroll al cambiar de ruta
 
@@ -99,13 +105,18 @@ function App() {
           <Route path="/curso-comparendo-bucaramanga" element={<BucaramangaCity />} />
           <Route path="/curso-comparendo-florencia" element={<FlorenciaCity />} />
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />
+          <Route path="/noticias" element={<News />} />
           <Route path="/noticias/nueva-sede-bogota-suba" element={<NewsBogotaSuba />} />
-           <Route path="/noticias/nueva-sede-bogota-north-point" element={<NewsBogotaNp />} />
+          <Route path="/noticias/nueva-sede-bogota-north-point" element={<NewsBogotaNp />} />
+          <Route path="/noticias/nueva-sede-bogota-fontibon" element={<NewsFontibon />} />
           <Route path="/noticias/soat-nacional" element={<NewsSoatNacional />} />
           <Route path="/noticias/cambio-infractor-comparendo" element={<NewsCambioInfractor />} />
           <Route path="/noticias/descuento-comparendos" element={<NewsDescuentoComparendos />} />
           <Route path="/noticias/tabla-comparendos-2026" element={<NewsTablaComparendos2026 />} />
+          <Route path="/noticias/como-pagar-un-comparendo" element={<NewsComoPagarComparendo />} />
+          <Route path="/noticias/como-pagar-una-fotomulta" element={<NewsComopagarFotomulta />} />
           <Route path="/noticias/radiografia-accidentalidad" element={<NewsRadiografiaAccidentalidad />} />
+          <Route path="/noticias/nueva-sede-madrid" element={<NewsMadrid />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>
