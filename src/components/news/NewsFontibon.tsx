@@ -2,25 +2,25 @@ import { Helmet } from "react-helmet-async";
 import { CalendarDays, MapPin, ArrowLeft, Clock, Building2, Award, Headphones, FileText, CheckCircle, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function NewsBogotaNp() {
+export default function NewsFontibon() {
   return (
     <>
       <Helmet>
-        <title>Nueva sede en Bogotá North Point | Cursos Comparendos</title>
-        <meta name="description" content="Cursos Comparendos abre su primera sede en Bogotá, localidad de North Point. Cursos de comparendos, asesoría personalizada y gestión de trámites cerca de ti." />
-        <meta name="keywords" content="cursos de comparendos en bogotá, cursos comparendos north point, sede cursos comparendos bogotá, descuento comparendos bogotá, cia north point, cursos tránsito bogotá" />
-        <meta property="og:title" content="Nueva sede en Bogotá - North Point | Cursos Comparendos" />
-        <meta property="og:description" content="Abrimos nuestra primera sede en Bogotá. Conócela en North Point e inicia tu proceso de comparendo con nosotros." />
-        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/sedes/bogotaNp.webp" />
-        <meta property="og:url" content="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-north-point" />
+        <title>Nueva sede en Bogotá Fontibon | Cursos Comparendos</title>
+        <meta name="description" content="Cursos Comparendos abre su primera sede en Bogotá, localidad de Fontibon. Cursos de comparendos, asesoría personalizada y gestión de trámites cerca de ti." />
+        <meta name="keywords" content="cursos de comparendos en bogotá, cursos comparendos fontibon, sede cursos comparendos bogotá, descuento comparendos bogotá, cia fontibon, cursos tránsito bogotá" />
+        <meta property="og:title" content="Nueva sede en Bogotá - Fontibon | Cursos Comparendos" />
+        <meta property="og:description" content="Abrimos nuestra primera sede en Bogotá. Conócela en Fontibon e inicia tu proceso de comparendo con nosotros." />
+        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/sedes/bogotaF.webp" />
+        <meta property="og:url" content="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-fontibon" />
         <meta property="og:type" content="article" />
-        <link rel="canonical" href="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-north-point" />
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-fontibon" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "NewsArticle",
-            headline: "Cursos Comparendos abre su primera sede en Bogotá, localidad de Usaquen",
-            image: ["https://www.pagocursoscomparendos.com/images/sedes/bogota.webp"],
+            headline: "Cursos Comparendos abre su primera sede en Bogotá, localidad de Fontibon",
+            image: ["https://www.pagocursoscomparendos.com/images/sedes/bogotaF.webp"],
             datePublished: "2026-05-25",
             author: { "@type": "Organization", name: "Cursos Comparendos" },
             publisher: { "@type": "Organization", name: "Cursos Comparendos" },
@@ -35,7 +35,7 @@ export default function NewsBogotaNp() {
         <section className="relative h-[440px] overflow-hidden">
           <img
             src="/images/sedes/bogotaNp.webp"
-            alt="Nueva sede de Cursos Comparendos en Usaquen, Bogotá"
+            alt="Nueva sede de Cursos Comparendos en Fontibon, Bogotá"
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30" />
@@ -51,13 +51,13 @@ export default function NewsBogotaNp() {
             </span>
 
             <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-300">
-              <span className="flex items-center gap-2"><CalendarDays size={15} /> 23 julio 2026</span>
-              <span className="flex items-center gap-2"><MapPin size={15} /> Usaquen, Bogotá</span>
+              <span className="flex items-center gap-2"><CalendarDays size={15} /> 04 agosto 2026</span>
+              <span className="flex items-center gap-2"><MapPin size={15} /> Fontibon, Bogotá</span>
               <span className="flex items-center gap-2"><Clock size={15} /> 3 min de lectura</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-extrabold max-w-3xl leading-tight">
-              Iniciamos nuestra expansión en Bogotá: nueva sede en North Point
+              Iniciamos nuestra expansión en Bogotá: nueva sede en Fontibon
             </h1>
           </div>
         </section>
@@ -69,7 +69,7 @@ export default function NewsBogotaNp() {
 
               {/* Lead */}
               <p className="text-lg text-gray-700 leading-relaxed">
-                En <strong>Cursos Comparendos</strong> estamos marcando un hito en nuestra historia: abrimos nuestra primera sede en Bogotá, ubicada en la localidad de <strong>Usaquen</strong>. Este paso representa el inicio de una expansión que nos acercará a miles de conductores en la capital del país.
+                En <strong>Cursos Comparendos</strong> estamos marcando un hito en nuestra historia: abrimos nuestra primera sede en Bogotá, ubicada en la localidad de <strong>Fontibon</strong>. Este paso representa el inicio de una expansión que nos acercará a miles de conductores en la capital del país.
               </p>
 
               <p className="text-gray-600 leading-relaxed">
@@ -79,7 +79,7 @@ export default function NewsBogotaNp() {
               {/* ¿Por qué Suba? */}
               <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
                 <h2 className="flex items-center gap-2 font-bold text-xl text-[#253688] mb-3">
-                  <Building2 size={20} /> ¿Por qué Usaquen?
+                  <Building2 size={20} /> ¿Por qué Fontibon?
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
                   Usaquen es una de las localidades con mayor densidad poblacional de Bogotá y con alta actividad vehicular. Elegimos este sector como punto de partida estratégico para llegar a una gran cantidad de conductores desde el primer día, con proyección de expandirnos a otras zonas de la ciudad.
@@ -110,7 +110,7 @@ export default function NewsBogotaNp() {
               {/* Cita destacada */}
               <blockquote className="border-l-4 border-[#253688] pl-5 py-1">
                 <p className="text-gray-600 italic leading-relaxed">
-                  "Bogotá ha sido un objetivo estratégico para nosotros desde hace tiempo. North Point es solo el comienzo: queremos estar presentes en cada rincón de la ciudad para facilitarle la vida a los conductores bogotanos."
+                  "Bogotá ha sido un objetivo estratégico para nosotros desde hace tiempo. Fontibon es solo el comienzo: queremos estar presentes en cada rincón de la ciudad para facilitarle la vida a los conductores bogotanos."
                 </p>
               </blockquote>
 
@@ -122,8 +122,8 @@ export default function NewsBogotaNp() {
               <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-5">
                 <MapPin size={24} className="text-[#253688] flex-shrink-0" />
                 <div>
-                  <p className="font-semibold text-gray-800">Localidad de Usaquen, Bogotá D.C.</p>
-                  <p className="text-sm text-gray-500">Centro Comercial North Point P2, Ak 7 #155-80 local 44</p>
+                  <p className="font-semibold text-gray-800">Localidad de Fontibón, Bogotá D.C.</p>
+                  <p className="text-sm text-gray-500"> Centro Comercial Puerto Colombia, Cra. 100 #19-05 Segundo Piso Local 57 y 58</p>
                 </div>
                 <a
                   href="https://maps.app.goo.gl/gCQukw93WaFLfrDz8"
@@ -163,10 +163,10 @@ export default function NewsBogotaNp() {
               <div className="bg-[#253688] rounded-3xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-3">¿Tienes un comparendo en Bogotá?</h3>
                 <p className="text-blue-200 mb-6 leading-relaxed">
-                  Agenda tu curso en nuestra nueva sede en North Point y reduce tu sanción de forma rápida, segura y certificada.
+                  Agenda tu curso en nuestra nueva sede en Fontibón y reduce tu sanción de forma rápida, segura y certificada.
                 </p>
                 <Link
-                  to="/cities/bogota-north-point"
+                  to="/cities/bogota-fontibon"
                   className="inline-flex items-center gap-2 bg-amber-400 text-amber-900 font-bold px-7 py-3 rounded-xl hover:scale-105 transition"
                 >
                   <CheckCircle size={18} />
