@@ -11,7 +11,7 @@ export default function NewsFontibon() {
         <meta name="keywords" content="cursos de comparendos en bogotá, cursos comparendos fontibon, sede cursos comparendos bogotá, descuento comparendos bogotá, cia fontibon, cursos tránsito bogotá" />
         <meta property="og:title" content="Nueva sede en Bogotá - Fontibon | Cursos Comparendos" />
         <meta property="og:description" content="Abrimos nuestra primera sede en Bogotá. Conócela en Fontibon e inicia tu proceso de comparendo con nosotros." />
-        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/sedes/bogotaF.webp" />
+        <meta property="og:image" content="https://www.pagocursoscomparendos.com/images/sedes/fontibon.webp" />
         <meta property="og:url" content="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-fontibon" />
         <meta property="og:type" content="article" />
         <link rel="canonical" href="https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-fontibon" />
@@ -20,7 +20,7 @@ export default function NewsFontibon() {
             "@context": "https://schema.org",
             "@type": "NewsArticle",
             headline: "Cursos Comparendos abre su primera sede en Bogotá, localidad de Fontibon",
-            image: ["https://www.pagocursoscomparendos.com/images/sedes/bogotaF.webp"],
+            image: ["https://www.pagocursoscomparendos.com/images/sedes/fontibon.webp"],
             datePublished: "2026-05-25",
             author: { "@type": "Organization", name: "Cursos Comparendos" },
             publisher: { "@type": "Organization", name: "Cursos Comparendos" },
@@ -34,7 +34,7 @@ export default function NewsFontibon() {
         {/* HERO */}
         <section className="relative h-[440px] overflow-hidden">
           <img
-            src="/images/sedes/bogotaNp.webp"
+            src="/images/sedes/fontibon.webp"
             alt="Nueva sede de Cursos Comparendos en Fontibon, Bogotá"
             className="absolute inset-0 w-full h-full object-cover"
           />
@@ -51,13 +51,13 @@ export default function NewsFontibon() {
             </span>
 
             <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-300">
-              <span className="flex items-center gap-2"><CalendarDays size={15} /> 04 agosto 2026</span>
-              <span className="flex items-center gap-2"><MapPin size={15} /> Fontibon, Bogotá</span>
+              <span className="flex items-center gap-2"><CalendarDays size={15} /> 07 Septiembre 2026</span>
+              <span className="flex items-center gap-2"><MapPin size={15} /> Fontibón, Bogotá</span>
               <span className="flex items-center gap-2"><Clock size={15} /> 3 min de lectura</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl font-extrabold max-w-3xl leading-tight">
-              Iniciamos nuestra expansión en Bogotá: nueva sede en Fontibon
+              Iniciamos nuestra expansión en Bogotá: nueva sede en Fontibón
             </h1>
           </div>
         </section>
@@ -69,7 +69,7 @@ export default function NewsFontibon() {
 
               {/* Lead */}
               <p className="text-lg text-gray-700 leading-relaxed">
-                En <strong>Cursos Comparendos</strong> estamos marcando un hito en nuestra historia: abrimos nuestra primera sede en Bogotá, ubicada en la localidad de <strong>Fontibon</strong>. Este paso representa el inicio de una expansión que nos acercará a miles de conductores en la capital del país.
+                En <strong>Cursos Comparendos</strong> estamos marcando un hito en nuestra historia: abrimos nuestra primera sede en Bogotá, ubicada en la localidad de <strong>Fontibón</strong>. Este paso representa el inicio de una expansión que nos acercará a miles de conductores en la capital del país.
               </p>
 
               <p className="text-gray-600 leading-relaxed">
@@ -79,7 +79,7 @@ export default function NewsFontibon() {
               {/* ¿Por qué Suba? */}
               <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
                 <h2 className="flex items-center gap-2 font-bold text-xl text-[#253688] mb-3">
-                  <Building2 size={20} /> ¿Por qué Fontibon?
+                  <Building2 size={20} /> ¿Por qué Fontibón?
                 </h2>
                 <p className="text-gray-700 leading-relaxed">
                   Usaquen es una de las localidades con mayor densidad poblacional de Bogotá y con alta actividad vehicular. Elegimos este sector como punto de partida estratégico para llegar a una gran cantidad de conductores desde el primer día, con proyección de expandirnos a otras zonas de la ciudad.
@@ -141,7 +141,7 @@ export default function NewsFontibon() {
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-5">Hoja de ruta de expansión</p>
                 <div className="space-y-4">
                   {[
-                    { active: true, label: "Julio 2026", desc: "Apertura sede North Point, Bogotá. Inicio de operaciones con equipo completo de atención y cursos." },
+                    { active: true, label: "Agosto 2026", desc: "Apertura sede Fontibón, Bogotá. Inicio de operaciones con equipo completo de atención y cursos." },
                     { active: false, label: "Próximamente", desc: "Nuevas sedes en otras localidades de Bogotá. Seguiremos anunciando aperturas en nuestras redes y web." },
                     { active: false, label: "Futuro", desc: "Expansión a más ciudades del país, llevando el servicio de Cursos Comparendos a nivel nacional." },
                   ].map(({ active, label, desc }) => (

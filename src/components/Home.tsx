@@ -11,6 +11,7 @@ import CertHome from './certification/CerticadoHome';
 import SectionNotice from './section/Section_notice';
 import ReviewsStats from './reviews/ReviewsStats';
 import VideoRedesSection from './section/Section_media';
+import SectionConsultaMultas from './section/Section_searchCitacion';
 
 
 
@@ -79,8 +80,10 @@ export default function Home() {
       <CertHome/>
       </div>
       <SectionCities/>
+      <SectionConsultaMultas />
       <VideoRedesSection/>
       <ReviewsStats />
+      
       <section className="pt-20 pb-36 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
@@ -145,6 +148,7 @@ export default function Home() {
           </h2>
           <div className="sm:m-16 ">
           <HomeStats />
+          
           </div>
           <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

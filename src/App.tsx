@@ -19,6 +19,7 @@ import BucaramangaCity from './components/cityseo/CitySeoBucaramanga';
 import FlorenciaCity from './components/cityseo/CitySeoFlorencia';
 import BogotaCity from './components/cityseo/CitySeoBogota';
 import CityPage from './components/cityseo/CitiesSeoPage';
+import SearchCitation from './components/SearchCitation';
 import News from './components/News';
 import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsBogotaNp from './components/news/NewsBogotaNp';
@@ -31,7 +32,7 @@ import NewsTablaComparendos2026 from './components/news/NewsTablaComparendos2026
 import NewsRadiografiaAccidentalidad from './components/news/NewsRadiografiaAccidentalidad';
 import NewsComoPagarComparendo from './components/news/NewsComopagarComparendo';
 import NewsComopagarFotomulta from './components/news/NewsComopagarFotomulta';
-
+import NewsBogotaSuspendeCursos from './components/news/NewsBogotaSuspendeCursos';
 
 // Componente para scroll al cambiar de ruta
 
@@ -106,6 +107,7 @@ function App() {
           <Route path="/curso-comparendo-florencia" element={<FlorenciaCity />} />
           <Route path="/curso-comparendo/:slug" element={<CityPage />} />
           <Route path="/noticias" element={<News />} />
+          <Route path="/consulta-multas" element={<SearchCitation />} />
           <Route path="/noticias/nueva-sede-bogota-suba" element={<NewsBogotaSuba />} />
           <Route path="/noticias/nueva-sede-bogota-north-point" element={<NewsBogotaNp />} />
           <Route path="/noticias/nueva-sede-bogota-fontibon" element={<NewsFontibon />} />
@@ -116,6 +118,7 @@ function App() {
           <Route path="/noticias/como-pagar-un-comparendo" element={<NewsComoPagarComparendo />} />
           <Route path="/noticias/como-pagar-una-fotomulta" element={<NewsComopagarFotomulta />} />
           <Route path="/noticias/radiografia-accidentalidad" element={<NewsRadiografiaAccidentalidad />} />
+          <Route path="/noticias/bogota-suspende-cursos" element={<NewsBogotaSuspendeCursos />} />
           <Route path="/noticias/nueva-sede-madrid" element={<NewsMadrid />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
