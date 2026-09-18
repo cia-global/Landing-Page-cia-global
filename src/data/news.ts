@@ -11,6 +11,30 @@ export type News = {
 
 
 export const newsData: News[] = [
+
+   {
+    id: "news-012",
+    title: "Bogotá suspende cursos de comparendos",
+    description:
+      "La Secretaría de Movilidad de Bogotá ha suspendido temporalmente la impartición de cursos de comparendos, afectando el acceso a estos servicios para los conductores.",
+    image_url: "/images/news/noticia12.webp",
+    published_date: "2026-09-17",
+    is_active: true,
+    created_at: "2026-05-21T11:00:00Z",
+    link: "/noticias/bogota-suspende-cursos",
+  },
+   {
+     id: "news-011",
+     title: "Nueva sede en Bogotá: ampliamos nuestra cobertura",
+     description:
+       "Seguimos creciendo. Ahora contamos con una nueva sede en Bogotá para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
+     image_url: "/images/sedes/fontibon.webp",
+     published_date: "2026-09-07",
+     is_active: true,
+     created_at: "2026-05-21T11:00:00Z",
+     link: "/noticias/nueva-sede-bogota-fontibon",
+   },
+   
      {
     id: "news-008",
     title: "Paso a paso para pagar tu comparendo en colombia",
@@ -21,17 +45,6 @@ export const newsData: News[] = [
     is_active: true,
     created_at: "2026-05-21T11:00:00Z",
     link: "/noticias/como-pagar-un-comparendo",
-  },
-    {
-    id: "news-009",
-    title: "Paso a paso para pagar tu fotomulta en colombia",
-    description:
-      "Todo lo que necesita saber: consulta, plazos exactos, descuentos, cambio de infractor e impugnación.",
-    image_url: "/images/news/noticia8.webp",
-    published_date: "2026-08-21",
-    is_active: true,
-    created_at: "2026-05-21T11:00:00Z",
-    link: "/noticias/como-pagar-una-fotomulta",
   },
    {
     id: "news-005",
@@ -54,17 +67,6 @@ export const newsData: News[] = [
     is_active: true,
     created_at: "2026-05-21T11:00:00Z",
     link: "/noticias/nueva-sede-madrid",
-  },
-  {
-    id: "news-003",
-    title: "¿Le Llegó una Fotomulta que No Cometió? Ahora Puede Cambiar el Infractor",
-    description:
-      "Conozca cómo solicitar el cambio de infractor en fotomultas a través del RUNT y cuándo es posible trasladar la responsabilidad al conductor real.",
-    image_url: "/images/news/cambio.png",
-    published_date: "2026-06-23",
-    is_active: true,
-    created_at: "2026-6-22T11:00:00Z",
-    link: "/noticias/cambio-infractor-comparendo",
   },
   {
     id: "news-002",
@@ -193,16 +195,27 @@ export const newsTotal: News[] = [
     created_at: "2026-05-21T11:00:00Z",
     link: "/noticias/nueva-sede-madrid",
   },
-  //   {
-  //   id: "news-011",
-  //   title: "Nueva sede en Bogotá: ampliamos nuestra cobertura",
-  //   description:
-  //     "Seguimos creciendo. Ahora contamos con una nueva sede en Bogotá para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
-  //   image_url: "/images/sedes/madrid.webp",
-  //   published_date: "2026-08-'4",
-  //   is_active: true,
-  //   created_at: "2026-05-21T11:00:00Z",
-  //   link: "/noticias/nueva-sede-bogota-fontibon",
-  // },
+     {
+     id: "news-011",
+     title: "Nueva sede en Bogotá: ampliamos nuestra cobertura",
+     description:
+       "Seguimos creciendo. Ahora contamos con una nueva sede en Bogotá para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
+     image_url: "/images/sedes/fontibon.webp",
+     published_date: "2026-09-07",
+     is_active: true,
+     created_at: "2026-05-21T11:00:00Z",
+     link: "/noticias/nueva-sede-bogota-fontibon",
+   },
+    {
+    id: "news-012",
+    title: "Bogotá suspende cursos de comparendos",
+    description:
+      "La Secretaría de Movilidad de Bogotá ha suspendido temporalmente la impartición de cursos de comparendos, afectando el acceso a estos servicios para los conductores.",
+    image_url: "/images/news/noticia12.webp",
+    published_date: "2026-09-17",
+    is_active: true,
+    created_at: "2026-05-21T11:00:00Z",
+    link: "/noticias/bogota-suspende-cursos",
+  },
    
  ].reverse();
