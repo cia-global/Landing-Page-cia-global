@@ -12,6 +12,17 @@ export type News = {
 
 export const newsData: News[] = [
 
+{
+    id: "news-013",
+    title: "Nueva sede en Mosquera, Cundinamarca: ampliamos nuestra cobertura",
+    description:
+      "Seguimos creciendo. Ahora contamos con una nueva sede en Mosquera, Cundinamarca para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
+    image_url: "/images/sedes/mosquera.webp",
+    published_date: "2026-10-07",
+    is_active: true,
+    created_at: "2026-05-21T11:00:00Z",
+    link: "/noticias/nueva-sede-mosquera",
+  },
    {
     id: "news-012",
     title: "Bogotá suspende cursos de comparendos",
@@ -56,17 +67,6 @@ export const newsData: News[] = [
     is_active: true,
     created_at: "2026-6-22T11:00:00Z",
     link: "/noticias/tabla-comparendos-2026",
-  },
-   {
-    id: "news-010",
-    title: "Nueva sede en Madrid, Cundinamarca: ampliamos nuestra cobertura",
-    description:
-      "Seguimos creciendo. Ahora contamos con una nueva sede en Madrid, Cundinamarca para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
-    image_url: "/images/sedes/madrid.webp",
-    published_date: "2026-07-28",
-    is_active: true,
-    created_at: "2026-05-21T11:00:00Z",
-    link: "/noticias/nueva-sede-madrid",
   },
   {
     id: "news-002",
@@ -216,6 +216,17 @@ export const newsTotal: News[] = [
     is_active: true,
     created_at: "2026-05-21T11:00:00Z",
     link: "/noticias/bogota-suspende-cursos",
+  },
+  {
+    id: "news-013",
+    title: "Nueva sede en Mosquera, Cundinamarca: ampliamos nuestra cobertura",
+    description:
+      "Seguimos creciendo. Ahora contamos con una nueva sede en Mosquera, Cundinamarca para ofrecer una mejor atención y facilitar el acceso a nuestros cursos de comparendos y servicios para conductores. Con esta apertura ampliamos nuestra cobertura y reforzamos nuestro compromiso de brindar atención más cercana, rápida y accesible.",
+    image_url: "/images/sedes/mosquera.webp",
+    published_date: "2026-10-07",
+    is_active: true,
+    created_at: "2026-05-21T11:00:00Z",
+    link: "/noticias/nueva-sede-mosquera",
   },
    
  ].reverse();

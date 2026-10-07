@@ -25,6 +25,7 @@ import NewsBogotaSuba from './components/news/NewsBogota';
 import NewsBogotaNp from './components/news/NewsBogotaNp';
 import NewsFontibon from './components/news/NewsFontibon';
 import NewsMadrid from './components/news/NewsMadrid';
+import NewsMosquera from './components/news/NewsMosquera';
 import NewsSoatNacional from './components/news/NewsSoat';
 import NewsCambioInfractor from './components/news/NewsCambioInfractor';
 import NewsDescuentoComparendos from './components/news/NewsDescuentoComparendos';
@@ -120,6 +121,7 @@ function App() {
           <Route path="/noticias/radiografia-accidentalidad" element={<NewsRadiografiaAccidentalidad />} />
           <Route path="/noticias/bogota-suspende-cursos" element={<NewsBogotaSuspendeCursos />} />
           <Route path="/noticias/nueva-sede-madrid" element={<NewsMadrid />} />
+          <Route path="/noticias/nueva-sede-mosquera" element={<NewsMosquera />} />
           <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Route>
