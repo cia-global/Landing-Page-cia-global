@@ -37,8 +37,24 @@ export default function ReviewsStats() {
       <div className="max-w-7xl mx-auto px-4">
 
         <div className="text-center mb-12">
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-4 space-x-3">
             <Star
+              size={42}
+              className="fill-yellow-400 text-yellow-400"
+            />
+             <Star
+              size={42}
+              className="fill-yellow-400 text-yellow-400"
+            />
+             <Star
+              size={42}
+              className="fill-yellow-400 text-yellow-400"
+            />
+             <Star
+              size={42}
+              className="fill-yellow-400 text-yellow-400"
+            />
+             <Star
               size={42}
               className="fill-yellow-400 text-yellow-400"
             />

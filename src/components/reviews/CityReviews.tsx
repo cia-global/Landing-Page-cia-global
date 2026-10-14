@@ -73,10 +73,23 @@ export default function CityReviews({
           size={28}
           className="fill-yellow-400 text-yellow-400"
         />
-
-        <span className="text-4xl font-bold text-slate-900">
-          {rating}
-        </span>
+         <Star
+          size={28}
+          className="fill-yellow-400 text-yellow-400"
+        />
+         <Star
+          size={28}
+          className="fill-yellow-400 text-yellow-400"
+        />
+         <Star
+          size={28}
+          className="fill-yellow-400 text-yellow-400"
+        />
+         <Star
+          size={28}
+          className="fill-yellow-400 text-yellow-400"
+        />
+        
       </div>
 
       <h2 className="text-3xl font-bold text-slate-900 mb-2">

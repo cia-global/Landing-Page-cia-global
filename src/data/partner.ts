@@ -12,12 +12,12 @@ export const partnersData: Partner[] = [
     description: "Centro autorizado para la formación y sensibilización vial",
     image: "/images/partners/educar.png",
   },
-  {
-    id: "2",
-    name: "CIA GLOBAL",
-    description: "Cursos de concientización vial certificados, enfocados en educación y responsabilidad al conducir",
-    image: "/images/partners/global.png",
-  },
+  // {
+  //   id: "2",
+  //   name: "CIA GLOBAL",
+  //   description: "Cursos de concientización vial certificados, enfocados en educación y responsabilidad al conducir",
+  //   image: "/images/partners/global.png",
+  // },
   {
     id: "3",
     name: "Previal",
@@ -36,10 +36,10 @@ export const partnersData: Partner[] = [
     description: "Centro de atención vial especializado en cursos para la reducción de sanciones de tránsito",
     image: "/images/partners/vialseg.png",
   },
-  {
-    id: "6",
-    name: "VIP",
-    description: "Capacitación vial responsable que promueve una movilidad más segura y consciente",
-    image: "/images/partners/vip.png",
-  }
+  // {
+  //   id: "6",
+  //   name: "VIP",
+  //   description: "Capacitación vial responsable que promueve una movilidad más segura y consciente",
+  //   image: "/images/partners/vip.png",
+  // }
 ];

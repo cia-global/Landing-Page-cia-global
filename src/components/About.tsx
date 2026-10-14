@@ -157,11 +157,11 @@ export default function About() {
           </p>
 
           {loadingPartners ? (
-            <div className="flex justify-center py-12">
+            <div className="flex justify-center py-12 ">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
             </div>
           ) : partners.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-items-center">
               {partners.map((partner) => (
                 <div
                   key={partner.id}
