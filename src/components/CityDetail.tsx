@@ -205,7 +205,7 @@ const saturdayHours = getHoursByType('saturday');
   <meta name="geo.position" content={`${city.coordinates.lat};${city.coordinates.lng}`} />
   
   {/* Canonical dinámico */}
-  <link rel="canonical" href={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
+  <link rel="canonical" href={`https://www.pagocursoscomparendos.com/cities/${city.slug}`} />
   
   {/* Open Graph */}
   <meta property="og:title" content={`Cursos Comparendos ${city.name} - Sedes y Horarios`} />
@@ -213,7 +213,7 @@ const saturdayHours = getHoursByType('saturday');
     property="og:description" 
     content={`Encuentra sedes, horarios y contacto en ${city.name}. 50% descuento en comparendos.`}
   />
-  <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
+  <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.slug}`} />
   <meta property="og:image" content={`https://www.pagocursoscomparendos.com/images/cities/${city.id}.jpg`} />
 
   <script type="application/ld+json">
