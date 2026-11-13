@@ -10,28 +10,24 @@ import { Helmet } from 'react-helmet-async';
 
 export interface AppointmentFormData {
   cityId: string;
-  courseTypeId: string;
   fullName: string;
   idNumber: string;
-  citationNumber: string;
   phone: string;
   email: string;
   appointmentDate: string;
   appointmentTime: string;
-  vehiclePlate: string;
 }
+
+const FIXED_COURSE_TYPE_NAME = 'cursos descuentos comparendos';
 
 const initialFormData: AppointmentFormData = {
   cityId: '',
-  courseTypeId: '',
   fullName: '',
   idNumber: '',
-  citationNumber: '',
   phone: '',
   email: '',
   appointmentDate: '',
   appointmentTime: '',
-  vehiclePlate: '',
 };
 
 // Mapeo de días en español e inglés
@@ -46,6 +42,24 @@ const DAYS_MAP: Record<string, number> = {
 };
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+const getBogotaDateTime = () => {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Bogota',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hourCycle: 'h23',
+  }).formatToParts(new Date());
+  const part = (type: string) => parts.find(item => item.type === type)?.value ?? '';
+
+  return {
+    date: `${part('year')}-${part('month')}-${part('day')}`,
+    time: `${part('hour')}:${part('minute')}`,
+  };
+};
 
 
 // Función para obtener el nombre del día de una fecha
@@ -89,6 +103,7 @@ export default function Appointment() {
   const [formData, setFormData] = useState<AppointmentFormData>(initialFormData);
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loadingSchedules, setLoadingSchedules] = useState(false);
+  const [bogotaDateTime, setBogotaDateTime] = useState(getBogotaDateTime);
   
   // Parámetros URL
   const cityIdParam = params.get('city');
@@ -111,6 +126,15 @@ export default function Appointment() {
   '2026-12-08',
   '2026-12-25',         
 ];
+
+  // Mantener actualizada la hora para ocultar horarios que vencen con el formulario abierto.
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setBogotaDateTime(getBogotaDateTime());
+    }, 30_000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
 
   // Cargar datos iniciales
   useEffect(() => {
@@ -210,8 +234,12 @@ export default function Appointment() {
     
     return schedules
       .filter(s => s.day_of_week === selectedDayName)
+      .filter(s => {
+        if (formData.appointmentDate !== bogotaDateTime.date) return true;
+        return s.start_time.slice(0, 5) > bogotaDateTime.time;
+      })
       .sort((a, b) => a.start_time.localeCompare(b.start_time));
-  }, [schedules, formData.appointmentDate]);
+  }, [schedules, formData.appointmentDate, bogotaDateTime]);
 
   // Limpiar la hora seleccionada si ya no está en los horarios filtrados
   useEffect(() => {
@@ -229,6 +257,16 @@ export default function Appointment() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
+    const fixedCourseType = courseTypes.find(
+      course => course.name.trim().toLocaleLowerCase('es') === FIXED_COURSE_TYPE_NAME
+    );
+
+    if (!fixedCourseType) {
+      alert(`No se encontró el tipo de curso "${FIXED_COURSE_TYPE_NAME}". Verifica que esté activo en la configuración.`);
+      setSubmitting(false);
+      return;
+    }
+
      console.log('📤 Datos que se envían:', formData);
   console.log('🌐 URL:', `${API_URL}/api/appointments`);
     try {
@@ -239,13 +277,12 @@ export default function Appointment() {
         },
         body: JSON.stringify({ 
           city_id: formData.cityId,
-          course_type_id: formData.courseTypeId,
+          course_type_id: fixedCourseType.id,
           full_name: formData.fullName,
           id_number: formData.idNumber,
-          citation_number: formData.citationNumber || "No especificado",
+          citation_number: "No especificado",
           phone: formData.phone,
           email: formData.email,
-          vehicle_plate: formData.vehiclePlate || "NoPlaca",
           appointment_date: formData.appointmentDate,
           appointment_time: formData.appointmentTime,
           status: 'pending',
@@ -347,7 +384,6 @@ export default function Appointment() {
               cities={cities}
               cityId={cityIdParam}
               schedules={filteredSchedules}
-              courseTypes={courseTypes}
               submitting={submitting}
               canSelectSchedule={canSelectSchedule}
               onSubmit={handleSubmit}
