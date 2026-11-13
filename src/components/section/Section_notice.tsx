@@ -77,7 +77,7 @@ export default function SectionNotice() {
             <div className="flex justify-center mt-10">
                 <Link
                   to="/noticias"
-                  className="inline-flex items-center gap-2 bg-[#253688] hover:bg-[#1a2660] text-white font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-md"
+                  className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-amber-400 text-gray-900 font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-md"
                 >
                   <Newspaper size={18} />
                   Ver todas las noticias

@@ -484,7 +484,7 @@ export default function CityPage() {
             <div className="text-center mt-12">
               <Link
                 to={`/appointment?city=${slug}`}
-                className="group inline-flex items-center gap-2 bg-[#253688] hover:bg-[#1a2660] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300"
+                className="group inline-flex items-center gap-2 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-900 hover:bg-[#1a2660] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <Calendar className="w-5 h-5" />
                 Comenzar ahora

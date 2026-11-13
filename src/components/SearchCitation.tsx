@@ -158,7 +158,7 @@ export default function SearchCitation() {
             href="https://fcm.org.co/simit"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-amber-900 font-bold px-6 py-3.5 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg shadow-amber-400/20 text-sm"
+            className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-amber-300 text-gray-900 font-bold px-6 py-3.5 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg shadow-amber-400/20 text-sm"
           >
             <Search size={22} />
             Consultar en SIMIT
@@ -345,7 +345,7 @@ export default function SearchCitation() {
               </div>
 
               {/* CTA WhatsApp */}
-              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 rounded-3xl p-8 text-white">
+              <div className="bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-900 rounded-3xl p-8 text-white">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   <div>
                     <p className="text-gray-300 text-xs font-semibold uppercase tracking-wider mb-2">
@@ -390,7 +390,7 @@ export default function SearchCitation() {
               </div>
 
               {/* CTA final */}
-              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 rounded-3xl p-8 text-white text-center">
+              <div className="bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-900 rounded-3xl p-8 text-white text-center">
                 <h3 className="text-2xl font-bold mb-3">
                   ¿Encontró multas activas?
                 </h3>
@@ -399,7 +399,7 @@ export default function SearchCitation() {
                 </p>
                 <Link
                   to="/appointment"
-                  className="inline-flex items-center gap-2 bg-amber-400 text-amber-900 font-bold px-8 py-4 rounded-xl hover:scale-105 transition"
+                  className="inline-flex items-center gap-2 bg-yellow-400 text-gray-900 font-bold px-8 py-4 rounded-xl hover:scale-105 transition"
                 >
                   <Search size={18} />
                   Agendar mi curso
