@@ -1,33 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.pagocursoscomparendos.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/about</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/appointment</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/contact</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/certificados</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/consulta-multas</loc><priority>0.7</priority></url>
 
-  <url>
-    <loc>https://www.pagocursoscomparendos.com/</loc>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <!-- Páginas de detalle de sedes -->
+  <url><loc>https://www.pagocursoscomparendos.com/cities/acacias</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/barrancabermeja</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/bogota</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/bogota-fontibon</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/bogota-north-point</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/bucaramanga</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/calarca</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/dosquebradas</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/florencia</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/granada</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/madrid</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/manizales</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/neiva</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/pereira</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/cities/tulua</loc><priority>0.7</priority></url>
 
-  <url>
-    <loc>https://www.pagocursoscomparendos.com/about</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+  <!-- Landings SEO locales -->
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/acacias</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/barrancabermeja</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/bogota-fontibon</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/bogota-north-point</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/bucaramanga-global</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/dosquebradas</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/duitama</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/florencia-global</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/floridablanca</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/granada</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/ibague</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/la-plata</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/los-patios</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/manizales</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/pasto</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/pereira</loc><priority>0.8</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/piedecuesta</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/restrepo</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/tulua</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo/yopal</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo-bogota</loc><priority>0.9</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo-bucaramanga</loc><priority>0.9</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/curso-comparendo-florencia</loc><priority>0.9</priority></url>
 
-  <url>
-    <loc>https://www.pagocursoscomparendos.com/appointment</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.pagocursoscomparendos.com/cities</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-   <url>
-    <loc>https://www.pagocursoscomparendos.com/contact</loc>
-    <priority>0.6</priority>
-  </url>
-
+  <!-- Noticias -->
+  <url><loc>https://www.pagocursoscomparendos.com/noticias</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/bogota-suspende-cursos</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/cambio-infractor-comparendo</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/como-pagar-una-fotomulta</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/como-pagar-un-comparendo</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/descuento-comparendos</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-fontibon</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-north-point</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/nueva-sede-bogota-suba</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/nueva-sede-madrid</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/radiografia-accidentalidad</loc><priority>0.7</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/soat-nacional</loc><priority>0.6</priority></url>
+  <url><loc>https://www.pagocursoscomparendos.com/noticias/tabla-comparendos-2026</loc><priority>0.7</priority></url>
 </urlset>

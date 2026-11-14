@@ -48,7 +48,7 @@ export default function BannerHomeIni() {
             <div className="flex flex-wrap gap-4 pt-1 justify-center">
               <Link
                 to="/appointment"
-                className="group relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 font-bold rounded-xl shadow-xl
+                className="group relative px-8 py-4 bg-yellow-400 text-gray-900 font-bold rounded-xl shadow-xl
                             overflow-hidden
                             animate-[float_4s_ease-in-out_infinite]
                             hover:animate-none

@@ -76,7 +76,7 @@ export default function SectionCities () {
           <div className="text-center">
             <Link
               to="/cities"
-              className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:from-amber-500 hover:to-yellow-400 transition-all duration-200"
+              className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:from-amber-400 hover:to-yellow-400 transition-all duration-200"
             >
               Ver todas las ciudades
               <ArrowRight size={20} className="ml-2" />

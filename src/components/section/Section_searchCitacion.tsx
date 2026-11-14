@@ -3,7 +3,7 @@ import { Search, ArrowRight, ShieldAlert, FileSearch } from "lucide-react";
 
 export default function SectionConsultaMultas() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50"> 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="bg-gradient-to-br from-gray-800  to-blue-950 rounded-3xl overflow-hidden relative">
 
@@ -34,7 +34,7 @@ export default function SectionConsultaMultas() {
 
             <Link
               to="/consulta-multas"
-              className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 font-extrabold px-8 py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl text-base"
+              className="inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-gray-900 font-extrabold px-8 py-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-xl text-base"
             >
               <FileSearch size={20} />
               Conoce tu comparendo

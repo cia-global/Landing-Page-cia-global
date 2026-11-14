@@ -1,10 +1,10 @@
 /**
  * CityPage.tsx
  * Página dinámica SEO para cada ciudad.
- * Ruta: /cursos-comparendo-:slug
+ * Ruta: /curso-comparendo/:slug
  *
  * Agrega en App.tsx:
- *   <Route path="/cursos-comparendo-:slug" element={<CityPage />} />
+ *   <Route path="/curso-comparendo/:slug" element={<CityPage />} />
  *
  * Dependencias:
  *   npm install react-helmet-async @supabase/supabase-js
@@ -284,6 +284,10 @@ export default function CityPage() {
 
   // Ciudad formateada para mostrar en textos
   const ciudad = capitalizar(slug ?? "");
+  const canonicalSlug = slug?.toLowerCase();
+  const canonicalUrl = canonicalSlug === "bogota" || canonicalSlug === "bucaramanga" || canonicalSlug === "florencia"
+    ? `https://www.pagocursoscomparendos.com/curso-comparendo-${canonicalSlug}`
+    : `https://www.pagocursoscomparendos.com/curso-comparendo/${slug}`;
 
   // Si no hay slug redirigir
   if (!slug) return <Navigate to="/404" replace />;
@@ -340,12 +344,12 @@ export default function CityPage() {
           name="keywords"
           content={`curso comparendo ${slug}, descuento comparendo ${slug}, curso infractores ${slug}, reducir multa transito ${slug}, curso pedagogico ${slug}`}
         />
-        <link rel="canonical" href={`https://www.pagocursoscomparendos.com/cursos-comparendo-${slug}`} />
+        <link rel="canonical" href={canonicalUrl} />
         <meta name="robots" content="index,follow" />
         <meta property="og:title" content={`Curso de comparendo en ${ciudad} con 50% de descuento`} />
         <meta property="og:description" content={`Obtén hasta un 50% de descuento en tu comparendo en ${ciudad}. Curso certificado de 2 horas. ¡Agenda hoy!`} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cursos-comparendo-${slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
       </Helmet>
 
       <div className="pt-16">
@@ -480,7 +484,7 @@ export default function CityPage() {
             <div className="text-center mt-12">
               <Link
                 to={`/appointment?city=${slug}`}
-                className="group inline-flex items-center gap-2 bg-[#253688] hover:bg-[#1a2660] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300"
+                className="group inline-flex items-center gap-2 bg-gradient-to-br from-blue-900 via-indigo-800 to-blue-900 hover:bg-[#1a2660] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300"
               >
                 <Calendar className="w-5 h-5" />
                 Comenzar ahora

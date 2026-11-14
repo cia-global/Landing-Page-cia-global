@@ -205,7 +205,7 @@ const saturdayHours = getHoursByType('saturday');
   <meta name="geo.position" content={`${city.coordinates.lat};${city.coordinates.lng}`} />
   
   {/* Canonical dinámico */}
-  <link rel="canonical" href={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
+  <link rel="canonical" href={`https://www.pagocursoscomparendos.com/cities/${city.slug}`} />
   
   {/* Open Graph */}
   <meta property="og:title" content={`Cursos Comparendos ${city.name} - Sedes y Horarios`} />
@@ -213,7 +213,7 @@ const saturdayHours = getHoursByType('saturday');
     property="og:description" 
     content={`Encuentra sedes, horarios y contacto en ${city.name}. 50% descuento en comparendos.`}
   />
-  <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.id}`} />
+  <meta property="og:url" content={`https://www.pagocursoscomparendos.com/cities/${city.slug}`} />
   <meta property="og:image" content={`https://www.pagocursoscomparendos.com/images/cities/${city.id}.jpg`} />
 
   <script type="application/ld+json">
@@ -363,7 +363,7 @@ const saturdayHours = getHoursByType('saturday');
           />
        <Link
                   to ={`/curso-comparendo/${city.slug}`} 
-                  className="w-full bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
+                  className="w-full bg-gradient-to-br from-blue-900 via-indigo-900 to-blue-900 text-white py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
                 >
                   <Info size={20} className="mr-2" />
                   Saber mas
@@ -471,7 +471,7 @@ const saturdayHours = getHoursByType('saturday');
 
 
             <div>
-              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-gray-950 text-white rounded-xl shadow-lg p-8 sticky top-24">
+              <div className="bg-gradient-to-br from-blue-900 via-indigo-900 to-blue-950 text-white rounded-xl shadow-lg p-8 sticky top-24">
                 <h2 className="text-2xl font-bold mb-6">¿Listo para agendar?</h2>
 
                 <p className="mb-6 text-blue-100">
@@ -480,7 +480,7 @@ const saturdayHours = getHoursByType('saturday');
 
                 <Link
                   to ={`/appointment?city=${city.id}&day=${selectedDay}&schedule=${selectedSchedule?.id}`} 
-                  className="w-full bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
+                  className="w-full bg-gradient-to-br from-yellow-400 to-yellow-500 text-gray-900 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200 flex items-center justify-center mb-4"
                 >
                   <Calendar size={20} className="mr-2" />
                   Agendar Clase

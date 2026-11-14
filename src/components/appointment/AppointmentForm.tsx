@@ -1,7 +1,6 @@
 import { Calendar, Clock, MapPin, BookOpen, User, Phone, Mail, CreditCard, FileText } from 'lucide-react';
-import { City, CourseType, Schedule } from '../../lib/supabase';
+import { City, Schedule } from '../../lib/supabase';
 import { AppointmentFormData } from '../Appointment';
-import {CourseInfo} from './CourseInfo';
 import FormInput from './FormInput';
 import {FormSelect} from './FormSelect';
 import { formatTime12h } from '../../utils/time';
@@ -11,7 +10,6 @@ import { useState } from 'react';
 interface AppointmentFormProps {
   formData: AppointmentFormData;
   cities: City[];
-  courseTypes: CourseType[];
   cityId: string | null;
   schedules: Schedule[];
   submitting: boolean;
@@ -24,7 +22,6 @@ export default function AppointmentForm({
   formData,
   cities,
   schedules,
-  courseTypes,
   submitting,
   onSubmit,
   canSelectSchedule,
@@ -36,7 +33,6 @@ export default function AppointmentForm({
     return tomorrow.toISOString().split('T')[0];
   };
 
-  const selectedCourse = courseTypes.find((c) => c.id === formData.courseTypeId);
   const selectedCity = cities.find((c) => c.id === formData.cityId);
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   // Formatear fecha legible
@@ -54,20 +50,17 @@ export default function AppointmentForm({
   // Verificar si el formulario está completo para mostrar el resumen
   const isFormComplete = 
     formData.cityId && 
-    formData.courseTypeId && 
     formData.appointmentDate && 
     formData.appointmentTime &&
     formData.fullName &&
     formData.idNumber &&
-    formData.citationNumber &&
     formData.phone &&
-    formData.email&&
-    formData.vehiclePlate;
+    formData.email;
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
-      {/* Ciudad y Tipo de Curso */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Ciudad / Sede */}
+      <div className="grid grid-cols-1 gap-6">
         <FormSelect
           id="cityId"
           name="cityId"
@@ -84,25 +77,12 @@ export default function AppointmentForm({
           ))}
         </FormSelect>
 
-        <FormSelect
-          id="courseTypeId"
-          name="courseTypeId"
-          label="Tipo de Curso *"
-          value={formData.courseTypeId}
-          onChange={onChange}
-          required
-        >
-          <option value="">Selecciona un curso</option>
-          {courseTypes.map((course) => (
-            <option key={course.id} value={course.id}>
-              {course.name}
-            </option>
-          ))}
-        </FormSelect>
       </div>
 
-      {/* Información del Curso */}
-      {selectedCourse && <CourseInfo course={selectedCourse} />}
+      <div className="rounded-lg border border-blue-100 bg-blue-50 px-4 py-3">
+        <p className="text-sm font-medium text-gray-700">Tipo de curso</p>
+        <p className="font-semibold text-gray-900">Cursos descuentos comparendos</p>
+      </div>
 
       {/* Fecha y Hora */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -146,8 +126,7 @@ export default function AppointmentForm({
       </div>
 
       {/* Nombre Completo */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div className="md:col-span-2 grid grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 gap-6">
       <FormInput
         type="text"
         id="fullName"
@@ -157,22 +136,11 @@ export default function AppointmentForm({
         onChange={onChange}
         placeholder="Nombre Apellido"
         required
-      /></div>
-          <div className="md:col-span-1">
-          <FormInput
-            type="text"
-            id="vehiclePlate"
-            name="vehiclePlate"
-            label="Placa del Vehículo"
-            value={formData.vehiclePlate}
-            onChange={onChange}
-            placeholder="ABC123"        
-          />
-        </div>
+      />
       </div>
 
-      {/* Cédula y Comparendo */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Cédula */}
+      <div className="grid grid-cols-1 gap-6">
         <FormInput
           type="text"
           id="idNumber"
@@ -184,15 +152,6 @@ export default function AppointmentForm({
           required
         />
 
-        <FormInput
-          type="text"
-          id="citationNumber"
-          name="citationNumber"
-          label="Número de Comparendo "
-          value={formData.citationNumber}
-          onChange={onChange}
-          placeholder="ABC123456"
-        />
       </div>
 
       {/* Teléfono y Email */}
@@ -235,7 +194,7 @@ export default function AppointmentForm({
                 <BookOpen className="mr-3 text-blue-600 flex-shrink-0 mt-1" size={20} />
                 <div>
                   <p className="text-sm text-gray-600 font-medium">Curso</p>
-                  <p className="text-gray-900 font-semibold">{selectedCourse?.name}</p>
+                  <p className="text-gray-900 font-semibold">Cursos descuentos comparendos</p>
                 </div>
               </div>
 
@@ -279,14 +238,6 @@ export default function AppointmentForm({
                 <div>
                   <p className="text-sm text-gray-600 font-medium">Cédula</p>
                   <p className="text-gray-900 font-semibold">{formData.idNumber}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <FileText className="mr-3 text-green-600 flex-shrink-0 mt-1" size={20} />
-                <div>
-                  <p className="text-sm text-gray-600 font-medium">Comparendo</p>
-                  <p className="text-gray-900 font-semibold">{formData.citationNumber}</p>
                 </div>
               </div>
 

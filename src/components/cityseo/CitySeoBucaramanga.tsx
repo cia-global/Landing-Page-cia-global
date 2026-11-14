@@ -95,12 +95,12 @@ export default function BucaramangaCity() {
           name="keywords"
           content="curso comparendo bucaramanga, descuento comparendo bucaramanga, curso infractores bucaramanga, reducir multa transito bucaramanga, curso pedagogico bucaramanga"
         />
-        <link rel="canonical" href="https://www.pagocursoscomparendos.com/cities/bucaramanga" />
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/curso-comparendo-bucaramanga" />
         <meta name="robots" content="index,follow" />
         <meta property="og:title" content="Curso de comparendo en Bucaramanga con 50% de descuento" />
         <meta property="og:description" content="Obtén hasta un 50% de descuento en tu comparendo en Bucaramanga. Curso certificado de 2 horas. ¡Agenda hoy!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.pagocursoscomparendos.com/cities/bucaramanga" />
+        <meta property="og:url" content="https://www.pagocursoscomparendos.com/curso-comparendo-bucaramanga" />
       </Helmet>
  
       <div className="pt-16">

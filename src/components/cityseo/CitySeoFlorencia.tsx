@@ -95,12 +95,12 @@ export default function FlorenciaCity() {
           name="keywords"
           content="curso comparendo florencia, descuento comparendo florencia, curso infractores florencia, reducir multa transito florencia, curso pedagogico florencia"
         />
-        <link rel="canonical" href="https://www.pagocursoscomparendos.com/cities/florencia" />
+        <link rel="canonical" href="https://www.pagocursoscomparendos.com/curso-comparendo-florencia" />
         <meta name="robots" content="index,follow" />
         <meta property="og:title" content="Curso de comparendo en Florencia con 50% de descuento" />
         <meta property="og:description" content="Obtén hasta un 50% de descuento en tu comparendo en Florencia. Curso certificado de 2 horas. ¡Agenda hoy!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.pagocursoscomparendos.com/cities/florencia" />
+        <meta property="og:url" content="https://www.pagocursoscomparendos.com/curso-comparendo-florencia" />
       </Helmet>
  
       <div className="pt-16">
